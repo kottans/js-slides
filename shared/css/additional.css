@@ -1,0 +1,75 @@
+.text-left {
+  text-align: left;
+}
+
+.reveal ul.plain-list {
+  list-style-type: none;
+}
+
+.annotated code {
+  width: 49%;
+  float: left;
+}
+
+.annotated .comments {
+  font-size: 80%;
+  width: -webkit-calc(49% - 40px);
+  float: left;
+  margin: 0 0 0 40px;
+  padding: 0;
+}
+
+section .inline-code {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  margin: 0 5px;
+  font-size: .55em;
+  font-family: monospace;
+  line-height: 1.2em;
+  word-wrap: break-word;
+  box-shadow: 0 0 6px rgba(0,0,0,.3);
+}
+
+ul.small-list li, 
+ol.small-list li {
+  margin: 12px 0;
+  font-size: 80%;
+}
+
+table.table, table.table td, table.table th {
+  border: 1px solid white;
+  border-collapse:collapse;
+}
+
+.final {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.final:first-letter {
+  background-color: purple;
+}
+
+.final:after {
+  content: ')';
+}
+
+span.small {
+  display: inline-block;
+  font-size: 0.5em;
+  vertical-align: top;
+}
+
+abbr.dotted {
+  border-bottom:1px dotted;
+}
+.reveal section pre.narrow {
+  width: 50%;
+  float: left;
+}
+
+.annotated code.comments {
+  font-size: 1em;
+}

@@ -1,0 +1,692 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Basic Example</title>
+  <style type="text/css">
+    body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #222;
+  background-color: #f7f7f7;
+  font-size: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+}
+
+.slide-content {
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+  margin: 80px auto 0 auto;
+  padding: 30px;
+
+  font-weight: 200;
+  font-size: 200%;
+  line-height: 1.375;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.arrow {
+  width: 0; height: 0;
+  border: 30px solid #333;
+  float: left;
+  margin-right: 30px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.prev {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+
+  border-left-width: 0;
+  border-right-width: 50px;
+}
+
+.next {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+
+  border-left-width: 50px;
+  border-right-width: 0;
+}
+
+.prev:hover {
+  border-right-color: #888;
+  cursor: pointer;
+}
+
+.next:hover {
+  border-left-color: #888;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 300%;
+  line-height: 1.2;
+  text-align: center;
+  margin: 170px 0 0;
+}
+
+h2 {
+  font-size: 100%;
+  line-height: 1.2;
+  margin: 5px 0;
+  text-align: center;
+  font-weight: 200;
+}
+
+h3 {
+  font-size: 140%;
+  line-height: 1.2;
+  border-bottom: 1px solid #aaa;
+  margin: 0;
+  padding-bottom: 15px;
+}
+
+ul {
+  padding: 20px 0 0 60px;
+  font-weight: 200;
+  line-height: 1.375;
+}
+
+.author h1 {
+  font-size: 170%;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.author h3 {
+  font-weight: 100;
+  text-align: center;
+  font-size: 95%;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: #44a4dd;
+}
+
+a:hover {
+  color: #66b5ff;
+}
+
+pre {
+  font-size: 60%;
+  line-height: 1.3;
+}
+
+.progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 3px;
+  background-color: #b4b4b4;
+
+  -webkit-transition: width 0.05s ease-out;
+  -moz-transition: width 0.05s ease-out;
+  -o-transition: width 0.05s ease-out;
+  transition: width 0.05s ease-out;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 850px) {
+
+  body {
+    font-size: 70%;
+  }
+
+  .slide-content {
+    width: auto;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  h1 {
+    margin-top: 120px;
+  }
+
+  .prev, .prev:hover {
+    border-right-color: rgba(135, 135, 135, 0.5);
+  }
+
+  .next, .next:hover {
+    border-left-color: rgba(135, 135, 135, 0.5);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 50%;
+    overflow: hidden;
+  }
+
+  .slide-content {
+    padding: 10px;
+    margin-top: 10px;
+    height: 340px;
+  }
+
+  h1 {
+    margin-top: 50px;
+  }
+
+  ul {
+    padding-left: 25px;
+  }
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+
+  @page {
+    size: letter;
+  }
+
+  .hidden {
+    display: inline;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  body {
+    margin: 0 auto !important;
+    border: 0;
+    padding: 0;
+    float: none !important;
+    overflow: visible;
+    background: none !important;
+    font-size: 52%;
+  }
+
+  .progress, .controls {
+    display: none;
+  }
+
+  .slide {
+    position: static;
+  }
+
+  .slide-content {
+    border: 1px solid #222;
+    margin-top: 0;
+    margin-bottom: 40px;
+    height: 3.5in;
+    overflow: visible;
+  }
+
+  .slide:nth-child(even) {
+    /* 2 slides per page */
+    page-break-before: always;
+  }
+}
+
+/*
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+code, pre {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  overflow: auto;
+  padding: 6px 10px;
+}
+
+code {
+  padding: 0 5px;
+}
+
+pre>code {
+  margin: 0; padding: 0;
+  border: none;
+  background: transparent;
+}
+
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+  color: #998;
+  font-style: italic
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+  color: #333;
+  font-weight: bold
+}
+
+pre .number,
+pre .hexcolor,
+pre .ruby .constant {
+  color: #099;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+  color: #d14
+}
+
+pre .title,
+pre .id {
+  color: #900;
+  font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+  font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+  color: #458;
+  font-weight: bold
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+  color: #000080;
+  font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+  color: #008080
+}
+
+pre .regexp {
+  color: #009926
+}
+
+pre .class {
+  color: #458;
+  font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+  color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+  color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+  color: #999;
+  font-weight: bold
+}
+
+pre .deletion {
+  background: #fdd
+}
+
+pre .addition {
+  background: #dfd
+}
+
+pre .diff .change {
+  background: #0086b3
+}
+
+pre .chunk {
+  color: #aaa
+}
+
+
+  </style>
+</head>
+<body>
+    <div class="progress">
+    <div class="progress-bar"></div>
+  </div>
+
+  <div class="slide" id="slide-1">
+    <section class="slide-content"><h1 id="outro">Outro</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-2">
+    <section class="slide-content"><h1 id="-i-know-javascript-now-what-neo-png-"><img src="neo.png" alt="I know javascript, now what"></h1>
+<h2 id="now-what-">NOW WHAT?!</h2>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-3">
+    <section class="slide-content"><h3 id="well-you-can-try-to-verify-how-good-you-know-it-">Well, you can try to verify, how good you know it...</h3>
+<ul>
+<li><a href="http://javascript-puzzlers.herokuapp.com/">Puzzler</a></li>
+<li>ODesk test – lots of legacy stuff</li>
+<li><a href="https://github.com/darcyclarke/Front-end-Developer-Interview-Questions#js">Interview question</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-4">
+    <section class="slide-content"><h1 id="year-ago-i-would-say-learn-coffeescript-">Year ago, I would say: &#39;Learn coffeescript&#39;</h1>
+<p>Now I wouldn&#39;t be that sure you might need it.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-5">
+    <section class="slide-content"><h1 id="-keep-up-to-date-http-uptodate-frontendrescue-org-"><a href="http://uptodate.frontendrescue.org">Keep up to date</a>.</h1>
+<h1 id="-visit-events-http-dou-ua-calendar-tags-javascript-"><a href="http://dou.ua/calendar/tags/JavaScript/">Visit events</a>.</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><h1 id="we-didn-t-speak-about-lots-of-stuff-">We didn&#39;t speak about lots of stuff.</h1>
+<h2 id="but-i-just-want-to-designate-how-universal-js-is-">But I just want to designate, how universal JS is.</h2>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-7">
+    <section class="slide-content"><h3 id="js-hardware-">JS &amp; Hardware:</h3>
+<p>Overviewish ones:</p>
+<ul>
+<li><a href="http://markdaggett.com/images/ExpertJavaScript-ch6.pdf">JavaScript IRL</a></li>
+<li><a href="http://www.sitepoint.com/javascript-beyond-web/">JS beyond web</a>  </li>
+</ul>
+<p>Now we&#39;re talking:</p>
+<ul>
+<li><a href="https://tessel.io/">Tessel</a></li>
+<li><a href="http://nodebots.io/">Nodebots</a> &lt;- we should bring this guys to Kyiv</li>
+<li><a href="http://www.espruino.com/">Espruino</a></li>
+<li><a href="https://github.com/rwaldron/johnny-five">Johny-five</a></li>
+<li><a href="http://cylonjs.com/">Cylon.js</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-8">
+    <section class="slide-content"><h3 id="create-desktop-apps-with-node-webkit-https-github-com-rogerwang-node-webkit-">Create desktop apps with <a href="https://github.com/rogerwang/node-webkit">node-webkit</a></h3>
+<p><a href="http://code.tutsplus.com/tutorials/introduction-to-html5-desktop-apps-with-node-webkit--net-36296">Tutsplus</a> &amp; <a href="https://github.com/rogerwang/node-webkit/wiki/Getting-Started-with-node-webkit">Getting started</a></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-9">
+    <section class="slide-content"><h3 id="create-mobile-apps-">Create mobile apps.</h3>
+<ul>
+<li><a href="http://www.appcelerator.com/titanium/">Titanium from Appcelerator</a></li>
+<li><a href="http://phonegap.com/">Phonegap</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-10">
+    <section class="slide-content"><h3 id="go-to-enterprise-http-readwrite-com-2013-08-09-why-javascript-will-become-the-dominant-programming-language-of-the-enterprise-or-don-t-">Go to <a href="http://readwrite.com/2013/08/09/why-javascript-will-become-the-dominant-programming-language-of-the-enterprise">Enterprise</a> [or don&#39;t =)].</h3>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-11">
+    <section class="slide-content"><h3 id="game-development-">Game development!</h3>
+<ul>
+<li><a href="https://gist.github.com/bebraw/768272">List of JS game engines</a></li>
+<li><a href="http://www.photonstorm.com/phaser/tutorial-making-your-first-phaser-game">Phaser tutorial</a></li>
+<li><a href="http://www.goodboydigital.com/pixi-js-tutorial-getting-started/">Getting started with Pixi.js</a></li>
+<li><a href="http://www.pointofimpactjs.com/tutorials/">Impact.js tutorials</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-12">
+    <section class="slide-content"><h3 id="-using-3d-">...using 3d!</h3>
+<ul>
+<li><a href="http://threejs.org/">Three.js</a></li>
+<li><a href="http://www.babylonjs.com/">Babylon.js</a></li>
+<li><a href="https://www.youtube.com/watch?v=CutAKGWaEBE">Three.js 3d editor</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-13">
+    <section class="slide-content"><h3 id="create-browser-plugins">Create browser plugins</h3>
+<ul>
+<li><a href="http://code.tutsplus.com/tutorials/developing-google-chrome-extensions--net-33076">Developing chrome extension</a></li>
+<li><a href="http://developer.chrome.com/apps/about_apps">Chrome Apps</a></li>
+<li><a href="http://www.chromium.org/user-experience">Chromium &amp; Chromium OS UX</a></li>
+<li><a href="http://www.techradar.com/news/internet/the-beginner-s-guide-to-greasemonkey-scripting-598247">Beginners guide to greasemonkey scripting</a></li>
+<li><a href="https://developer.mozilla.org/en-US/Apps/Quickstart/Build/Your_first_app">Mozilla&#39;s app center</a></li>
+<li><a href="http://www.belenalbeza.com/2013/07/how-to-develop-apps-for-firefox-os/">How to develop apps for Firefox OS</a></li>
+<li>Book on <a href="https://leanpub.com/quickguidefirefoxosdevelopment">Firefox OS App Development</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-14">
+    <section class="slide-content"><h3 id="js-is-the-lingua-franca-of-the-web-http-blog-codinghorror-com-javascript-the-lingua-franca-of-the-web-">JS is the <a href="http://blog.codinghorror.com/javascript-the-lingua-franca-of-the-web/">lingua franca of the web</a></h3>
+<ul>
+<li><a href="http://asmjs.org/">asm.js</a>. <a href="habrahabr.ru/post/193642/">Habr&#39;s tutorial</a></li>
+<li><a href="https://github.com/kripken/emscripten">emscripten</a>. <a href="https://github.com/kripken/emscripten/wiki/Tutorial">Tutorial</a></li>
+<li><a href="http://altjs.org">altjs.org</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-15">
+    <section class="slide-content"><h3 id="-how-cool-es6-is-http-www-sencha-com-blog-toward-modern-web-apps-with-ecmascript-6-"><a href="http://www.sencha.com/blog/toward-modern-web-apps-with-ecmascript-6/">How cool ES6 is</a></h3>
+<ul>
+<li><a href="https://github.com/lukehoban/es6features">List of feautures</a></li>
+<li><a href="https://github.com/google/traceur-compiler">Traceur</a></li>
+<li><a href="http://kangax.github.io/es5-compat-table/es6">Browser support</a></li>
+<li><a href="http://h3manth.com/new/blog/2013/es6-on-nodejs/">Node support</a> &lt;- suspect this little bit outdated.</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-16">
+    <section class="slide-content"><h1 id="-">Внезапно!</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-17">
+    <section class="slide-content"><h3 id="web-audio-api">Web Audio API</h3>
+<p><a href="http://chimera.labs.oreilly.com/books/1234000001552/index.html">Web Audio API</a>
+<a href="http://noisehack.com/">Noisehack</a>
+<a href="http://smus.com/ultrasonic-networking">Network build on ultrasonic</a></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-18">
+    <section class="slide-content"><h3 id="-ocr-optical-character-recognition-pixel-math-stuff"><a href="Optical character recognition">OCR</a> &amp; pixel-math-stuff</h3>
+<ul>
+<li><a href="sudodoki.github.io/Object-Detected">Object-Detected</a></li>
+<li><a href="http://antimatter15.github.io/ocrad.js/demo.html">OCRAD.js</a></li>
+<li><a href="http://ejohn.org/blog/ocr-and-neural-nets-in-javascript/">OCR &amp; Neural nets in javascript</a></li>
+<li><a href="https://tech.bellycard.com/blog/where-d-the-water-go-google-maps-water-pixel-detection-with-canvas/">Where did water go</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-19">
+    <section class="slide-content"><h3 id="left-out-of-scope-but-interesting">Left out of scope, but interesting</h3>
+<p><a href="http://chimera.labs.oreilly.com/books/1230000000545">High Performance Browser Networking</a></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-20">
+    <section class="slide-content"><h3 id="serverside-descending-interest-rate-opinionated-">Serverside [descending interest rate (opinionated :)]</h3>
+<ul>
+<li><a href="derbyjs.com/">Derby</a></li>
+<li><a href="http://sailsjs.org/">Sails</a></li>
+<li><a href="https://www.meteor.com/">Meteor</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-21">
+    <section class="slide-content"><h1 id="this-is-the-end-my-only-friend-the-end-">This is the end, my only friend, the end.</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-22">
+    <section class="slide-content"><div class="author">
+  <h1 class="name">Джон, просто Джон.</h1>
+    <h3 class="twitter">
+      <a href="http://twitter.com/@sudodoki">@sudodoki</a>
+    </h3>
+    <h3 class="url">
+      <a href="http://sudodoki.name">http://sudodoki.name</a>
+    </h3>
+</div>
+</section>
+  </div>
+
+  <div class="controls">
+    <div class="arrow prev"></div>
+    <div class="arrow next"></div>
+  </div>
+
+
+  <script type="text/javascript">
+    /**
+ * Returns the current page number of the presentation.
+ */
+function currentPosition() {
+  return parseInt(document.querySelector('.slide:not(.hidden)').id.slice(6));
+}
+
+
+/**
+ * Navigates forward n pages
+ * If n is negative, we will navigate in reverse
+ */
+function navigate(n) {
+  var position = currentPosition();
+  var numSlides = document.getElementsByClassName('slide').length;
+
+  /* Positions are 1-indexed, so we need to add and subtract 1 */
+  var nextPosition = (position - 1 + n) % numSlides + 1;
+
+  /* Normalize nextPosition in-case of a negative modulo result */
+  nextPosition = (nextPosition - 1 + numSlides) % numSlides + 1;
+
+  document.getElementById('slide-' + position).classList.add('hidden');
+  document.getElementById('slide-' + nextPosition).classList.remove('hidden');
+
+  updateProgress();
+  updateURL();
+  updateTabIndex();
+}
+
+
+/**
+ * Updates the current URL to include a hashtag of the current page number.
+ */
+function updateURL() {
+  window.history.replaceState({} , null, '#' + currentPosition());
+}
+
+
+/**
+ * Sets the progress indicator.
+ */
+function updateProgress() {
+  var progressBar = document.querySelector('.progress-bar');
+
+  if (progressBar !== null) {
+    var numSlides = document.getElementsByClassName('slide').length;
+    var position = currentPosition() - 1;
+    var percent = (numSlides === 1) ? 100 : 100 * position / (numSlides - 1);
+    progressBar.style.width = percent.toString() + '%';
+  }
+}
+
+
+/**
+ * Removes tabindex property from all links on the current slide, sets
+ * tabindex = -1 for all links on other slides. Prevents slides from appearing
+ * out of control.
+ */
+function updateTabIndex() {
+  var allLinks = document.querySelectorAll('.slide a');
+  var position = currentPosition();
+  var currentPageLinks = document.getElementById('slide-' + position).querySelectorAll('a');
+  var i;
+
+  for (i = 0; i < allLinks.length; i++) {
+    allLinks[i].setAttribute('tabindex', -1);
+  }
+
+  for (i = 0; i < currentPageLinks.length; i++) {
+    currentPageLinks[i].removeAttribute('tabindex');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Update the tabindex to prevent weird slide transitioning
+  updateTabIndex();
+
+  // If the location hash specifies a page number, go to it.
+  var page = window.location.hash.slice(1);
+  if (page) {
+    navigate(parseInt(page) - 1);
+  }
+
+  document.onkeydown = function (e) {
+    var kc = e.keyCode;
+
+    // left, down, H, J, backspace, PgUp - BACK
+    // up, right, K, L, space, enter, PgDn - FORWARD
+    if (kc === 37 || kc === 40 || kc === 8 || kc === 72 || kc === 74 || kc === 33) {
+      navigate(-1);
+    } else if (kc === 38 || kc === 39 || kc === 13 || kc === 32 || kc === 75 || kc === 76 || kc === 34) {
+      navigate(1);
+    }
+  };
+
+  if (document.querySelector('.next') && document.querySelector('.prev')) {
+    document.querySelector('.next').onclick = function (e) {
+      e.preventDefault();
+      navigate(1);
+    };
+
+    document.querySelector('.prev').onclick = function (e) {
+      e.preventDefault();
+      navigate(-1);
+    };
+  }
+});
+
+
+  </script>
+</body>
+</html>

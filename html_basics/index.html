@@ -1,0 +1,918 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>1. HTML. Nothing can be done without it.</title>
+
+		<meta name="description" content="A dummy presentation for CodeAngelsJs Course">
+		<meta name="author" content="sudodoki / Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../shared/css/reveal.min.css">
+		<link rel="stylesheet" href="../shared/css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="../shared/css/additional.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../shared/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="../shared/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+		<style>
+
+		</style>
+		<!--[if lt IE 9]>
+		<script src="../shared/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>HTML</h1>
+					<h3 class="fragment">Key facts:</h3>
+					<ul class="plain-list">
+						<li class="fragment">Stands for 'HyperText Markup Language'</li>
+						<li class="fragment">Created at CERN in 1980 by Tim Berners-Lee</li>
+						<li class="fragment">HTML 2.0 specification was published on 24 November, 1995</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Main Purpose:</h1>
+					<p class='text-left'>
+						HyperText Markup Language is a markup language that web browsers use to interpret and compose text, images and other material into visual or audible web pages. Default characteristics for every item of HTML markup are defined in the browser, and these characteristics can be altered or enhanced by the web page designer's additional use of CSS. 	<br/>(<a href="http://en.wikipedia.org/wiki/HTML#Development">wiki</a>)
+					</p>
+				</section>
+				<section>
+					<h1>Sample html page</h1>
+						<div class='annotated'>
+<pre><code contenteditable data-trim class="text-left">
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;body>
+&lt;h1&gt;My First Heading&lt;/h1>
+&lt;p&gt;My first paragraph.&lt;/p>
+&lt;/body>
+&lt;/html>
+</code></pre>
+
+						<ul class='comments plain-list small-list'>
+							<li class="fragment">
+					The DOCTYPE declaration defines the document type
+							</li>
+							<li class="fragment">
+					The text between &lt;html> and &lt;/html> describes the web page
+							</li>
+							<li class="fragment">
+					The text between &lt;body> and &lt;/body> is the visible page content
+							</li>
+							<li class="fragment">
+					The text between &lt;h1> and &lt;/h1> is displayed as a heading
+							</li>
+							<li class="fragment">
+					The text between &lt;p> and &lt;/p> is displayed as a paragraph
+							</li>
+						</ul>
+						</div>
+						<a href='html/my_first_page.html'>watch me in browser</a>
+
+				</section>
+
+				<section>
+					<p>All that was done using tags. So what are they?</p>
+					<p class="fragment">
+						They're building blocks of html document.
+					</p>
+				</section>
+				<section class='text-left'>
+
+					<p>Simple tag is comprised of <strong>&lt;</strong> & <strong>&gt;</strong> which wraps the tag name. ie: <span class="inline-code">&ltimg&gt</span></p>
+					<p class="fragment">
+						More often tags are paired, with one being opening (regular simple tag) and second closing, which has a slash after the opening angle bracket. ie: <span class="inline-code">&ltp>&lt/p></span>
+					</p>
+
+					<p class="fragment">
+					However, not all of these elements require the closing tag. Some elements, the so-called void elements, do not have an end tag. ie: <span class="inline-code">&ltbr/></span>, <span class="inline-code">&ltimg&gt</span>
+					</p>
+
+					<p class="fragment">
+						Different tags can contain other tags. Also, tags can have HTML attributes. ie: <span class="inline-code">&lta href='#goto-1-anchor'>&ltimg alt='Anchor' src='anchor.jpg'/>&lta></span>
+					</p>
+
+				</section>
+				<section class="stack">
+					<section>
+					<h1>Doctype</h1>
+					<p class='text-left'>The first attribute to be found on the web-page (if you omit it, it will be implied, and you won't like it for sure)</p>
+					<p>We can distinguish next sets of doctypes:</p>
+					<ul class="plain-list">
+						<li class="fragment">HTML 5, set via <span class="inline-code">&lt;!doctype html&gt;</span></li>
+						<li class="fragment">HTML 4.01, which can be <strong>Strict</strong>, <strong>Transitional</strong>, <strong>Frameset</strong>. Strict is set via <span class="inline-code">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;</span>
+						</li>
+						<li class="fragment">XHTML 1.0, which can be <strong>Strict</strong>, <strong>Transitional</strong>, <strong>Frameset</strong>.
+						</li>
+						<li class="fragment">XHTML 1.1 DTD - like XHTML 1.0 <strong>Strict</strong>, but with ability to add modules...
+						</li>
+						<li class="fragment">...there're more (SVG, MathML, older versions of HTML, XHTML)
+						</li>
+					</ul>
+					</section>
+					<section>
+						<h2>Different doctypes support different tags</h2>
+						<a href="http://www.w3schools.com/tags/ref_html_dtd.asp">List of tags by Doctype</a>
+						<p class="fragment text-left">Also, different doctypes have different standards for html: for example, in html4.01 void elements can omit trailing slash, in xhtml we have to set it with space. i.e <span class="inline-code">&ltimg alt="Portrait "
+	   src="portrait.jpg" /></span><br/>
+						<a href="http://www.webstandards.org/learn/articles/askw3c/oct2003/">other differences</a></p>
+					</section>
+					<section>
+						Doctypes can be less strict...
+					</section>
+					<section>
+						<h1>Minimum valid html5 page</h1>
+						<div class="text-left">
+							<pre><code contenteditable data-trim>
+&lt;!doctype html&gt;
+&lt;title&gt;HTML5 Minimal Markup Example&lt;/title&gt;
+							</code></pre>
+							<a href='html/minumum_valid_page.html'>watch me in browser</a>
+						</div>
+						<img class='fragment' src='img/validation.png' alt='Passed, 3 warnings'/>
+					</section>
+					<section>
+						... and more strict.
+					</section>
+					<section>
+						<h1>Minimum valid XHTML 1.0 Strict! page</h1>
+						<div class="text-left">
+						<pre><code contenteditable  data-trim>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+&lt;html xmlns="http://www.w3.org/1999/xhtml">
+  &lt;head>
+     &lt;title>XHTML 1.0 Strict! Minimal Markup Example&lt;/title>
+  &lt;/head>
+  &lt;body>
+  &lt;/body>
+&lt;/html>
+</code></pre>
+						</div>
+						<img class='fragment' src='img/validation2.png' alt='Passed, 2 warnings'/>
+					</section>
+				</section>
+				<section class="stack">
+					<section>
+						<h1>DOM</h1>
+						<p class='text-left'><strong>The Document Object Model</strong> (DOM) is a cross-platform and language-independent convention for representing and interacting with objects in HTML, XHTML and XML documents.</p>
+						<p class="fragment text-left">For render, most web browsers use a model similar to the DOM. The nodes of every document are organized in a tree structure, called the DOM tree, with topmost node named "Document object".</p>
+					</section>
+					<section>
+						<img src='img/dom_tree.png'>
+					</section>
+				</section>
+				<section>
+					<h1>Head tag</h1>
+					<p>
+					It holds different meta info. About:
+					<ol class="small-list">
+						<li class="fragment">external resources (favicon, stylesheets <strong>[NB: they only can be in <span class="inline-code">&lthead&gt</span> block], etc.) some are loaded by page, some just for reference (i.e.:'author' link)</strong> </li>
+						<li class="fragment">meta info: description, keywords, content-type, encoding, refresh</li>
+						<li class="fragment">page title</li>
+						<li class="fragment">javascript can be set here, using <span class="inline-code">&ltscript&gt</span>  </li>
+						<li class="fragment">css can be set here using <span class="inline-code">&ltstyle&gt</span> </li>
+
+					</ul>
+					</p>
+				</section>
+				<section>
+					<h1>External resources</h1>
+					<p  class='text-left'>To get our resources we have to specify what and where from we're getting. The first one is being told by special attributes - rel or type, i.e.:</p>
+					<p class="inline-code">&ltlink rel="icon" type="image/png" href="/somewhere/myicon.png" /></p>
+					<p>or</p>
+					<p class="inline-code">&ltlink rel="stylesheet" href="../shared/css/reveal.min.css"></p>
+				</section>
+				<section>
+					<img src="img/rel_attr.png">
+				</section>
+				<section>
+					<h1>URL resolving</h1>
+					<p class='text-left'>For the second part we're using URL - <strong>Uniform Resource Locator</strong>, which is also referenced as 'web address'.
+					<p class='text-left'>By looking at page adress (in adress bar, usually, at the top of your browser window, you can tell</p>
+					<ul class="plain-list">
+						<li>the protocol used (http:, https:, ftp:, etc.),</li>
+						<li>the host (google.com),</li>
+						<li>the path (/search/images)</li>
+						<li>and the fragment (#anchor2)</li>
+					</ul></p>
+				</section>
+				<section>
+					<h1>Let's see some examples:</h1>
+<pre><code contenteditable data-trim>
+&ltimg src='/relative_to_host_sample_url_image.jpg'/>
+&ltimg src='../shared/current_relative_sample_url_image.jpg'/>
+&ltimg src='current_relative_sample_url_image.jpg'/>
+&ltimg src='https://drive.google.com/uc?export=view&id=0B65dEGRmB3VidlpTaG04b0k0bEE'/>
+</code></pre>
+					<ul class='plain-list comments'>
+						<li>
+							<img alt='set relatively to host' src='/relative_to_host_sample_url_image.jpg'/>
+							<span class="small">set relatively to host</span>
+						</li>
+						<li>
+							<img alt='set relatively to current path, referencing parent directory' src='../shared/current_relative_sample_url_image.jpg'/>
+							<span class="small">set relatively to current path, referencing parent directory</span>
+						</li>
+						<li>
+							<img alt='set relatively to current path' src='current_relative_sample_url_image.jpg'/>
+							<span class="small">set relatively to current path</span>
+						</li>
+						<li>
+							<img alt='absolutely set path' src='https://drive.google.com/uc?export=view&id=0B65dEGRmB3VidlpTaG04b0k0bEE'/>
+							<span class='small'>absolutely set path</span>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Summing it up</h1>
+					<ul>
+						<li class="fragment">
+							A leading slash tells the browser to start at the root directory.
+						</li>
+						<li class="fragment">
+							If you don't have the leading slash, you're referencing from the current directory.</li>
+						<li class="fragment">
+							If you add two dots before the leading slash, it means you're referencing the parent of the current directory.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Manipulating relative resolving</h1>
+					<p>
+						You can also change the way relative resolving works by setting href at &ltbase> tag, ie: <span class="inline-code">&ltBASE href="http://www.google.com"></span>
+						This attribute specifies an absolute URI that acts as the base URI for resolving relative URIs.
+						<a href="html/base_changed.html">See sample.</a>
+					</p>
+				</section>
+				<section class="stack">
+					<section>
+						<h1>Meta tags.</h1>
+					</section>
+					<section>
+							<h2>They do several things:</h2>
+					</section>
+					<section>
+						<p class='text-left'>1. Help out search engines to define, what your page is about, thus helping out SEO guys. You can set your desription, keywords here.
+<pre style='margin-left: 0px; margin-right: 0px;'><code contenteditable data-trim>
+<meta name="description" content="Анекдот про SEOшника">
+<meta name="Keywords" content="Возвращается сеошник из командировки,
+заглядывает в шкаф купе угловой встроенный
+двустворчатый трехстворчатый италия корпусная
+мебель на заказ по индивидуальным проектам недорого">
+</code></pre>
+						</p>
+					</section>
+					<section>
+						<p class="text-left">2. Refresh page or redirect to another one.</p>
+						<pre><code contenteditable >&ltmeta http-equiv="refresh" content="5; URL=html_basics/#/14/3"></code></pre> or <pre><code contenteditable >&ltmeta http-equiv="location" content="URL=html_basics/#/14/3"></code></pre>
+						<a href="html/meta_refresh.html">Check it in browser.</a>
+						<p class="fragment">
+							This way, the http-equiv attribute can be used to simulate an HTTP response header.
+						</p>
+					</section>
+					<section>
+						<p class="text-left">
+							Meta tag with 'http-equiv' also
+							<ol class="plain-list" start='3'>
+								<li>can give us control over cache</li>
+								<li>can set up content-language</li>
+								<li>can set up content-type</li>
+								<li>can state date</li>
+								<li>can set expiry date </li>
+								<li>can state last-modified</li>
+								<li>can set cookie</li>
+								<li>can set name of the frame where content document must be loaded</li>
+							</ol>
+							ie:
+							<pre><code contenteditable >&ltmeta http-equiv="content-type" content="text/html; charset=UTF-8">
+	&ltmeta http-equiv="content-language" content="en-US"></code></pre>
+						<a href="http://www.w3schools.com/jsref/prop_meta_httpequiv.asp">More usages.</a></p>
+					</section>
+					<section>
+						<h1>Why should we set encoding?</h1>
+						<h1><a href="html/koi8.html">That's why.</a></h1>
+					</section>
+
+				</section>
+				<section>
+					<h1>Summing up &lthead></h1>
+					<p class="text-left fragment">
+						General rule of thumb states that whatever tags do not define structure of a webpage should stay out of the &ltbody>.
+					</p>
+					<p class="text-left fragment">
+						Meta info and external resources can be stated here.
+					</p>
+					<p class="text-left fragment">
+						Stylesheets should be included as early, as possible, to render page properly.
+					</p>
+					<p class="text-left fragment">
+						Javascript should better be kept out of it.
+					</p>
+				</section>
+				<section>
+					<h1>Body's tags</h1>
+					<p>There're quite a bunch of different tags (<a href="http://resources.bravenet.com/quickref/html-html_tag_list">list of 75</a>) which give us a choice for every possible case.
+					</p>
+					<p class="fragment">We distinguish 2 types of HTML elements: block and inline. </p>
+					<p class="fragment">
+						Block level elements normally start (and end) with a new line when displayed in a browser. i.e:
+						<span class="inline-code">&lth1></span>,
+						<span class="inline-code">&ltp></span>,
+						<span class="inline-code">&ltul></span>,
+						<span class="inline-code">&lttable></span>.
+					</p>
+					<p class="fragment">
+						Inline elements are normally displayed without starting a new line. i.e.:
+						<span class="inline-code">&ltb></span>,
+						<span class="inline-code">&lttd></span>,
+						<span class="inline-code">&lta></span>,
+						<span class="inline-code">&ltimg></span>.
+					</p>
+				</section>
+				<section>
+					<h1>Comments</h1>
+					<p>Aside stay comments, that just comment out some code.</p>
+					<p>They're usually set up as &lt!-- This is a comment --&gt</p>
+					<!-- This is a comment -->
+				</section>
+				<section>
+					<h1>&lth1>First-level (biggest) heading&lt/h1></h1>
+					<h2>&lth2>...&lt/h2></h2>
+					<h3>&lth3>...&lt/h3></h3>
+					<h4>&lth4>...&lt/h4></h4>
+					<h5>&lth5>...&lt/h5></h5>
+					<h6>&lth6>Smallest heading&lt/h6></h6>
+				</section>
+				<section>
+					<h1>Formatters</h1>
+					<ul class='plain-list'>
+					<li class='fragment'><b>&ltb>Bold&lt/b></b></li>
+					<li class='fragment'><i>&lti>Italic&lt/i></i></li>
+					<li class='fragment'><code contenteditable >&ltcode>Computer code, for example&lt/code></code></li>
+					<li class='fragment'><em>&ltem>emphasized&lt/em></em></li>
+					<li class='fragment'><kbd>&ltkbd>Keyboard input&lt/kbd></kbd></li>
+<li class='fragment'><pre>&ltpre>Preformated text, which format should be keeped    !&lt/pre></pre></li>
+					<li class='fragment'><small>&ltsmall>small text&lt/small></small></li>
+					<li class='fragment'><strong>&ltstrong>important text&lt/strong></strong></li>
+					<li class="fragment"><s>&lts>Strike through&lt/s></s></li>
+					</ul>
+				</section>
+				<section>
+					<ul class='plain-list'>
+
+						<li class="fragment"><abbr title='Unidentified flying object'>&ltabbr title='Unidentified flying object'>UFO&lt/abbr></abbr></li>
+						<li class="fragment"><address>&ltaddress>Adress goes here&lt/address></address></li>
+						<li class="fragment"><bdo dir="rtl">&ltbdo dir="rtl">This text will appear from right to left&lt/bdo></bdo></li>
+						<li class="fragment"><blockquote>&ltblockquote>Quotation&lt/blockquote></blockquote> </li>
+						<li class="fragment"><cite>&ltcite>title of a work citing from&lt/cite></cite> </li>
+						<li class="fragment"><del>&ltdel>Deleted text&lt/del></del></li>
+						<li class="fragment"><ins>&ltins>Inserted text&lt/ins></ins></li>
+						<li class="fragment"><sub>&ltsub>subscription text&lt/sub></sub></li>
+						<li class="fragment"><sup>&ltsup>superscripted text&lt/sup></sup> </li>
+						<a class="fragment" href="html/formatters.html">All that without stylesheets.</a>
+					</ul>
+				</section>
+				<section>
+					<h1>Links</h1>
+					<ol>
+						<li><a href="google.com">Link text.</a></li>
+						<li><a href="google.com"><img alt="random image I didn't care about" width='100' height='50' src="img/rel_attr.png"/> </a></li>
+						<li><a href="mailto:johny@somewhere.else">Send e-mail</a></li>
+						<li><a href="#area-51">Anchor</a
+					</ol>
+				</section>
+				<section class='annotated'>
+					<h1>Lists</h1>
+					<div class="fragment">
+<pre><code contenteditable class='text-left' data-trim>
+<!-- Unordered list -->
+<ul>
+  <li>One</li>
+  <li>Two</li>
+  <li>Three</li>
+</ul></code></pre>
+<ul class='comments small-list' style='line-height: 75%'>
+		<li>One</li>
+		<li>Two</li>
+		<li>Three</li>
+</ul>
+<br/>
+					</div>
+					<div class="fragment">
+<pre><code contenteditable class='text-left'><!-- Ordered list -->
+<ol>
+  <li>One</li>
+  <li>Two</li>
+  <li>Three</li>
+</ol></code></pre>
+<ol class='comments small-list' style='line-height: 75%'>
+			<li>One</li>
+		<li>Two</li>
+		<li>Three</li>
+</ol>
+</div>
+<div class="fragment">
+<pre><code contenteditable class='text-left'><!-- Definition list -->
+<dl>
+  <dt>Item 1</dt>
+    <dd>Describe item 1</dd>
+  <dt>Item 2</dt>
+    <dd>Describe item 2</dd>
+</dl>
+</code></pre>
+<div class="comments text-left">
+          <dl  style='-webkit-margin-before: 1em;
+-webkit-margin-after: 1em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;'>
+  <dt >Item 1</dt>
+    <dd style='-webkit-margin-start: 40px;'>Describe item 1</dd>
+  <dt>Item 2</dt>
+    <dd style='-webkit-margin-start: 40px;'>Describe item 2</dd>
+</dl>
+</div>
+</div>
+
+
+				</section>
+				<section  class='annotated'>
+					<h1>Tables</h1>
+
+<pre><code contenteditable data-trim>
+<table border="1">
+	<thead><tr>
+    <th>table header</th>
+    <th>table header</th>
+  </tr></thead>
+  <tfoot><tr>
+    <td>table footer</td>
+    <td>table footer</td>
+  </tr></tfoot>
+  <tbody><tr>
+    <td>table data</td>
+    <td>table data</td>
+  </tr></tbody>
+</table>
+</code></pre>
+	<div class="comments">
+		<table class='table' border="1">
+			<thead>
+		  <tr>
+		    <th>table header</th>
+		    <th>table header</th>
+		  </tr>
+		  </thead>
+		  <tbody>
+		  <tr>
+		    <td>table data</td>
+		    <td>table data</td>
+		  </tr>
+		  </tbody>
+		  <tfoot>
+		  <tr>
+		    <td>table footer</td>
+		    <td>table footer</td>
+		  </tr>
+		  </tfoot>
+		</table>
+	</div>
+				</section>
+				<section>
+					<h1>Iframe</h1>
+			<iframe width='100%'src="/"></iframe>
+				</section>
+				<section class="annotated">
+					<h1>Form</h1>
+<pre><code contenteditable data-trim style='width: -webkit-calc(80% + 4px)'>
+<form action="demo_form.asp" method="post">
+<input type="text" name="email" size="40" maxlength="50">
+<input type="password">
+<input type="checkbox" checked="checked">
+<input type="radio" checked="checked">
+<input type="submit" value="Send">
+<input type="reset">
+<input type="hidden">
+<select>
+<option>Apples</option>
+<option selected="selected">Bananas</option>
+<option>Cherries</option>
+</select>
+<textarea name="comment" rows="60" cols="20"></textarea>
+</form>
+</code></pre>
+				<div class="comments" style='width: -webkit-calc(20% - 4px); margin:0'>
+					<form action="demo_form.asp" method="post/get">
+						<input type="text" name="email" size="40" maxlength="50">
+						<input type="password">
+						<input type="checkbox" checked="checked">
+						<input type="radio" checked="checked">
+						<input type="submit" value="Send">
+						<input type="reset">
+						<input type="hidden">
+						<select>
+						<option>Apples</option>
+						<option selected="selected">Bananas</option>
+						<option>Cherries</option>
+						</select>
+						<textarea name="comment" rows="5" cols="5"></textarea>
+					</form>
+				</div><br>
+				<p><a href="http://nativeformelements.com/">Native form elements</a> (
+					<a href="html/native_form_elements.html">offline version</a>)
+				</p>
+
+				</section>
+				<section>
+					<h3>Bunch of new structural tags from HTML5</h3>
+					<ul class="plain-list small-list">
+					<li><span class="inline-code">&ltarticle></span> - as in clothing article</li>
+					<li class='fragment'><span class="inline-code">&ltaside></span> - aside from the page content</li>
+					<li class='fragment'><span class="inline-code">&ltbdi></span> - might be formatted in different direction</li>
+					<li class='fragment'><span class="inline-code">&ltcommand></span> - command button for user to invoke</li>
+					<li class='fragment'><span class="inline-code">&ltdetails></span> - additional details that can be shown/hidden</li>
+					<li class='fragment'><span class="inline-code">&ltdialog></span> - dialog box/window</li>
+					<li class='fragment'><span class="inline-code">&ltfooter></span> - footer for document/section</li>
+					<li class='fragment'><span class="inline-code">&ltheader></span>- header for document/section </li>
+					<li class='fragment'><span class="inline-code">&ltprogress></span> - progress of a task</li>
+					<li class='fragment'><span class="inline-code">&ltruby> - ruby annotation for East Asian typography</span></li>
+					<li class='fragment'><span class="inline-code">&ltsection> - section in document</span></li>
+
+
+					</ul>
+				</section>
+
+				<section>
+					<p>
+						Finally, universal block tag: <span class="inline-code">&ltdiv>&lt/div></span> and inline tag <span class="inline-code">&ltspan>&lt/span></span>
+						They provide no usual change by themselves, adding a hook to document.
+					</p>
+				</section>
+				<section>
+					<h2>Why do we have so many tags if we can use those two?</h2>
+					<h2 class="fragment">Firstly, so we can style them accordingly [CSS FTW].</h2>
+					<h2 class="fragment">And secondly...</h2>
+				</section>
+				<section>
+					<h1>It's all about semantics <a href="http://html5doctor.com/lets-talk-about-semantics/">.</a></h1>
+				</section>
+				<section>
+					<a title='click for russian version' href="img/html5doctor_flowchart_ru.png"><img src="img/html5doctor_flowchart_en.png"></a>
+				</section>
+				<section class="stack">
+					<section>
+						<h1>Page layout</h1>
+						<p>
+							Web page layout is very important to make your website look good. It defines structure relative to <span title='you have main content, your navigation, header/footer, etc.'>content </span> and <span title="you wouldn't format your header same way you format main content">styling</span>.
+						</p>
+					</section>
+					<section>
+						<h1><a href="http://ryanfait.com/sticky-footer/">Sticky-footer example</a></h1>
+
+<pre><code contenteditable data-trim>
+&ltbody>
+<div class="wrapper">
+	<div class="header"></div>
+	Content goes here
+	<div class="push"></div>
+</div>
+<div class="footer"></div>
+&lt/body>
+</code></pre>
+					</section>
+					<section>
+						<h1><a href="http://getbootstrap.com/2.3.2/getting-started.html#examples">Bootstrap examples</a></h1>
+						<a href="http://getbootstrap.com/2.3.2/examples/starter-template.html">i.e.</a>:
+<pre><code contenteditable data-trim>
+&ltbody>
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+  	<div class="container">
+    	<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="#">Project name</a>
+        <div class="nav-collapse collapse">
+        	<ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h1>Bootstrap starter template</h1>
+    <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+  </div> <!-- /container -->
+&lt/body>
+</code></pre>
+					</section>
+					<section>
+						<h1>Using tables</h1>
+						<p>At some point, tables were used</p>
+						<p>They provided easy way to position the content, use proportional containers, etc.</p>
+						<a href="http://www.w3schools.com/html/tryit.asp?filename=tryhtml_layout_tables">Sample.</a>
+					</section>
+					<section>
+						<h1>Grids</h1>
+						<p>Table idea succesors</p>
+						<a href="http://getbootstrap.com/2.3.2/scaffolding.html#gridSystem">Bootstrap grid</a><br/>
+						<a href="http://cobyism.com/gridism/">Gridism</a><br/>
+						<a href="http://960.gs/">960 grid system</a><br/>
+						<p>Good thing you can generate your own grid using sass/less loops.</p>
+						<p class="text-left"> Usually code looks something like
+<pre><code contenteditable data-trim>
+&ltdiv class="row">
+  &ltdiv class="span4">4-section length div&lt/div>
+  &ltdiv class="span8">8-section length div&lt/div>
+&lt/div>
+</code></pre>
+						</p>
+					</section>
+					<section>
+						<h1>Flexboxes</h1>
+						<a href="http://www.netmagazine.com/files/tutorials/demos/2011/02/the-css3-flexible-box-model-explained/demo/demo.html">Flex box demo</a><br/>
+						<a href="http://www.netmagazine.com/tutorials/css3-flexible-box-model-explained">Read the article</a><br/>
+						<a href="http://coding.smashingmagazine.com/2011/09/19/css3-flexible-box-layout-explained/">Read some more</a><br/>
+						<p>Not much at layouting routine - css handles it for us.</p>
+					</section>
+					<section>
+						<h1>CSS column feature</h1>
+						<a href="http://davidwalsh.name/demo/css-columns.php">css-columns</a>
+						<p>Same as flexboxes.</p>
+					</section>
+					<section>
+						<h1>Mostly fluid layout</h1>
+						As can be found <a href="http://codepen.io/bradfrost/full/Iardn">here</a>.
+<pre><code contenteditable data-trim>
+&ltdiv class="c">
+	&ltdiv class="main">&lt/div>
+	&ltdiv class="width-in-percent float-left">&lt/div>
+	&ltdiv class="width-in-percent float-left">&lt/div>
+&lt/div>
+</code></pre>
+					</section>
+				</section>
+				<section>
+					<h1>Why do people hate IE?</h1>
+					<p class="text-left">
+						Short answer: <a href="http://css-tricks.com/ie-css-bugs-thatll-get-you-every-time/">it's</a> 
+						<a href="http://coding.smashingmagazine.com/2009/10/14/css-differences-in-internet-explorer-6-7-and-8/">kinda</a> 
+						<a href="http://www.brunildo.org/test/IE8-CSS-bugs.html">buggy</a>.
+						<br> Also it supports bunch of stuff only Microsoft cares about.
+					</p>
+				</section>
+				<section>
+					<h1>But it used to be like that.</h1>
+					<h2>Sad part is some people still use IE6 and your customer may want to account for them.</h2>
+				</section>
+				<section>
+					<h1>Fixes for html 5 tags</h1>
+					<a href="https://github.com/aFarkas/html5shiv/">HTML5 Shiv</a>
+				</section>
+				<section>
+					<h1>Conditional comments</h1>
+					<h2> for everything else</h2>
+<pre><code contenteditable data-trim>
+<!--[if IE 6]>
+&lth1>Go get a real browser</h1>
+<!-- or -->
+&ltlink rel='stylesheet' href='css/ie6fixes.css'>
+<![endif]-->
+</code></pre>
+<p>You can use equal, less than (lt), less than / equal (lte), greater than (gt), greater than / equal (gte)</p>
+
+				</section>
+				<section>
+					<h1>Semantics</h1>
+					<p>Semantics (from Ancient Greek: σημαντικός sēmantikós) is the study of meaning.</p>
+					<p class="text-left fragment">Semantic layout won't make your live easier.</p>
+					<p class="text-left fragment">Tags provides more information about the semantic content of the markup (<span class="inline-code">&ltheader></span> vs <span class="inline-code">&ltdiv class="header"></span>)</p>
+					<p class="text-left fragment">Content itself tells you 'what' it is</p>
+					<p class="text-left fragment">Screen readers can more effectively present the content</p>
+				</section>
+				<section>
+					<h2>Creating semantically right document can be obtained through 3 different levels of commitment:</h2>
+					<ul>
+						<li class="fragment">Using HTML-elements</li>
+						<li class="fragment">Naming elements</li>
+						<li class="fragment">Combination of named elements</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Sample usage</h1>
+<pre class='fragment'><code contenteditable >Иван Пупкин, pupkin@gmail.com</code></pre>
+<p class="fragment">
+Let's <i>title</i> person and give his e-mail <i>address</i>.
+<pre class="fragment"><code contenteditable >&lth3>Иван Пупкин&lt/h3>
+&ltaddress>pupkin@gmail.com&lt/address></code></pre>
+</p>
+<p class="fragment">
+In case of styling, name classes accordingly
+<pre class="fragment"><code contenteditable >&lth3 class='name'>Иван Пупкин&lt/h3>
+&ltaddress class='email'>pupkin@gmail.com&lt/address>
+</code></pre>
+</p>
+<p class="fragment">
+	Let's go even further and use <a href="http://microformats.org/wiki/hcard">hCard microformat</a>.
+<pre class="fragment"><code contenteditable ><div class="vcard">
+    &lth3 class="fn n">
+        &ltspan class="given-name">Иван&lt/span>
+        &ltspan class="family-name">Пупкин&lt/span>
+    &lt/h3>
+    &ltaddress class="email">pupkin@gmail.com&lt/address>
+</div></code></pre>
+</p>
+				</section>
+				<section>
+					<a href="http://pepelsbey.net/pres/push-it/">Additional reading on buttons</a>
+				</section>
+				<section>
+					<h1>Special characters</h1>
+					<p>In case you need special characters, like &yen or &copy, you can either copy-paste them or use entity, that represent them <span class="inline-code">&ampyen</span> and <span class="inline-code">&ampcopy</span>
+					</p>
+					<a href="http://dev.w3.org/html5/html-author/charref">Full reference</a>
+				</section>
+				<section class="stack">
+					<section>
+						<h1>XML</h1>
+						<p class="fragment">XML stands for EXtensible Markup Language</p>
+						<p class="fragment">XML was created for data description</p>
+						<p class="fragment">XML's tags aren't predefined.</p>
+					</section>
+					<section>
+						<h1>XML vs HTML</h1>
+						<p class="text-left">
+							XML isn't there to replace HTML, they pursue different aims: XML's primary is to describe data and tell us <i>what</i> data is, while HTML is aimed at demonstrating data and telling us <i>how</i> data looks.
+						</p>
+					</section>
+					<section>
+						<h1>Sample XML</h1>
+	<pre><code contenteditable data-trim>
+&ltbook>
+&ltauthor>
+	Philip K. Dick
+&lt/author>
+&lttitle>
+	Ubik
+&lt/title>
+&ltcontents>
+	&ltchapter1>&lt/chapter1>
+	&ltchapter2>&lt/chapter2>
+	...
+	&ltchapter17>&lt/chapter17>
+&lt/contents>
+&lt/book>
+</code></pre>
+					</section>
+					<section>
+						<h1>XSL</h1>
+						<p>Stands for Extensible Stylesheet Language</p>
+						<p class="fragment">Not only sets up styles, but also defines XML transformations</p>
+					</section>
+					<section>
+						<h1>Components</h1>
+						<p class="text-left">
+							In fact, XSL consist of
+							<ul class="plain-list">
+								<li>XSLT (Extensible Stylesheet Language Transformations),</li>
+								<li>XPath (XML Path Language),</li>
+								<li>XSL-FO (XSL Formatting Objects).</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+							<a href="xml_example/contents.xml"><h1>OPEN GATES TO HELL</h1></a>
+					</section>
+					<section>
+						<h1>Source for XML</h1>
+	<pre><code contenteditable data-trim>
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="contents-style.xsl"?>
+<table-of-contents>
+  <annotation>
+    <by>Mr. Original</by>
+  </annotation>
+  <foreword>
+    <from-page>1</from-page>
+    <to-page>2</to-page>
+  </foreword>
+  <chapter>
+    <number>1</number>
+    <from-page>2</from-page>
+    <to-page>32</to-page>
+  </chapter>
+  <chapter>
+    <number>2</number>
+    <from-page>32</from-page>
+    <to-page>56</to-page>
+  </chapter>
+  <chapter>
+    <number>3</number>
+    <from-page>57</from-page>
+    <to-page>90</to-page>
+  </chapter>
+</table-of-contents>
+</code></pre>
+					</section>
+					<section>
+						<h1>XSL source</h1>
+	<pre><code contenteditable data-trim>
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/">
+  &lt;html>
+  &lt;body>
+    <table border="2" bgcolor="yellow">
+      <tr>
+        <th>Chapter</th>
+        <th>Pages</th>
+      </tr>
+      <xsl:for-each select="table-of-contents/*">
+        <tr>
+            <xsl:choose>
+              <xsl:when  test="name(.)='annotation'">
+                <td bgcolor='red' colspan='2' align="center">
+                  <xsl:value-of select ="name(.)"/>
+                </td>
+              </xsl:when>
+              <xsl:otherwise>
+                <td>
+                  <xsl:value-of select ="name(.)"/>
+                  <xsl:if test="number">#</xsl:if>
+                  <xsl:value-of select="number"/>
+                </td>
+                <td>
+                  <xsl:value-of select="from-page"/>-<xsl:value-of select="to-page"/>
+                </td>
+              </xsl:otherwise>
+            </xsl:choose>
+        </tr>
+      </xsl:for-each>
+    </table>
+  &lt;/body>
+  &lt;/html>
+</xsl:template>
+</xsl:stylesheet>
+</code></pre>
+					</section>
+				</section>
+				<section>
+					<h2>Hope you didn't die of boredom. <h1 color='purple' class='final'>=</h1></h2>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="../shared/lib/js/head.min.js"></script>
+		<script src="../shared/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../shared/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../shared/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../shared/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

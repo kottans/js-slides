@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Template presentation based on reveal.js intro</title>
+
+		<meta name="description" content="A dummy presentation for CodeAngelsJs Course">
+		<meta name="author" content="sudodoki / Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../shared/css/reveal.min.css">
+		<link rel="stylesheet" href="../shared/css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../shared/lib/css/zenburn.css">
+		<style type="text/css">
+			h2 {text-transform: none !important}
+			.noOverflow {
+				max-height: none !important;
+				overflow: hidden !important;
+			}
+			.left {
+				text-align: left;
+			}
+			.smaller {
+				font-size: 0.8em !important;
+			}
+			img {
+				background-color: #fff !important;
+			}
+			.absolute {
+				position: absolute !important;
+				top: 0;
+			}
+			.floatLeft{
+				float: left;
+			}
+			.floatRight{
+				float: right;
+			}
+			.relative {
+				position: relative !important;
+			}
+			.smallList {
+				display: block !important;
+				font-size: 22px !important;
+				line-height: 1.333em !important;
+			}
+			.mts {
+				margin-top: 10px !important;
+			}
+			.mrs {
+				margin-right: 10px !important;
+			}
+		</style>
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="../shared/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../shared/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+				    <h2>Javascript parts</h2>
+				    <img src="img/windowObjects.png" />
+				</section>
+				<section>
+				    <h2>Window</h2>
+				    <img src="img/win1.png" style="margin:0"/>
+				    <img class="fragment" data-fragment-index="0"  src="img/win2.png"  style="margin:0; position: absolute; left: 50%; margin-left: -365px;" />
+				</section>
+				<section>
+				    <h2 style="margin-bottom: 5px">Navigator</h2>
+				    <img src="img/nav.png" style="margin:0"/>
+				    <div  class="fragment" data-fragment-index="0" >
+				    	<h2 style="margin-bottom: 5px">Screen</h2>
+				    	<img src="img/screen.png" style="margin:0"/>
+				    </div>
+				</section>
+				<section>
+				    <h2>Browser detection</h2>
+				    <div class="text-left">Code of jQuery.browser, which is now moved to <a href="https://github.com/jquery/jquery-migrate">jquery-migrate plugin</a>.</div>
+					<pre class="fragment" ><code class="javascript noOverflow"
+>jQuery.uaMatch = function( ua ) {
+    ua = ua.toLowerCase();
+
+    var match = /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
+        /(webkit)[ \/]([\w.]+)/.exec( ua ) ||
+        /(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
+        /(msie) ([\w.]+)/.exec( ua ) ||
+        ua.indexOf("compatible") < 0 && 
+        /(mozilla)(?:.*? rv:([\w.]+)|)/.exec( ua ) || [];
+
+    return {
+        browser: match[ 1 ] || "",
+        version: match[ 2 ] || "0"
+    };
+};</code></pre>
+<pre class="fragment" data-fragment-index="1" ><a href="http://modernizr.com/is">Modernizr</a> is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.</pre>
+				</section>
+				<section>
+					<h2>Location & History</h2>
+					<img src="img/history.png" style="margin:0"/>
+				    <img class="fragment" data-fragment-index="0"  src="img/location.png"  style="margin:0; position: absolute; left: 50%; margin-left: -368px;" width="728"/>
+				</section>
+				<section>
+				    <h2>Loading scripts</h2>
+					<pre><code class="javascript noOverflow"
+>&lt;!doctype html> 
+&lt;html> 
+    &lt;head>
+        &lt;title>My App&lt;/title>
+    	&lt;!-- case 1 --> 
+    	&lt;script type="text/javascript">
+    	    console.log('Code could be put here');
+    	&lt;/script>
+    	&lt;!-- case 2 --> 
+    	&lt;!--All scripts in head block the page until they are executed--> 
+        &lt;script src="external_script.js" type="text/javascript">&lt;/script>
+        &lt;!-- Browser will not block rendering, when there is 'async' 
+        attribute in 'script' tag, is not supported in IE < 10 and Opera--> 
+        &lt;script src="script.js" type="text/javascript" async>&lt;/script>
+        &lt;!-- 'defer' is the same as 'async', but it keeps the order: small2.js 
+        will be executed after large2.js. Is not supported in Opera--> 
+        &lt;script src="large2.js" type="text/javascript" defer>&lt;/script>
+        &lt;script src="small2.js" type="text/javascript" defer>&lt;/script>
+        &lt;noscript>
+            <p>This page requires a JavaScript-enabled browser.</p>
+        &lt;/noscript>
+    &lt;/head> 
+    &lt;body> 
+	... 
+	&lt;!-- Will be executed after rendering of the page --> 
+        &lt;script src="external_script.js" type="text/javascript">&lt;/script>
+    &lt;/body> 
+&lt;/html>
+
+					</code></pre>
+				</section>
+				<section>
+					<h2>Work with DOM</h2>
+					<h4 class="left">Access via developer's console</h4>
+					<ul class="left smaller">
+						<li>$0 - access to the selected dom node via console</li>
+						<li>$('.myClass') - query via console</li>
+					</ul>
+					<img src="img/dom.png" />
+				</section>
+				<section>
+					<h2>DOM Node attributes</h2>
+					<ul class="smallList">
+						<li>&lt;Node&gt;.nodeType - returns an unsigned short representing the type of the node(1 - element node, 3 - text node, 8 - comment node, etc.)</li>
+						<li>&lt;Node&gt;.className - returns the 'class' attribute of node</li>
+						<li>&lt;Node&gt;.tagName/nodeName - returns node name</li>
+						<li>&lt;Node&gt;.innerHTML - returns the content of DOM node</li>
+						<li>&lt;Node&gt;.nodeValue/data - the same as innerHTML, but for text nodes/comments</li>
+						<li><i>&lt;Node&gt;.hasAttribute(name) - returns true if node has such attribute</i></li>
+						<li><i>&lt;Node&gt;.getAttribute(name) - returns attribute of node with a given name</i></li>
+						<li><i>&lt;Node&gt;.setAttribute(name, value) - set value for the given attribute</i></li>
+						<li><i>&lt;Node&gt;.removeAttribute(name) - remove attribute</i></li>
+					</ul>
+					<div class="relative">
+						<img class="floatLeft mrs" src="img/children.png" />
+						<img class="floatLeft" src="img/siblings.png" />
+					</div>
+				</section>
+				<section>
+					<h2>DOM query</h2>
+					<ul class="smallList">
+						<li>&lt;document>.getElementById(id) - returns document with provided id</li>
+						<li>&lt;Node>.getElementsByTagName(tagName) - returns array of nodes with provided tagName</li>
+						<li>&lt;Node>.getElementsByName(name) - returns array of nodes with provided name</li>
+						<li>&lt;Node>.getElementsByClassName(name) - returns array of nodes with provided class</li>
+						<li>&lt;Node>.querySelector/querySelectorAll(selector) - return <i>one/array of</i> element(s) by selector </li>
+					</ul>
+					<div class="fragment smaller left" data-fragment-index="0">
+						querySelector/querySelectorAll return local copy.<br/>
+						Methods <i>getElementsBy*</i> return live data.
+						<a href="http://jsbin.com/UwALufOde/1/edit">Example</a>
+					</div>
+				</section>
+				<section>
+					<h2>DOM traversing</h2>
+					<ul class="smallList">
+						<li>document.documentElement - reference to &lt;html&gt;</li>
+						<li>document.body - reference to &lt;body&gt;</li>
+						<li>&lt;Node&gt;.children - returns children nodes(without text nodes)</li>
+						<li><i>&lt;Node&gt;.appendChild() - insert a Node as the last child node of this element</i></li>
+						<li><i>&lt;Node&gt;.insertBefore() - insert the first Node given in a parameter before the second, child of this element, Node.</i></li>
+						<li><i>&lt;Node&gt;.removeChild() - remove a child node from the current element, which must be a child of the current node.</i></li>
+					</ul>
+					<div class="relative">
+						<img class="floatLeft mrs" src="img/children.png" />
+						<img class="floatLeft" src="img/siblings.png" />
+					</div>
+				</section>
+				<section>
+					<h2>Tables</h2>
+					<ul class="smallList">
+						<li>table.rows — list of all rows of the table.</li>
+						<li>table.tHead/tFoot — reference to THEAD, TFOOT.</li>
+						<li>table.tBodies — list of all TBODY elements.</li>
+						<li>tr.cells — the list of TD/TH</li>
+						<li>tr.rowIndex — row index in the table.</li>
+						<li><i>&lt;table>.insertRow(index)</i></li>
+						<li><i>&lt;table>.deleteRow(index)</i></li>
+						<li><i>&lt;tr>.insertCell(index)</i></li>
+						<li><i>&lt;tr>.deleteCell(index)</i></li>
+					</ul>
+				</section>
+				<section>
+					<h2>Forms</h2>
+					<img src="img/form.png">
+					<ul class="smallList">
+						<li>document.forms.myForm - form with name 'myForm'
+						<li>document.forms[0] - the first form in document</li>
+						<li>the same for form elements - form.myEl;&nbsp; form.elements[0]</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Events</h2>
+					<div>
+						<img src="img/bubble_capture.png" style="height: 400px"/>
+						<ul class="smallList">
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference/Events" target="_blank">Event types</a></li>
+							<li>in html - &lt;input type="text" onclick="handler()"/></li>
+							<li>elem.onclick = handler</li>
+							<li>elem.addEventListener(eventType, handler, useCapture)/removeEventListener(listener)</li>
+							<li>elem.attachEvent(eventType, handler)/detachEvent(listener) for IE9-</li>
+							<li><a href="http://jsbin.com/exezex/4/edit" target="_blank">Example 1</a>, 
+							<a href="http://jsfiddle.net/Q9eFW/" target="_blank">Example 2</a></li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>Event Object Details</h2>
+					<ul class="smallList">
+						<li>event.type — 'click'|'mousedown'|'keyup' etc.</li>
+						<li>event.target — node, that has fired the event(event.srcElement for IE9-)</li>
+						<li>event.currentTarget — node, event has been attached to(doesn't work under IE9-)</li>
+						<li>event.which - mouse button (event.button for IE9-)</li>
+						<li>event.clientX / event.clientY - mouse cursor coordinates related to the window</li>
+						<li>event.pageX / event.pageY - mouse cursor coordinates related to the document(not supported in IE9-)</li>
+						<li>event[altKey|ctrlKey|shiftKey|metaKey] - alt, ctrl, shift, meta(for Mac) keys is pressed</li>
+						<li>event[deltaY|detail|wheelDelta] - delta step of mouse scroll</li>
+						<li><i>event.stopPropagation() - cancel event's bubbling (event.cancelBubble = true for IE9-)</i></li>
+						<li>
+							<ul class="smallList">
+								<li><i>event.preventDefault() - stop default browser's action (event.returnValue = false for IE9-)</i></li>
+								<li><i>function handler() {return false;}</i></li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Javascript animation</h2>
+					<ul class="smallList">
+						<li>Animation in JS is provided by continious changing node's styles</li>
+						<li>setInterval vs recursive setTimeout</li>
+						<li>softer animation via <a href="http://easings.net/" target="_blank">easings</li>
+					</ul>
+				</section>
+				<!--<section>
+					<h2>CSS animation</h2>
+					<a href="https://daneden.me/animate/" target="_blank">Animate.css</a>
+				</section> -->
+				<section>
+					<h2>JSON</h2>
+					<div class="left smaller">
+						<a href="http://www.json.org/json-ru.html" target="_blank">JSON</a> (JavaScript Object Notation) is an open standard format that uses human-readable text to transmit data objects consisting of attribute–value pairs. It is used primarily to transmit data between a server and web application, as an alternative to XML.
+					</div>
+					<div class="left smaller">
+						JSON.stringify/JSON.parse methods in browser - for working with JSON format.<br/>
+						For old IE version(IE8-) there are different libraries(for example, <a href="https://github.com/douglascrockford/JSON-js" target="_blank">json-js</a>) for JSON parsing<br/>
+						<a href="http://jsbin.com/azUkIla/1/edit" target="_blank">The most painful problem</a> during converting JSON structure.
+					</div>
+				</section>
+				<section>
+					<h2>AJAX</h2>
+					<div class="left smaller">AJAX(Asynchronous Javascript and XML) - it's a way to make dynamic requests to server without reloading the web page and based on XMLHttpRequest object
+					</div>
+					<ul class="smallList">
+						<li>readyState - request state number(0-4)</li>
+						<li>responseText/responseXML - server's response</li>
+						<li>onreadystatechange - function status handler</li>
+						<li>status - http response status (200, 404, etc.)</li>
+						<li><i>open()</i>
+							<ul class="smallList">
+								<li>method - "GET", "POST", "PUT", "DELETE", etc.</li>
+								<li>url - The URL to which to send the request.</li>
+								<li>async - An optional boolean parameter, defaulting to true, indicating whether or not to perform the operation asynchronously.</li>
+								<li>user - The optional user name to use for authentication purposes; by default, this is an empty string.</li>
+								<li>password - The optional password to use for authentication purposes; by default, this is an empty string.</li>
+							</ul>
+						</li>
+						<li><i>send(data) - sends the request to the server</i></li>
+						<li><i>abort() - cancel sending request (by there are problems under IE)</i></li>
+					</ul>
+					<div class="left"><a href="http://jsbin.com/EgIZuZA/1/edit" target="_blank">Example</a></div>
+				</section>
+				<section>
+					<h2>Cross Domain Requests</h2>
+					<ul>
+						<li>XhrIframeProxy</li>
+						<li>window.name</li>
+						<li>window.postMessage</li>
+						<li>JSONP</li>
+						<li>CORS</li>
+					</ul>
+				</section>
+				<section class="smaller">
+					<h2>The Same Origin Policy Restrictions</h2>
+					<i>The same origin policy (SOP) prevents scripts loaded from one origin to get or manipulate properties or methods in the documents from another origin.</i>
+					<div class="fragment" data-fragment-index="0" >
+						<h3 class="left">Exceptions:</h3>
+						<ul>
+							<li>JavaScript with &lt;script src="...">&lt;/script>. Error messages for syntax errors are only available for same-origin scripts.</li>
+							<li>CSS with &lt;link rel="stylesheet" href="...">. Due to the relaxed syntax rules of CSS, cross-origin CSS requires a correct Content-Type header. Restrictions vary by browser.</li>
+							<li>Images with &lt;img>. Supported image formats include PNG, JPEG, GIF, BMP, SVG, ...</li>
+							<li>Media files with &lt;video> and &lt;audio>.</li>
+							<li>Plug-ins with &lt;object>, &lt;embed> and &lt;applet>.</li>
+							<li>Fonts with @font-face. Some browsers allow cross-origin fonts, others require same-origin fonts.</li>
+							<li>Anything with &lt;frame> and &lt;iframe>.</li>
+						</ul>
+					</div>
+				</section>
+				<section class="relative">
+					<h2>XhrIframeProxy</h2>
+					<img src="img/crossframe.gif" style="margin:0"/>
+				    <pre class="fragment absolute" data-fragment-index="0" ><code class="javascript noOverflow"
+>function sendMsg(msg){
+   var frame = document.createElement(“iframe”);
+   var baseProxy = “http://www.otherapp.com/proxy.html”;
+   var request = {frameName:’otherApp’,data:msg};
+   frame.src = baseProxy+”#”+encodeURI (util.toJson(request));
+   frame.style.display=”none”;
+   document.body.appendChild(frame);
+};
+
+window.onLoad = function(){
+  var hash = window.location.hash;
+  if(hash && hash.length>1){
+    var request = hash.substring(1,hash.length);
+      var obj = util.fromJson(decodeURI (request));
+      var data = obj.data;
+      // getData in a function defined in B
+      parent.frames[obj.frameName].getData(…);
+  }
+}</code></pre>
+				</section>
+				<section>
+					<h2>window.name</h2>
+					<img src="img/windowname.gif" style="margin:0"/>
+				    
+				</section>
+				<section>
+					<h2>window.postMessage</h2>
+					<img src="img/window_postmessage.gif" style="margin:0"/>
+					<div class="fragment absolute" data-fragment-index="0" style="margin-top:-180px">
+				    <pre><code class="javascript noOverflow"
+>//Sending message from http://www.otherapp.com/index.html
+function postMessage(msg){
+     var targetWindow = parent.window;
+      targetWindow.postMessage(msg,"*");
+}
+function handleReceive(msg){
+ var object = util.fromJson(msg);
+ if(object.status == “ok”){
+	//continue to do other things
+	……
+ }else{
+	//retry sending msg
+	……
+ }
+}
+window.addEventListener("message", handleReceive, false);
+window.onLoad = function(){
+    postMessage("already loaded");
+}</code></pre>
+<pre><code class="javascript noOverflow"
+>//Receiving message at http://www.myapp.com/index.html
+function handleReceive(event){ 
+  if(event.origin != "http://www.otherapp.com")
+    return; 
+  //process data
+  ……
+  var otherAppFrame = document.getElementById(“otherApp”); 
+  otherAppFrame.postMessage(“{status:’ok’}”,”http://www.otherapp.com”);
+}
+window.addEventListener("message", handleReceive, false);
+</code></pre>
+				</section>
+				<section>
+					<h2>JSONP</h2>
+<pre><code class="javascript noOverflow"
+>&lt;script type="text/javascript">
+// This is our function to be called with JSON data
+function showPrice(data) {
+    alert("Symbol: " + data.symbol + ", Price: " + data.price);
+}
+var url = “/action.php?attr='anything'&callback=showPrice”;
+// this shows dynamic script insertion
+var script = document.createElement('script');
+script.setAttribute('src', url);
+
+// load the script
+document.getElementsByTagName('head')[0].appendChild(script); 
+&lt;/script>
+</code></pre>
+<pre class="fragment" data-fragment-index="0"><code class="javascript noOverflow"
+>//Response
+showPrice({symbol: 'IBM', price: 91.42}); 
+// alerts: Symbol: IBM, Price: 91.42
+</code></pre>
+<div class="fragment smaller left" data-fragment-index="1">
+	<div>Ready JSONP examples:</div>
+	<ul>
+	<li><a href="http://www.geonames.org/postalCodeLookupJSON?postalcode=10504&country=US&callback=?" target="_blank">Geonames API: Location info for a zip-code</a></li><li>
+<a href="http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmode=any
+&format=json&jsoncallback=?" target="_blank">Flickr API: Most recent cat pictures from Flickr</a></li></ul></div>
+				</section>
+				<section>
+					<h2>CORS</h2>
+					<div class=" left">
+						<ul class="smallList">
+							<li>Is supported under Chrome 3+, Firefox 3.5+, Opera 12+, Safari 4+, IE8+</li>
+							<li><a href="http://jsbin.com/iZOBAhO/2/edit" target="_blank">example of creating CORS request</a></li>
+						</ul>
+					</div>
+					<div class="fragment" data-fragment-index="0">
+						CORS HTTP Request
+						<pre><code
+>OPTIONS /cors HTTP/1.1
+Origin: http://api.bob.com
+Access-Control-Request-Method: PUT
+Access-Control-Request-Headers: X-Custom-Header
+Host: api.alice.com
+Accept-Language: en-US
+Connection: keep-alive
+User-Agent: Mozilla/5.0...</code></pre>
+						CORS HTTP Response
+						<pre><code
+>Access-Control-Allow-Origin: http://api.bob.com
+Access-Control-Allow-Methods: GET, POST, PUT
+Access-Control-Allow-Headers: X-Custom-Header
+Content-Type: text/html; charset=utf-8</code></pre>
+					</div>
+				</section>
+				<section>
+					<h2>Sources</h2>
+					<ul>
+						<li><a href="http://learn.javascript.ru/">javascript.ru</a></li>
+						<li><a href="http://www.w3schools.com/jsref/">W3Schools JavaScript and HTML DOM Reference</a></li>
+						<li><a href="https://developer.mozilla.org">Mozilla Developer Network</a></li>
+						<li><a href="http://www.ibm.com/developerworks/library/wa-crossdomaincomm/">Improve cross-domain communication with client-side solutions</a></li>
+						<li><a href="http://www.html5rocks.com/en/tutorials/cors/">HTML5 Rocks: CORS</a></li>
+						<li><a href="http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752">JavaScript Patterns by Stoyan Stefanov</a></li>
+					</ul>
+				</section>
+				<section>
+					<h1>The End</h1>
+				</section>
+				
+			</div>
+		</div>
+
+
+		<script src="../shared/lib/js/head.min.js"></script>
+		<script src="../shared/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../shared/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../shared/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../shared/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+	</body>
+</html>
+

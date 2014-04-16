@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+  <title>Native form elements</title>
+   <style type="text/css">
+  .elements ul {
+    margin: 0;
+    padding: 30px 0 0 0;
+    overflow: hidden;
+    border-top: 1px solid #ddd;
+  }
+  </style>
+</head>
+<body>
+<section class="elements">
+    <ul>
+      <li><input autofocus=""></li>
+      <li><input autofocus="" disabled=""></li>
+      <li><pre class="markup">&lt;input autofocus&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input></li>
+      <li><input disabled=""></li>
+      <li><pre class="markup">&lt;input&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><form><input required=""><input type="submit"></form></li>
+      <li><form><input required="" disabled=""><input type="submit" disabled=""></form></li>
+      <li><pre class="markup">&lt;input required&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="text"></li>
+      <li><input type="text" disabled=""></li>
+      <li><pre class="markup">&lt;input type=text&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><textarea></textarea></li>
+      <li><textarea disabled=""></textarea></li>
+      <li><pre class="markup">&lt;textarea&gt;&lt;/textarea&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="password" placeholder="password"></li>
+      <li><input type="password" placeholder="password" disabled=""></li>
+      <li><pre class="markup">&lt;input type=password placeholder=password&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="radio"></li>
+      <li><input type="radio" disabled=""></li>
+      <li><pre class="markup">&lt;input type=radio&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="radio" checked=""></li>
+      <li><input type="radio" checked="" disabled=""></li>
+      <li><pre class="markup">&lt;input type=radio checked&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="checkbox"></li>
+      <li><input type="checkbox" disabled=""></li>
+      <li><pre class="markup">&lt;input type=checkbox&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="checkbox" checked=""></li>
+      <li><input type="checkbox" checked="" disabled=""></li>
+      <li><pre class="markup">&lt;input type=checkbox checked&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><select><option></option><option>Option 1</option></select></li>
+      <li><select disabled=""><option></option><option>Option 1</option></select></li>
+      <li><pre class="markup">&lt;select&gt;
+  &lt;option&gt;&lt;/option&gt;
+&lt;/select&gt;</pre>
+      </li>
+    </ul>
+    <ul>
+      <li><select><optgroup label="Option group 1"><option>Option 1</option><option>Option 2</option></optgroup><optgroup><option>Option 3</option></optgroup></select></li>
+      <li><select disabled=""><optgroup label="Option group 1"><option>Option 1</option><option>Option 2</option></optgroup><optgroup><option>Option 3</option></optgroup></select></li>
+      <li><pre class="markup">&lt;select&gt;
+  &lt;optgroup label="Option group 1"&gt;
+    &lt;option&gt;Option 1&lt;/option&gt;
+    &lt;option&gt;Option 2&lt;/option&gt;
+  &lt;/optgroup&gt;
+  &lt;optgroup&gt;
+    &lt;option&gt;Option 3&lt;/option&gt;
+  &lt;/optgroup&gt;
+&lt;/select&gt;</pre>
+      </li>
+    </ul>
+    <ul>
+      <li><input type="text" placeholder="placeholder"></li>
+      <li><input type="text" placeholder="placeholder" disabled=""></li>
+      <li><pre class="markup">&lt;input type=text placeholder=placeholder&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="search"></li>
+      <li><input type="search" disabled=""></li>
+      <li><pre class="markup">&lt;input type=search&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="file"></li>
+      <li><input type="file" disabled=""></li>
+      <li><pre class="markup">&lt;input type=file&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><fieldset><legend>Legend</legend><label for="field">Label</label><input id="field"></fieldset></li>
+      <li><fieldset disabled=""><legend>Legend</legend><label for="field">Label</label><input id="field"></fieldset></li>
+      <li><pre class="markup">&lt;fieldset&gt;
+  &lt;legend&gt;Legend&lt;/legend&gt;
+  &lt;label for=field&gt;Label&lt;/label&gt;
+  &lt;input id=field&gt;
+&lt;/fieldset&gt;
+      </pre></li>
+    </ul>
+    <ul>
+      <li><input type="submit"></li>
+      <li><input type="submit" disabled=""></li>
+      <li><pre class="markup">&lt;input type=submit&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><button>Button</button></li>
+      <li><button disabled="">Button</button></li>
+      <li><pre class="markup">&lt;button&gt;Button&lt;/button&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="reset"></li>
+      <li><input type="reset" disabled=""></li>
+      <li><pre class="markup">&lt;input type=reset&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="email"></li>
+      <li><input type="email" disabled=""></li>
+      <li><pre class="markup">&lt;input type=email&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="tel"></li>
+      <li><input type="tel" disabled=""></li>
+      <li><pre class="markup">&lt;input type=tel&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="url"></li>
+      <li><input type="url" disabled=""></li>
+      <li><pre class="markup">&lt;input type=url&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="number"></li>
+      <li><input type="number" disabled=""></li>
+      <li><pre class="markup">&lt;input type=number&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="number" min="0" max="15" step="3"></li>
+      <li><input type="number" min="0" max="15" step="3" disabled=""></li>
+      <li><pre class="markup">&lt;input type=number min=0 max=15 step=3&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="range"></li>
+      <li><input type="range" disabled=""></li>
+      <li><pre class="markup">&lt;input type=range&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="range" min="0" max="15" step="3"></li>
+      <li><input type="range" min="0" max="15" step="3" disabled=""></li>
+      <li><pre class="markup">&lt;input type=range min=0 max=15 step=3&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="date"></li>
+      <li><input type="date" disabled=""></li>
+      <li><pre class="markup">&lt;input type=date&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="month"></li>
+      <li><input type="month" disabled=""></li>
+      <li><pre class="markup">&lt;input type=month&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="week"></li>
+      <li><input type="week" disabled=""></li>
+      <li><pre class="markup">&lt;input type=week&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="time"></li>
+      <li><input type="time" disabled=""></li>
+      <li><pre class="markup">&lt;input type=time&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="datetime"></li>
+      <li><input type="datetime" disabled=""></li>
+      <li><pre class="markup">&lt;input type=datetime&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="datetime-local"></li>
+      <li><input type="datetime-local" disabled=""></li>
+      <li><pre class="markup">&lt;input type=datetime-local&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="color"></li>
+      <li><input type="color" disabled=""></li>
+      <li><pre class="markup">&lt;input type=color&gt;</pre></li>
+    </ul>
+    <ul>
+      <li><input type="color" value="#e76252"></li>
+      <li><input type="color" value="#e76252" disabled=""></li>
+      <li><pre class="markup">&lt;input type=color value="#e76252"&gt;</pre></li>
+    </ul>
+  </section>
+</body>
+</html>

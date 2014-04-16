@@ -1,0 +1,1479 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>jQuery</title>
+
+  <meta name="description" content="A dummy presentation for CodeAngelsJs Course">
+  <meta name="author" content="sudodoki / Hakim El Hattab">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../shared/css/reveal.min.css">
+  <link rel="stylesheet" href="../shared/css/theme/default.css" id="theme">
+
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="../shared/lib/css/zenburn.css">
+  <style type="text/css">
+    h2 {text-transform: none !important}
+  </style>
+
+  <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+  <script>
+    document.write( '<link rel="stylesheet" href="../shared/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+  </script>
+
+        <!--[if lt IE 9]>
+        <script src="../shared/lib/js/html5shiv.js"></script>
+        <![endif]-->
+      </head>
+
+      <body>
+        <div class="reveal">
+          <div class="slides">
+
+            <section>
+                <h3 style="text-transform: none;">Get jQuery from:</h3>
+                <ul class='plain-list small-list fill-in'>
+                  <li class='fragment'><a href="http://jquery.com/download/">Official site</a>
+                  </li>
+                  <li class='fragment'>CDN:
+                    <pre class='fill-in'><code contenteditable data-trim>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+                    </code></pre><br/>
+                    <a href="http://codeorigin.jquery.com/">codeorigin</a>,
+                    <a href="https://developers.google.com/speed/libraries/devguide">Google hosted libraries</a>
+                  </li>
+                  <li class='fragment'><a href="http://projects.jga.me/jquery-builder/">Custom build</a></li>
+                </ul>
+
+            </section>
+            <section>
+              <h3>When $ is ready?</h3>
+              <ul>
+                <li class='fragment'>document.ready</li>
+                <li class='fragment'>function <pre><code data-trim contenteditable style="word-wrap: break-word">$(function() {});</code></pre></li>
+                <li class='fragment'>everywhere if we’re plugging it in on the bottom</li>
+
+
+              </ul>
+            </section>
+
+            <section>
+              <h1>Traversing DOM</h1>
+            </section>
+
+            <section>
+              <h3>Selectors</h3>
+              <ul class="plain-list small-list">
+                <li>Select all elements:<pre><code>$( "*" )</code></pre></li>
+                <li>CSS selectors, like '.' and "#": <pre><code>$(".my_class")</code></pre></li>
+                <li>Attributes contains selector or word selector:
+<pre><code style="width: 120%" data-trim>
+&ltinput name="milk man">
+&ltinput name="milkman">
+
+&ltscript>
+//selector
+$( "input[name*='man']" ).val( "has man in it!" );
+&lt/script>
+
+&ltscript>
+//word selector
+$( "input[name~='man']" ).val( "mr. man is in it!" );
+&lt/script>
+                </code></pre>
+                </li>
+              </ul>
+            </section>
+            <section>
+              <h3>More attribute-based selectors:</h3>
+              <ul class="small-list">
+                <li>Attribute Ends With Selector [name$="value"]</li>
+                <li>Attribute Equals Selector [name="value"]</li>
+                <li>Attribute Contains Prefix Selector [name|="value"]</li>
+                <li>Attribute Not Equal Selector [name!="value"]</li>
+                <li>Has Attribute Selector [name]</li>
+                <li>Multiple Attribute Selector [name="value"][name2="value2"]</li>
+              </ul>
+            </section>
+
+            <section>
+              <h1>Hierarchy selectors</h1>
+            </section>
+            <section>
+              <h3>Child Selector (“parent > child”)</h3>
+                              <pre><code style="width: 120%">
+<ul class="topnav">
+  <li>Item 1</li>
+  <li>Item 2
+    <ul>
+    <li>Nested item 1</li>
+    <li>Nested item 2</li>
+    <li>Nested item 3</li>
+    </ul>
+  </li>
+  <li>Item 3</li>
+</ul>
+
+<script>
+$( "ul.topnav > li" ).css( "border", "3px double red" );
+</script>
+                </code></pre>
+            </section>
+
+            <section>
+              <h3>Descendant Selector (“ancestor descendant”)</h3>
+<pre><code class='fill-in' data-trim>
+<form id='descendant-form'>
+  <label for="name">Child of form:</label>
+  <input name="name" id="name">
+
+  <fieldset>
+    <label for="newsletter">Grandchild of form, child of fieldset:</label>
+    <input name="newsletter" id="newsletter">
+  </fieldset>
+</form>
+Sibling to form: <input name="none">
+
+<script>
+$( "#descendant-form input" ).css( "margin", "2px" );
+$( "#descendant-form fieldset input" ).css( "color", "red" );
+</script>
+</code></pre>
+            </section>
+
+            <section>
+              <h3>Next Adjacent Selector (“prev + next”)</h3>
+<pre><code style="width: 100%">
+<form id='adjacent-form'>
+  <label for="name">Name:</label>
+  <input name="name" id="name">
+  <fieldset>
+   <label for="newsletter">Newsletter:</label>
+   <input name="newsletter" id="newsletter">
+  </fieldset>
+</form>
+<input name="none">
+
+<script>
+$( "#adjacent-form label + input" ).css( "color", "blue" ).val( "Labeled!" );
+</script>
+</code></pre>
+
+            </section>
+
+            <section>
+              <h3>Next Siblings Selector (“prev ~ siblings”)</h3>
+<pre><code style="width: 120%">
+<div>div (doesn't match since before #prev)</div>
+<span id="prev">span#prev</span>
+<div>div sibling</div>
+<div>div sibling <div id="small">div niece</div></div>
+<span>span sibling (not div)</span>
+<div>div sibling</div>
+
+<script>
+$( "#prev ~ div" ).css( "border", "3px groove blue" );
+</script>
+</code></pre>
+            </section>
+
+            <section>
+              <h3>Extension for CSS selectors</h3>
+<pre><code class="javascript" style="width: 100%" data-trim>
+  $( ":input" )
+  $( ":button" )
+  $( ":checkbox" )
+  $( ":file" )
+  $( ":password" )
+  $( ":text" )
+  $( ":radio" )
+  $( ":reset" )
+  $( "select option:selected" )
+  $( ":checked" )
+  $( ":disabled" )
+  $( ":enabled" )
+  $( ":focused" )
+  $( ":submit" )
+</code></pre>
+
+            </section>
+
+                        <section>
+              <h3>Extension for CSS selectors (continued)</h3>
+<pre><code class="javascript" style="width: 100%" data-trim>
+ $( "div:animated" )
+ $( ":first" )
+ $( "tr:last" )
+ $( "td:eq( 2 )" ) //Select the element at index n within the matched set.
+ $( "td:gt(4)" )   //Select all, which have index > 4 within the matched set.
+ $( "td:lt(4)" )   //Select all, which have index < 4 within the matched set.
+ $( ":odd" )
+ $( ":even" )
+</code></pre>
+            </section>
+
+            <section>
+              <h3>Extension for CSS selectors: the end is near!</h3>
+<pre><code class="javascript" data-trim>
+ // Select all elements that have
+ //at least one child node (either an element or text).
+ $( "td:parent" )
+ $( "div:has(p)" )
+ $( ":header" ) // h1, h2, etc.
+ $( ":hidden" ) // display: none, type='hidden', width&height = 0
+ $( ":visible" )
+ $( ":image" )
+</code></pre>
+
+... learn more: <a href="http://api.jquery.com/category/selectors/">http://api.jquery.com/category/selectors/</a>
+            </section>
+
+            <section>
+              <h1>Traversing</h1>
+              <p>Once you've made an initial selection with jQuery, you can traverse deeper into what was just selected.</p>
+            </section>
+
+            <section>
+              <h3>Parents</h3>
+              <pre><code class="html"><div class="grandparent">
+    <div class="parent">
+        <div class="child">
+            <span class="subchild"></span>
+        </div>
+    </div>
+    <div class="surrogateParent1"></div>
+    <div class="surrogateParent2"></div>
+</div>
+</code></pre>
+<pre><code class="javascript" data-trim>
+// returns [ div.child ]
+$( "span.subchild" ).parent();
+// returns [ div.parent ]
+$( "span.subchild" ).parents( "div.parent" );
+// returns [ div.child, div.parent, div.grandparent ]
+$( "span.subchild" ).parents();
+// returns [ div.child, div.parent ]
+$( "span.subchild" ).parentsUntil( "div.grandparent" );
+// returns [ div.child ]
+$( "span.subchild" ).closest( "div" );
+// returns [ div.child ] as the selector is also included in the search:
+$( "div.child" ).closest( "div" );</code></pre>
+            </section>
+
+            <section>
+              <h3>Children</h3>
+
+<pre><code class="html"><div class="grandparent">
+    <div class="parent">
+        <div class="child">
+            <span class="subchild"></span>
+        </div>
+    </div>
+    <div class="surrogateParent1"></div>
+    <div class="surrogateParent2"></div>
+</div>
+</code></pre>
+              <pre><code class="javascript"  data-trim>
+// Selecting an element's direct children:
+
+// returns [ div.parent, div.surrogateParent1, div.surrogateParent2 ]
+$( "div.grandparent" ).children( "div" );
+
+// Finding all elements within a selection that match the selector:
+
+// -> [ div.child, div.parent, div.surrogateParent1, div.surrogateParent2 ]
+$( "div.grandparent" ).find( "div" );
+              </code></pre>
+            </section>
+
+            <section>
+            <h3>Siblings</h3>
+<pre><code class="html"  data-trim>
+<div class="grandparent">
+  <div class="parent">
+      <div class="child">
+          <span class="subchild"></span>
+      </div>
+  </div>
+  <div class="surrogateParent1"></div>
+  <div class="surrogateParent2"></div>
+</div>
+</code></pre>
+<pre><code class="javascript" data-trim>
+// Selecting an element's siblings in both
+//directions that matches the given selector:
+
+// returns [ div.surrogateParent1, div.surrogateParent2 ]
+$( "div.parent" ).siblings();
+
+// returns [ div.parent, div.surrogateParent2 ]
+$( "div.surrogateParent1" ).siblings();
+
+ // Selecting a next sibling of the selectors:
+ // returns [ div.surrogateParent1 ]
+$( "div.parent" ).next();
+
+ // Selecting a prev sibling of the selectors:
+ // returns [] as No sibling exists before div.parent
+$( "div.parent" ).prev();
+</code></pre>
+
+            </section>
+
+            <section>
+              <h3>Siblings (continued)</h3>
+              <pre><code style="javascript"  data-trim>
+// Selecting all the next siblings of the selector:
+// returns [ div.surrogateParent1, div.surrogateParent2 ]
+$( "div.parent" ).nextAll();
+// returns [ div.surrogateParent1 ]
+$( "div.parent" ).nextAll().first();
+// returns [ div.surrogateParent2 ]
+$( "div.parent" ).nextAll().last();
+
+// Selecting all the previous siblings of the selector:
+// returns [ div.surrogateParent1, div.parent ]
+$( "div.surrogateParent2" ).prevAll();
+// returns [ div.surrogateParent1 ]
+$( "div.surrogateParent2" ).prevAll().first();
+// returns [ div.parent ]
+$( "div.surrogateParent2" ).prevAll().last();
+</code></pre>
+            </section>
+
+            <section>
+            <h3>Chaining</h3>
+              <pre><code style="javascript"  data-trim>
+// No chaining
+$("#menu").fadeIn("fast");
+$("#menu").addClass(".active");
+$("#menu").css("marginRight", "10px");
+
+// vs. with chaining
+$("#menu").fadeIn("fast")
+          .addClass("active")
+          .css("marginRight", "10px");
+              </code></pre>
+              <p>How?<span class="fragment"> Almost all jQuery methods return a jQuery object. </span></p>
+            </section>
+
+            <section>
+              <h3>Toggle</h3>
+  <pre><code class="html">
+<p class="blue">Click to toggle</p>
+<p class="blue highlight">highlight</p>
+<p class="blue">on these</p>
+<p class="blue">paragraphs</p>
+
+<script>
+$( "p" ).click(function() {
+  $( this ).toggleClass( "highlight" );
+});
+</script>
+ </code></pre>
+              <p>Learn more: <a href="http://api.jquery.com/toggleClass/">http://api.jquery.com/toggleClass/</a></p>
+            </section>
+
+            <section>
+              <h3>Changing element attributes with attr</h3>
+              <pre><code class="javascript" data-trim>
+$("button").click(function(){
+  $("img").attr("width","500");
+});
+              </pre></code>
+              <p> Come and try: <a href="http://jsbin.com/EbOtuVu/1/edit">http://jsbin.com/EbOtuVu/1/edit</a></p>
+            </section>
+
+            <section>
+              <h3>Data-attributes</h3>
+              <p>NOT to be confused with data-storage!
+              jQuery introduced support for data attributes in version 1.4.3, which was released in October 2010.</p>
+<pre><code class="html" data-trim>
+<div data-role="page" data-last-value="43" data-hidden="true" data-options='{"name":"John"}'></div>
+<div data-foobar='{"foo":"bar"}'></div>
+</code></pre>
+<pre><code class="javascript" data-trim>
+$( "div" ).data( "role" ) === "page";
+$( "div" ).data( "lastValue" ) === 43;
+$( "div" ).data( "hidden" ) === true;
+$( "div" ).data( "options" ).name === "John";
+
+var baz = $('div').data('foobar').foo; //you can use JSON syntax, wee!
+
+</code></pre>
+
+            </section>
+
+            <section>
+              <h3>Getting styles with .css</h3>
+  <pre><code class="css" data-trim>
+#box1 {
+    width: 50px;
+    color: yellow;
+    background-color: blue;
+  }
+</code></pre>
+  <pre><code class="javascript" data-trim>
+<div class="blue" style="background-color:blue;"></div>
+<div id="box1">1</div>
+<script>
+ //you can get the current value or get the array of current values
+  $(".blue").css( "background-color" );
+  //returns rgb(0, 0, 255).
+  var styleProps = $("#box1").css([
+    "width", "height", "color", "background-color"
+  ]);
+
+  $.each( styleProps, function( prop, value ) {
+    //do something
+  });
+</script>
+
+</code></pre>
+
+            </section>
+
+            <section>
+              <h3>Modifying styles</h3>
+<pre><code class="javascript" data-trim>
+
+<p>Just roll the mouse over me.</p>
+
+<p>Or me to see a color change.</p>
+
+<script>
+$( "p" ).on( "mouseover", function() {
+  $( this ).css( "color", "red" );
+});
+</script>
+</code></pre>
+
+            </section>
+
+            <section>
+              <h1>Form goodies</h>
+
+            </section>
+
+            <section>
+              <h3>Getting values</h3>
+              <pre><code class="javascript">
+// Get the value from a dropdown select
+$( "select.foo option:selected").val();
+
+// Get the value from a dropdown select even easier
+$( "select.foo" ).val();
+
+// Get the value from a checked checkbox
+$( "input:checkbox:checked" ).val();
+
+// Get the value from a set of radio buttons
+$( "input:radio[name=bar]:checked" ).val();
+
+              </code></pre>
+              <p><a href="http://jsbin.com/AmESuFOj/1/edit">Try it yourself: http://jsbin.com/AmESuFOj/1/edit</a></p>
+            </section>
+
+            <section>
+              <h3>.serialize</h3>
+              <p>The .serialize() method creates a text string in standard URL-encoded notation.</p>
+              <pre><code class="html">
+<form action="">
+First name: <input type="text" name="FirstName" value="Mickey" /><br>
+Last name: <input type="text" name="LastName" value="Mouse" /><br>
+</form>
+</code></pre>
+<pre><code class="javascript">
+$("form").serialize(); //returns FirstName=Mickey&LastName=Mouse
+$("form").serializeArray(); //returns an array
+</code></pre>
+             <p><a href="http://jsbin.com/UhuNOHoS/1/edit">Try it yourself: http://jsbin.com/UhuNOHoS/1/edit</a></p>
+            </section>
+
+            <section>
+              <h3>html() methods</h3>
+              Returns the html contents <pre><code data-trim>$("p").html()</code></pre>
+              Replaces the html contents
+<pre><code class="html" data-trim>
+<div class="demo-container">
+  <div class="demo-box">Demonstration Box</div>
+</div>
+</code></pre>
+<pre><code class="javascript" data-trim>
+$( "div.demo-container" )
+  .html( "<p>All new content. <em>You bet!</em></p>" );
+
+  //or
+
+  $( "div.demo-container" ).html(function() {
+  var emphasis = "<em>" + $( "p" ).length + " paragraphs!</em>";
+  return "<p>All new content for " + emphasis + "</p>";
+});
+</code></pre>
+<pre><code class="html" data-trim>
+<div class="demo-container">
+  <p>All new content. <em>You bet!</em></p>
+</div>
+</code></pre>
+            </section>
+
+            <section>
+              <h3>.text() methods</h3>
+              <p>Same as .html but for plain text.</p>
+            </section>
+
+            <section>
+              <h3 width="100%">.wrap() elements around</h3>
+              Wrap a &ltdiv> element around each &ltp> element:
+<pre><code class="javascript" data-trim>
+$("button").click(function(){
+  $("p").wrap("<div></div>");
+});
+
+$("p").wrap(function(){
+      return "<div></div>"
+});
+</code></pre>
+            </section>
+
+            <section>
+              <h1>Events</h1>
+            </section>
+
+            <section>
+              <h3>DOM Events level 0</h3>
+              <p>This event handling model was introduced by Netscape Navigator, and remains the most cross-browser model</p>
+            </section>
+
+            <section>
+              <h3>Inline events</h3>
+              <p>In the inline model,event handlers are added as attributes of elements.</p>
+<pre><code class="html" data-trim>
+<h1>Inline Event Handling</h1>
+
+<p>Hey <a href="http://www.example.com"
+  onclick="triggerAlert('Joe');
+      return false;">Joe</a>!</p>
+</code></pre>
+<pre><code class="javascript" data-trim>
+function triggerAlert(name) {
+        window.alert("Hey " + name);
+}
+</code></pre>
+            </section>
+
+            <section>
+              <h3>Traditional events</h3>
+<pre><code class="html" data-trim>
+<h1>Traditional Event Handling</h1>
+
+<p>Hey Johny!</p>
+</code></pre>
+<pre><code class="javascript" data-trim>
+var triggerAlert = function () {
+        window.alert("Hey Johny");
+};
+
+// Assign an event handler
+document.onclick = triggerAlert;
+
+// Assign another event handler
+window.onload = triggerAlert;
+
+// Remove the event handler that was just assigned
+window.onload = null;
+</code></pre>
+            </section>
+
+            <section>
+              <h3>DOM level 2 event model</h3>
+              <p>A more flexible one.</p>
+              <ul>
+                <li>addEventListener: Allows the registration of event listeners on the event target.</li>
+                <li>removeEventListener: Allows the removal of event listeners from the event target.</li>
+                <li>dispatchEvent: Allows sending the event to the subscribed event listeners.</li>
+                <li>stopPropagation: To prevent an event from bubbling, developers must call the this method of the event object</li>
+                <li>preventDefault: To prevent the default action of the event to be called, developers must call the this method of the event object.</li>
+              </ul>
+            </section>
+
+            <section>
+              <h3>Example of DOM level 2 events</h3>
+<pre><code class="html" data-trim>
+<h1>DOM Level 2</h1>
+<p>Hey Joe!</p>
+</code></pre>
+<pre><code class="javascript" data-trim>
+var heyJoe = function () {
+     window.alert("Hey Joe!");
+}
+
+// Add an event handler
+document.addEventListener( "click", heyJoe, true );  // capture phase
+
+// Add another event handler
+window.addEventListener( "load", heyJoe, false );  // bubbling phase
+
+// Remove the event handler just added
+window.removeEventListener( "load", heyJoe, false );
+</code></pre>
+            </section>
+
+            <section>
+              <h3>MS IE event model</h3>
+              <p>Pre-IE8 (Removed in IE11). IE9 supports W3C events. Trident-based browsers (Maxthon) support this model as well.</p>
+              <ul class="small-list">
+                <li>attachEvent: Similar to W3C's addEventListener method.</li>
+                <li>detachEvent: Similar to W3C's removeEventListener method.</li>
+                <li>fireEvent: Similar to W3C's dispatchEvent method.</li>
+                <li>To prevent an event bubbling, developers must set the event's cancelBubble property.</li>
+                <li>To prevent the default action of the event to be called, developers must set the event's "returnValue" property.</li>
+                <li>The this keyword refers to the global window object.</li>
+              </ul>
+            </section>
+
+            <section>
+              <h3>Example of MS IE event model</h3>
+<pre><code class="html" data-trim>
+<h1>Microsoft-specific model</h1>
+<p>Hey Joe!</p>
+</code></pre>
+<pre><code class="javascript" data-trim>
+var heyJoe = function () {
+     window.alert("Hey Joe!");
+}
+
+// Add an event handler
+document.attachEvent("onclick", heyJoe);
+
+// Add another event handler
+window.attachEvent("onload", heyJoe);
+
+// Remove the event handler just added
+window.detachEvent("onload", heyJoe);
+</code></pre>
+            </section>
+
+            <section>
+              <h1>Events in jQuery</h1>
+            </section>
+
+            <section>
+              <h3>.bind()</h3>
+              <p>Attach a handler to an event for the elements.</p>
+              <p>.bind( eventType [, eventData ], handler(eventObject) )</p>
+<pre><code class="javascript" data-trim>
+$( "#foo" ).bind( "click", function() {
+  alert( "User clicked on 'foo.'" );
+});
+
+//Multiple event types can be bound at once by including each one separated by a space:
+$( "#foo" ).bind( "mouseenter mouseleave", function() {
+  $( this ).toggleClass( "entered" );
+});
+</code></pre>
+            </section>
+
+            <section>
+              <h3>Event object</h3>
+              <p>The handler callback can take parameters</p>
+<pre><code class="javascript" data-trim>
+$( "#foo" ).bind( "click", function( event ) {
+    alert( "The mouse cursor is at (" +
+      event.pageX + ", " + event.pageY +
+      ")" );
+  });
+</code></pre>
+              <p>Returning false from a handler is equivalent to calling both .preventDefault() and .stopPropagation() on the event object.</p>
+            </section>
+
+            <section>
+             <h3>.live</h3>
+             <p><strike> Same as .bind, but works for elements created after the page has been loaded</strike></p>
+             <h3>DEPRECATED!</h3>
+            </section>
+  
+            <section>
+             <h3>.unbind</h3>
+             <p>Remove a previously-attached event handler from the elements.</p>
+<pre><code class="javascript" data-trim>
+//Removes the handlers regardless of type.
+$( "#foo" ).unbind();
+
+//Removing handlers for click event type
+$( "#foo").unbind( "click" );
+
+//Assuring that only the certain handler is removed
+var handler = function() {
+  alert( "The quick brown fox jumps over the lazy dog." );
+};
+$( "#foo" ).bind( "click", handler );
+$( "#foo" ).unbind( "click", handler );
+</code></pre>
+            </section>
+
+
+
+
+            <section>
+             <h3>.die</h3>
+             <p><strike> Opposite to .live</strike></p>
+             <h3>DEPRECATED!</h3>
+            </section>
+
+
+            <section>
+             <h3>A proper way to attach an event handler</h3>
+<pre><code class="javascript" data-trim>
+$( "p" ).on( "click", function() {
+  alert( $( this ).text() );
+})
+
+//passing event handler by name
+function notify() {
+  alert( "clicked" );
+}
+$( "button" ).on( "click", notify );
+
+//Passing data to the handler
+function myHandler( event ) {
+  alert( event.data.foo );
+}
+$( "p" ).on( "click", { foo: "bar" }, myHandler );
+</code></pre>
+<a href='http://jsbin.com/IsexoMi/1/edit'>JSBin: http://jsbin.com/IsexoMi/1/edit</a>
+            </section>
+
+            <section>
+              <h3>.one()</h3>
+              <p>Attach a handler to an event for the elements. The handler is executed at most once per element per event type.</p>  
+            </section>
+
+            <section>
+             <h3>.off</h3>
+             <p>Remove an event handler.</p>
+<pre><code class="javascript" data-trim>
+$( "p" ).off();
+
+//Remove all delegated click handlers from all paragraphs:
+$( "p" ).off( "click", "**" );
+
+//Removing the certain handler
+var foo = function() {
+  // Code to handle some kind of event
+};
+ 
+// ... Now foo will be called when paragraphs are clicked ...
+$( "body" ).on( "click", "p", foo );
+ 
+// ... Foo will no longer be called.
+$( "body" ).off( "click", "p", foo );
+</code></pre>
+<a href='http://jsbin.com/iBASEDix/1/edit'>JSBin: http://jsbin.com/iBASEDix/1/edit</a>
+            </section>
+  
+
+            <section>
+             <h3>Form events</h3>
+             <p>Shortcuts for for .on( "event", handler )</p>
+<pre><code class="javascript" data-trim>
+.blur( handler(eventObject) ) //JS on blur event
+.change()
+.focus()
+.focusin()
+.select()
+.submit()
+
+</code></pre>
+            </section>
+            <section>
+             <h3>Form events</h3>
+<pre><code class="javascript" data-trim>
+.click()
+.dblclick()
+.focusout()
+.hover()
+.mousedown()
+.mouseenter()
+.mouseleave()
+.mousemove()
+.mouseout()
+.mouseover()
+.mouseup()
+ //Bind two or more handlers to the matched elements, 
+ // to be executed on alternate clicks.
+.toggle()
+
+</code></pre>
+            </section>
+
+            <section>
+             <h3>Keyboard events</h3>
+<pre><code class="javascript" data-trim>
+.focusout()
+.keydown()
+.keypress()
+.keyup()
+
+</code></pre>
+            </section>
+
+            <section>
+             <h3>Event object</h3>
+             <p>jQuery’s event system normalizes the event object according to W3C standards. The event object is guaranteed to be passed to the event handler. Most properties from the original event are copied over and normalized to the new event object.</p>
+
+            </section>
+
+          <section>
+           <h3>Proxy</h3>
+           <p>Takes a function and returns a new one that will always have a particular context.</p>
+        <ul>
+          <li>Change the context of functions bound to a click handler using the "function,   context" signature. Unbind the first handler after first click.<br>
+          <a href='http://jsbin.com/AwoTaro/1/edit'>JSBin: http://jsbin.com/AwoTaro/1/edit</a></li>
+          <li>Enforce the context of the function using the "context, function name" signature. Unbind the handler after first click.<br>
+          <a href='http://jsbin.com/uxUNALu/1/edit'>JSBin: http://jsbin.com/uxUNALu/1/edit</a></li>
+          <li>Change the context of a function bound to the click handler<br>
+          <a href='http://jsbin.com/eHEGANu/1/edit'>JSBin: http://jsbin.com/eHEGANu/1/edit</a></li>
+        </ul>
+  
+            </section>
+
+            <section>
+              <h1>Animate</h1>
+            </section>
+
+            <section>
+             <h3>.fadeToggle()</h3>
+             <p>Display or hide the matched elements by animating their opacity.</p>
+<pre><code class="html" data-trim>
+ 
+   
+  <button>fadeToggle p1</button>
+  <button>fadeToggle p2</button>
+  <p>This paragraph has a slow, linear fade.</p>
+  <p>This paragraph has a fast animation.</p>
+  <div id="log"></div>
+  </code>
+</pre>
+<pre><code class="javascript" data-trim> 
+
+$( "button:first" ).click(function() {
+  $( "p:first" ).fadeToggle( "slow", "linear" );
+});
+$( "button:last" ).click(function() {
+  $( "p:last" ).fadeToggle( "fast", function() {
+    $( "#log" ).append( "<div>finished</div>" );
+  });
+});
+
+</code></pre>
+              <a href="http://jsbin.com/OSoVUkI/1/edit">JSBin: http://jsbin.com/OSoVUkI/1/edit</a>
+            </section>
+
+
+
+            <section>
+             <h3>.slideToggle()</h3>
+             <p>Display or hide the matched elements with a sliding motion.</p>
+              <a href="http://jsbin.com/AqAkUrE/1/edit">JSBin: http://jsbin.com/AqAkUrE/1/edit</a>
+              <a href="http://jsbin.com/OliPiCUR/1/edit">JSBin: http://jsbin.com/OliPiCUR/1/edit</a>
+            </section>
+
+
+            <section>
+             <h3>.toggle()</h3>
+             <p>Display or hide the matched elements.</p>
+
+<pre><code class="javascript" data-trim> 
+//With no parameters simply toggles the visibility:
+$( ".my_target" ).toggle();
+//with callback
+$( "#clickme" ).click(function() {
+  $( "#book" ).toggle( "slow", function() {
+    // Animation complete.
+  });
+});
+//with Bool parameter
+$( "#foo" ).toggle( showOrHide );
+//equal to
+if ( showOrHide === true ) {
+  $( "#foo" ).show();
+} else if ( showOrHide === false ) {
+  $( "#foo" ).hide();
+}
+
+</code></pre>
+            <a href="http://jsbin.com/uXaHUjaB/1/edit">JSBin: http://jsbin.com/uXaHUjaB/1/edit</a>
+            </section>
+
+
+            <section>
+             <h3>.animate()</h3>
+             <p>Perform a custom animation of a set of CSS properties.</p>
+<pre><code class="html" data-trim> 
+<div id="clickme">
+  Click here
+</div>
+<img id="book" src="book.png" alt="" 
+width="100" height="123"
+  style="position: relative; left: 10px;">
+
+</code>
+</pre>
+
+<pre><code class="javascript" data-trim> 
+$( "#clickme" ).click(function() {
+  $( "#book" ).animate({
+    opacity: 0.25,
+    left: "+=50",
+    height: "toggle"
+  }, 5000, function() {
+    // Animation complete.
+  });
+});
+</code></pre>
+            
+            </section>
+
+            <section>
+             <h3>Step function</h3>
+             <p> A callback function that is fired at each step of the animation. </p>
+
+
+<pre><code class="javascript" data-trim> 
+$( "li" ).animate({
+  opacity: .5,
+  height: "50%"
+}, {
+  step: function( now, fx ) {
+    var data = fx.elem.id + " " + fx.prop + ": " + now;
+    $( "body" ).append( "<div>" + data + "</div>" );
+  }
+});
+</code></pre>
+<p>Called for <b>each</b> animated property of <b>each</b> animated element.</p>
+            
+            </section>
+
+
+            <section>
+             <h3>Progress function</h3>
+             <p>A function to be called after each step of the animation, 
+             only once per animated element regardless of the number of
+              animated properties. </p>
+
+            
+            </section>
+
+            <section>
+             <h3>Complete function</h3>
+             <p> A callback function that is fired once animation is complete. </p>
+
+
+<pre><code class="javascript" data-trim> 
+$( "#clickme" ).click(function() {
+  $( "#book" ).animate({
+    opacity: 0.25,
+    left: "+=50",
+    height: "toggle"
+  }, 5000, function() {
+    // Animation complete.
+  });
+});
+</code></pre>
+            
+            </section>
+
+            <section>
+             <h3>Queue</h3>
+             <p>queue: A Boolean indicating whether to place the animation in the effects queue. If false, the animation will begin immediately.</p>
+
+
+<pre><code class="javascript" data-trim> 
+//without queue
+$("#animate").click(function() {
+    $("#content")
+        .animate({"height": "100px"}, 500)
+        .animate({"width": "250px"}, 500);
+});
+
+//with queue. Animations run at the same time.
+$("#animate").click(function() {
+    $("#content")
+        .animate({"height": "100px"}, {"queue": false, "duration": 500})
+        .animate({"width": "250px"}, 500);
+});
+</code></pre>
+<p>When a custom queue name is used the animation does not automatically start; you must call .dequeue("queuename") to start it.</p>
+<a href="http://jsbin.com/ETOJibep/1/edit">JSBin: http://jsbin.com/ETOJibep/1/edit</a>
+            
+            </section>
+
+
+            <section>
+             <h3>.stop()</h3>
+             <p>Stop the currently-running animation on the matched elements.</p>
+
+
+<pre><code class="javascript" data-trim> 
+$( "#go" ).click(function() {
+  $( ".block" ).animate({ left: "+=100px" }, 2000 );
+});
+ 
+// Stop animation when button is clicked
+$( "#stop" ).click(function() {
+  $( ".block" ).stop();
+});
+ 
+// Start animation in the opposite direction
+$( "#back" ).click(function() {
+  $( ".block" ).animate({ left: "-=100px" }, 2000 );
+});
+</code></pre>
+            
+            </section>
+
+            <section>
+              <h1>Utility functions</h1>
+            </section>
+
+            <section>
+             <h3>jQuery.fx.off</h3>
+             <p>Globally disable all animations.</p>
+
+<p>When this property is set to true, all animation methods will immediately set elements to their final state when called, rather than displaying an effect. This may be desirable for a couple reasons:</p>
+<ul>
+  <li>
+    jQuery is being used on a low-resource device.
+  </li>
+  <li>
+    Users are encountering accessibility problems with the animations (see the article Turn Off Animation for more information).
+  </li>
+</ul>
+
+            </section>
+
+            <section>
+              <h2>jQuery.support</h2>
+              <p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use</p>
+<pre><code class="javascript" data-trim> 
+if (!$.support.leadingWhitespace) {
+    //IE7 and 8 stuff
+}
+</code></pre>
+            </section>
+
+
+            <section>
+              <h2>jQuery.noConflict()</h2>
+              <p>Relinquish jQuery's control of the $ variable.</p>
+<pre><code class="javascript" data-trim> 
+//if other script uses $
+&lt;script src="other_lib.js">&lt;/script>
+&lt;script src="jquery.js">&lt;/script>
+&lt;script>
+$.noConflict();
+jQuery( document ).ready(function( $ ) {
+  // Code that uses jQuery's $ can follow here.
+});
+// Code that uses other library's $ can follow here.
+
+//or two different jqueries
+
+&lt;script src="other_lib.js">&lt;/script>
+&lt;script src="jquery.js">&lt;/script>
+&lt;script>
+$.noConflict();
+// Code that uses other library's $ can follow here.
+&lt;/script>
+
+&lt;/script>
+</code></pre>
+<a href="http://jsbin.com/OCudoJi/1/edit">JSBin: http://jsbin.com/OCudoJi/1/edit</a>
+            </section>
+
+            <section>
+              <h2>Goodies</h2>
+<pre><code class="javascript" data-trim> 
+.trim() //Remove the whitespace from the beginning and end of a string.
+
+jQuery.map() //Translate all items in an array or object to new 
+//array of items.
+
+.map() //Pass each element in the current matched set through a 
+//function, producing a new jQuery object containing the return values.
+
+.each() //Iterate over a jQuery object, 
+//executing a function for each matched element.
+
+.grep() // Finds the elements of an array which satisfy a filter function. 
+//The original array is not affected.
+</code></pre>
+            </section>
+
+            <section>
+              <h2>Array goodies</h2>
+<pre><code class="javascript" data-trim> 
+jQuery.inArray( "John", arr ) ); //Search for a specified value within 
+//an array and return its index (or -1 if not found).
+
+// Returns a NodeList
+var elems = document.getElementsByTagName( "div" );
+// Convert the NodeList to an Array
+var arr = jQuery.makeArray( elems );
+
+jQuery.unique() //Sorts an array of DOM elements, in place, with 
+//the duplicates removed. ONLY works on arrays of DOM elements.
+
+var newArray = $.merge([], oldArray); // Merge the contents of two 
+//arrays together into the first array.
+
+$.param({ a: { b: 1, c: 2 }, d: [ 3, 4, { e: 5 } ] });
+// "a[b]=1&a[c]=2&d[]=3&d[]=4&d[2][e]=5"
+//serialize
+
+
+</code></pre>              
+            </section>
+
+            <section>
+              <h2>Extend</h2>
+              <p>Merge the contents of two or more objects together into the first object.</p>
+<pre><code class="javascript" data-trim> 
+var object1 = {
+  apple: 0,
+  banana: { weight: 52, price: 100 },
+  cherry: 97
+};
+var object2 = {
+  banana: { price: 200 },
+  durian: 100
+};
+ 
+// Merge object2 into object1
+$.extend( object1, object2 );
+//{"apple":0,"banana":{"price":200},"cherry":97,"durian":100}
+</code></pre>
+
+            </section>
+
+            <section>
+              <h2>Even more goodies</h2>
+<pre><code class="javascript" data-trim> 
+$.isArray([]) //checks if something is an array
+
+//Check an object to see if it's empty.
+jQuery.isEmptyObject({}); // true
+jQuery.isEmptyObject({ foo: "bar" }); // false
+
+//Finds out if the parameter is a function.
+$.isFunction(function() {}); //true
+
+//Check to see if an object is a plain object 
+//(created using "{}" or "new Object").
+jQuery.isPlainObject({}) // true
+jQuery.isPlainObject( "test" ) // false
+
+//Check to see if a DOM node is within an XML document 
+//(or is an XML document).
+jQuery.isXMLDoc( document ) // false
+
+</code></pre>
+
+            </section>
+
+            <section>
+              <h2>..Even more goodies</h2>
+<pre><code class="javascript" data-trim> 
+
+//You can use this empty function when you wish to pass 
+//around a function that will do nothing.
+jQuery.noop() 
+
+//Check to see if a DOM element is a descendant of another DOM element.
+$.contains( document.documentElement, document.body ); // true
+$.contains( document.body, document.documentElement ); // false
+
+//Takes a well-formed JSON string and returns the 
+//resulting JavaScript object.
+var obj = jQuery.parseJSON( '{ "name": "John" }' );
+
+//Execute some JS code globally
+function test() {
+  jQuery.globalEval( "var newVar = true;" )
+}
+test();
+// newVar === true
+</code></pre>
+
+            </section>
+
+            <section>
+              <h2>jQuery.getScript()</h2>
+              <p>Load a JavaScript file from the server using a GET HTTP request, then execute it.</p>
+<pre><code class="javascript" data-trim> 
+
+var url = "https://raw.github.com/jquery/jquery-color/master/jquery.color.js";
+$.getScript( url, function() {
+  $( "#go" ).click(function() {
+    $( ".block" )
+      .animate({
+        backgroundColor: "rgb(255, 180, 180)"
+      }, 1000 )
+      .delay( 500 )
+      .animate({
+        backgroundColor: "olive"
+      }, 1000 )
+      .delay( 500 )
+      .animate({
+        backgroundColor: "#00f"
+      }, 1000 );
+  });
+});
+</code></pre>
+
+            </section>
+
+            <section>
+              <h1>jQuery plugin</h1>
+              <h3>A brand new way to alert('Hello World!')</h3>
+            </section>
+
+            <section>
+              <h2>Useful links</h2>
+              <ul>
+                <li><a href="http://plugins.jquery.com/">Plugin registry/</a></li>
+                <li><a href="http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#jquerypluginpatterns">jQuery plugin design patterns</a></li>
+              </ul>
+            </section>
+
+            <section>
+              <h1>AJAX</h1>
+            </section>
+
+            <section>
+              <h2>What is AJAX?</h2>
+              <h3>AJAX = Asynchronous JavaScript and XML.</h3>
+              <p>AJAX is the art of exchanging data with a server, and updating parts of a web page - without reloading the whole page.</p>
+            </section>
+
+            <section>
+              <h2>.load()</h2>
+              <p>Load data from the server and place the returned HTML into the matched element.</p>
+<pre><code class="javascript" data-trim> 
+//with callback
+$( "#result" ).load( "ajax/test.html", function() {
+  alert( "Load was performed." );
+});
+
+//Only fetch part of document
+$( "#result" ).load( "ajax/test.html #container" );
+</code></pre>
+
+            </section>
+
+            <section>
+              <h2>.get()</h2>
+              <p>Load data from the server using a HTTP GET request.</p>
+<pre><code class="javascript" data-trim> 
+// Assign handlers immediately after making the request,
+// and remember the jqxhr object for this request
+var jqxhr = $.get( "example.php", {foo: bar}, function() {
+  alert( "success" );
+})
+  .done(function() {
+    alert( "second success" );
+  })
+  .fail(function() {
+    alert( "error" );
+  })
+  .always(function() {
+    alert( "finished" );
+  });
+ 
+// Perform other work here ...
+ 
+// Set another completion function for the request above
+jqxhr.always(function() {
+  alert( "second finished" );
+});
+</code></pre>
+
+            </section>
+
+            <section>
+              <h2>.getJSON()</h2>
+              <p>Load JSON-encoded data from the server using a GET HTTP request.</p>
+<pre><code class="javascript" data-trim> 
+$.getJSON( "test.js", { name: "John", time: "2pm" } )
+  .done(function( json ) {
+    console.log( "JSON Data: " + json.users[ 3 ].name );
+  })
+  .fail(function( jqxhr, textStatus, error ) {
+    var err = textStatus + ", " + error;
+    console.log( "Request Failed: " + err );
+});
+</code></pre>
+
+            </section>
+
+            <section>
+              <h2>.post()</h2>
+              <p>Load data from the server using a HTTP POST request.</p>
+<pre><code class="javascript" data-trim> 
+// Assign handlers immediately after making the request,
+// and remember the jqxhr object for this request
+var jqxhr = $.post( "example.php", {foo: bar}, function() {
+  alert( "success" );
+})
+  .done(function() {
+    alert( "second success" );
+  })
+  .fail(function() {
+    alert( "error" );
+  })
+  .always(function() {
+    alert( "finished" );
+});
+ 
+// Perform other work here ...
+ 
+// Set another completion function for the request above
+jqxhr.always(function() {
+  alert( "second finished" );
+});
+</code></pre>
+
+            </section> 
+
+            <section>
+              <h2>.ajax()</h2>
+              <p>Perform an asynchronous HTTP (Ajax) request.</p>
+              <p><a href="http://api.jquery.com/jQuery.ajax/">The long version</a></p>
+<pre><code class="javascript" data-trim> 
+//TL DR
+$.ajax({
+  type: "POST",
+  url: "some.php",
+  data: { name: "John", location: "Boston" }
+})
+  .done(function( msg ) {
+    alert( "Data Saved: " + msg );
+  });
+
+$.ajax({
+  url: "test.html",
+  cache: false
+})
+  .done(function( html ) {
+    $( "#results" ).append( html );
+  });
+</code></pre>
+
+            </section> 
+
+            <section>
+              <h2>.ajaxSetup()</h2>
+              <p>Set default values for future Ajax requests. Its use is not recommended.</p>
+<pre><code class="javascript" data-trim>
+//Sets the defaults for Ajax requests to the 
+//url "/xmlhttp/", disables global handlers and 
+//uses POST instead of GET. The following Ajax requests 
+//then sends some data without having to set anything else. 
+$.ajaxSetup({
+  url: "/xmlhttp/",
+  global: false,
+  type: "POST"
+});
+$.ajax({ data: myData });
+</code></pre>
+
+            </section> 
+
+            <section>
+              <h2>jQuery UI</h2>
+              <p><a href="http://jqueryui.com/">http://jqueryui.com/ - cancer, but sometimes you gotta do, what you’ve got to do.</a></p>                
+            </section>
+
+            <section>
+              <h2>jQuery mobile</h2>
+              <p><a href="http://jquerymobile.com/">jQuery Mobile: Touch-Optimized Web Framework for Smartphones & Tablets</a></p>                
+            </section>
+
+            <section>
+              <h2>When not to use jQuery</h2>
+              <ul>
+<li>jquerymobile analog- http://eightmedia.github.io/hammer.js/</li>
+<li>http://tech.pro/tutorial/1385/out-growing-jquery</li>
+<li>http://remysharp.com/2013/04/19/i-know-jquery-now-what/</li>
+<li>http://www.leebrimelow.com/native-methods-jquery/</li>
+<li>http://www.2ality.com/2013/06/triggering-events.html</li>
+<li>https://github.com/eligrey/classList.js/blob/master/classList.js</li>
+<li>http://blog.ponyfoo.com/2013/06/10/uncovering-the-native-dom-api</li>
+<li>http://zeptojs.com/</li>
+
+
+              </ul>
+            </section>
+
+
+            <section>
+              <h2>Reading</h2>
+              <ul>
+                <li><a href="http://www.google.com/url?q=http%3A%2F%2Frutracker.org%2Fforum%2Fviewtopic.php%3Ft%3D4212327&sa=D&sntz=1&usg=AFQjCNHo6QFvouXzA9J9EV2Kf0Z2NCfJHg">Bear Bibeault and Yehuda Katz - jQuery in Action</a></li>
+                <li><a href="http://api.jquery.com/">http://api.jquery.com/</a></li>
+                <li><a href="http://learn.jquery.com/">http://learn.jquery.com/</a></li>
+                <li><a href="http://robflaherty.github.io/jquery-annotated-source/">jQuery annotated source</a></li>
+                <li><a href="http://www.codeschool.com/courses/try-jquery">Try jQuery</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference/Events">Event reference</a></li>
+                <li><a href="http://flippinawesome.org/2013/05/06/5-things-you-should-stop-doing-with-jquery/">5 things you should stop doing with jQuery</a></li>
+              </ul>
+            </section>
+
+
+            <section>
+              <h1>The End</h1>
+            </section>
+          </div>
+        </div>
+
+
+        <script src="../shared/lib/js/head.min.js"></script>
+        <script src="../shared/js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                { src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '../shared/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: '../shared/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                { src: '../shared/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+              });
+
+</script>
+</body>
+</html>
+
