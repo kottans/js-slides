@@ -1,2 +1,2 @@
-A bunch of presenatations for CodeAngels JS
+A bunch of presenatations for Kottans JS
 https://slid.es
