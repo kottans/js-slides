@@ -72,7 +72,7 @@ Your entry point
 
 --
 
-# <img src="images/module.png" alt="Module stuff" style='width:100%; height: 100%; position: absolute; top: 0; left: 0;'>
+#<img src="images/module.png" alt="Module stuff" style='width:100%; height: 100%; top: 0; left: 0;'>
 
 
 --
