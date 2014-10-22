@@ -7,25 +7,25 @@ output: index.html
 
 --
 
-# Hi!
-## Hope you enjoy the ride and bring something to the table
+# Привет
+## Устраивайтесь поудобнее. Мы начинаем!
 
 --
 
-# Kottans' history
+# История котанов
 
 --
 
-# Rules
-  + Be nice
-  + Help others
-  + Seek help
-  + Be mindful of others time
+# Правила
+  + Будь няшей
+  + Помогай
+  + Проси помощи
+  + Уважай чужое время
 
 --
 
-# No feigning surprise.
-You canot be shocked by someone not knowing something that you know.
+# Нет мнимому удивлению
+Нельзя быть шокированным тем, что кто-то не знает того, что знаете вы.
 
 --
 
@@ -39,6 +39,14 @@ You canot be shocked by someone not knowing something that you know.
 
 --
 
+# [Webstorm](https://www.jetbrains.com/webstorm/)
+## Also [PhpStorm](https://www.jetbrains.com/phpstorm/)
+
+--
+
+# Editors
+
+--
 # Sublime
 http://sublimetext.com
 http://code.tutsplus.com/tutorials/sublime-text-2-first-steps--pre-43263
@@ -61,8 +69,8 @@ http://sixrevisions.com/web-development/git-tips/
 --
 
 # Github
-http://github.com
-Создать repo c домашками, в нём раскладывать задания по неделям.
+http://github.com  
+Создать репозитарий c домашками, в нём раскладывать задания по неделям.
 
 --
 
