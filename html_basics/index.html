@@ -506,22 +506,31 @@
 					<h1>Form</h1>
 <pre><code contenteditable data-trim style='width: calc(80% + 4px)'>
 <form action="demo_form.asp" method="post">
-<input type="text" name="email" size="40" maxlength="50">
-<input type="password">
-<input type="checkbox" checked="checked">
-<input type="radio" checked="checked">
-<input type="submit" value="Send">
-<input type="reset">
-<input type="hidden">
-<select>
-  <option>Apples</option>
-  <option selected="selected">Bananas</option>
-  <option>Cherries</option>
-</select>
-<textarea name="comment" rows="60" cols="20"></textarea>
+  <input type="text" name="email" size="40" maxlength="50">
+  <input type="password">
+  <input type="checkbox" checked="checked">
+  <input type="radio" checked="checked">
+  <input type="submit" value="Send">
+  <input type="reset">
+  <input type="hidden">
+  <p>
+    <input list="variant">
+    <datalist id="variant">
+      <option value="BlueItem"></option>
+	  <option value="OrangeItem"></option>
+	  <option value="OrangeItem#2"></option>
+	  <option value="GreenItem"></option>
+    </datalist>
+  </p>
+  <select>
+    <option>Apples</option>
+    <option selected="selected">Bananas</option>
+    <option>Cherries</option>
+  </select>
+  <textarea name="comment" rows="60" cols="20"></textarea>
 </form>
 </code></pre>
-				<div class="comments" style='width: calc(20% - 4px); margin:0'>
+				<div class="comments" style='width: calc(20% - 4px); margin:0 0 0 2%'>
 					<form action="demo_form.asp" method="post/get">
 						<input type="text" name="email" size="40" maxlength="50">
 						<input type="password">
@@ -530,6 +539,15 @@
 						<input type="submit" value="Send">
 						<input type="reset">
 						<input type="hidden">
+						<p>
+							<input list="variants">
+							<datalist id="variants">
+								<option value="BlueItem"></option>
+								<option value="OrangeItem"></option>
+								<option value="OrangeItem#2"></option>
+								<option value="GreenItem"></option>
+							</datalist>
+						</p>
 						<select>
 						<option>Apples</option>
 						<option selected="selected">Bananas</option>
