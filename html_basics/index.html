@@ -59,10 +59,10 @@
 <pre><code contenteditable data-trim class="text-left">
 &lt;!DOCTYPE html>
 &lt;html>
-&lt;body>
-&lt;h1&gt;My First Heading&lt;/h1>
-&lt;p&gt;My first paragraph.&lt;/p>
-&lt;/body>
+    &lt;body>
+	&lt;h1&gt;My First Heading&lt;/h1>
+	&lt;p&gt;My first paragraph.&lt;/p>
+    &lt;/body>
 &lt;/html>
 </code></pre>
 
@@ -102,7 +102,8 @@
 					</p>
 
 					<p class="fragment">
-					However, not all of these elements require the closing tag. Some elements, the so-called void elements, do not have an end tag. ie: <span class="inline-code">&ltbr/></span>, <span class="inline-code">&ltimg&gt</span>
+					However, not all of these elements require the closing tag. Some elements, the so-called void elements, do not have an end tag. ie:
+					<span class="inline-code">&ltbr/></span>, <span class="inline-code">&ltimg/&gt</span>
 					</p>
 
 					<p class="fragment">
@@ -196,7 +197,7 @@
 				<section>
 					<h1>External resources</h1>
 					<p  class='text-left'>To get our resources we have to specify what and where from we're getting. The first one is being told by special attributes - rel or type, i.e.:</p>
-					<p class="inline-code">&ltlink rel="icon" type="image/png" href="/somewhere/myicon.png" /></p>
+					<p class="inline-code">&ltlink rel="shortcut icon" href="/somewhere/myicon.png" /></p>
 					<p>or</p>
 					<p class="inline-code">&ltlink rel="stylesheet" href="../shared/css/reveal.min.css"></p>
 				</section>
@@ -215,7 +216,7 @@
 					</ul></p>
 				</section>
 				<section>
-					<h1>Let's see some examples:</h1>
+					<h2>Let's see some examples:</h2>
 <pre><code contenteditable data-trim>
 &ltimg src='/relative_to_host_sample_url_image.jpg'/>
 &ltimg src='../shared/current_relative_sample_url_image.jpg'/>
@@ -257,9 +258,9 @@
 				<section>
 					<h1>Manipulating relative resolving</h1>
 					<p>
-						You can also change the way relative resolving works by setting href at &ltbase> tag, ie: <span class="inline-code">&ltBASE href="http://www.google.com"></span>
+						You can also change the way relative resolving works by setting href at &ltbase> tag, ie: <span class="inline-code">&ltBASE href="http://draft.com.ua/img/"></span>
 						This attribute specifies an absolute URI that acts as the base URI for resolving relative URIs.
-						<a href="html/base_changed.html">See sample.</a>
+						<a href="html/base_changed.html" target="_blank">See sample.</a>
 					</p>
 				</section>
 				<section class="stack">
@@ -302,8 +303,8 @@
 								<li>can set name of the frame where content document must be loaded</li>
 							</ol>
 							ie:
-							<pre><code contenteditable >&ltmeta http-equiv="content-type" content="text/html; charset=UTF-8">
-	&ltmeta http-equiv="content-language" content="en-US"></code></pre>
+							<pre><code contenteditable >&ltmeta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	&ltmeta http-equiv="content-language" content="en-US"/></code></pre>
 						<a href="http://www.w3schools.com/jsref/prop_meta_httpequiv.asp">More usages.</a></p>
 					</section>
 					<section>
@@ -337,14 +338,16 @@
 						<span class="inline-code">&lth1></span>,
 						<span class="inline-code">&ltp></span>,
 						<span class="inline-code">&ltul></span>,
-						<span class="inline-code">&lttable></span>.
+						<span class="inline-code">&ltdiv></span>.
 					</p>
 					<p class="fragment">
 						Inline elements are normally displayed without starting a new line. i.e.:
-						<span class="inline-code">&ltb></span>,
-						<span class="inline-code">&lttd></span>,
+						<span class="inline-code">&ltspan></span>,
 						<span class="inline-code">&lta></span>,
 						<span class="inline-code">&ltimg></span>.
+					</p>
+					<p class="fragment">
+						
 					</p>
 				</section>
 				<section>
@@ -364,7 +367,7 @@
 				<section>
 					<h1>Formatters</h1>
 					<ul class='plain-list'>
-					<li class='fragment'><b>&ltb>Bold&lt/b></b></li>
+					<li class='fragment'><b>&ltb>b&lt/b></b></li>
 					<li class='fragment'><i>&lti>Italic&lt/i></i></li>
 					<li class='fragment'><code contenteditable >&ltcode>Computer code, for example&lt/code></code></li>
 					<li class='fragment'><em>&ltem>emphasized&lt/em></em></li>
@@ -380,7 +383,6 @@
 
 						<li class="fragment"><abbr title='Unidentified flying object'>&ltabbr title='Unidentified flying object'>UFO&lt/abbr></abbr></li>
 						<li class="fragment"><address>&ltaddress>Adress goes here&lt/address></address></li>
-						<li class="fragment"><bdo dir="rtl">&ltbdo dir="rtl">This text will appear from right to left&lt/bdo></bdo></li>
 						<li class="fragment"><blockquote>&ltblockquote>Quotation&lt/blockquote></blockquote> </li>
 						<li class="fragment"><cite>&ltcite>title of a work citing from&lt/cite></cite> </li>
 						<li class="fragment"><del>&ltdel>Deleted text&lt/del></del></li>
@@ -393,10 +395,10 @@
 				<section>
 					<h1>Links</h1>
 					<ol>
-						<li><a href="google.com">Link text.</a></li>
-						<li><a href="google.com"><img alt="random image I didn't care about" width='100' height='50' src="img/rel_attr.png"/> </a></li>
+						<li><a href="https://www.google.com">Link text.</a></li>
+						<li><a href="https://www.google.com"><img alt="random image I didn't care about" width='100' height='50' src="img/rel_attr.png"/> </a></li>
 						<li><a href="mailto:johny@somewhere.else">Send e-mail</a></li>
-						<li><a href="#area-51">Anchor</a
+						<li><a href="#51">Anchor</a
 					</ol>
 				</section>
 				<section class='annotated'>
@@ -405,11 +407,11 @@
 <pre><code contenteditable class='text-left' data-trim>
 <!-- Unordered list -->
 <ul>
-  <li>One</li>
-  <li>Two</li>
-  <li>Three</li>
+    <li>One</li>
+    <li>Two</li>
+    <li>Three</li>
 </ul></code></pre>
-<ul class='comments small-list' style='line-height: 75%'>
+<ul class='comments small-list' style='line-height: 50%'>
 		<li>One</li>
 		<li>Two</li>
 		<li>Three</li>
@@ -419,11 +421,11 @@
 					<div class="fragment">
 <pre><code contenteditable class='text-left'><!-- Ordered list -->
 <ol>
-  <li>One</li>
-  <li>Two</li>
-  <li>Three</li>
+    <li>One</li>
+    <li>Two</li>
+    <li>Three</li>
 </ol></code></pre>
-<ol class='comments small-list' style='line-height: 75%'>
+<ol class='comments small-list' style='line-height: 50%'>
 			<li>One</li>
 		<li>Two</li>
 		<li>Three</li>
@@ -432,22 +434,20 @@
 <div class="fragment">
 <pre><code contenteditable class='text-left'><!-- Definition list -->
 <dl>
-  <dt>Item 1</dt>
+    <dt>Item 1</dt>
     <dd>Describe item 1</dd>
-  <dt>Item 2</dt>
+    
+    <dt>Item 2</dt>
     <dd>Describe item 2</dd>
 </dl>
 </code></pre>
 <div class="comments text-left">
-          <dl  style='-webkit-margin-before: 1em;
--webkit-margin-after: 1em;
--webkit-margin-start: 0px;
--webkit-margin-end: 0px;'>
-  <dt >Item 1</dt>
-    <dd style='-webkit-margin-start: 40px;'>Describe item 1</dd>
-  <dt>Item 2</dt>
-    <dd style='-webkit-margin-start: 40px;'>Describe item 2</dd>
-</dl>
+        <dl>
+		<dt >Item 1</dt>
+		<dd>Describe item 1</dd>
+		<dt>Item 2</dt>
+		<dd>Describe item 2</dd>
+	</dl>
 </div>
 </div>
 
@@ -458,40 +458,46 @@
 
 <pre><code contenteditable data-trim>
 <table border="1">
-	<thead><tr>
-    <th>table header</th>
-    <th>table header</th>
-  </tr></thead>
-  <tfoot><tr>
-    <td>table footer</td>
-    <td>table footer</td>
-  </tr></tfoot>
-  <tbody><tr>
-    <td>table data</td>
-    <td>table data</td>
-  </tr></tbody>
+ <thead>
+  <tr>
+   <th>table header</th>
+   <th>table header</th>
+  </tr>
+ </thead>
+ <tfoot>
+  <tr>
+   <td>table footer</td>
+   <td>table footer</td>
+  </tr>
+ </tfoot>
+ <tbody>
+  <tr>
+   <td>table footer</td>
+   <td>table footer</td>
+  </tr>
+ </tbody>
 </table>
 </code></pre>
 	<div class="comments">
 		<table class='table' border="1">
 			<thead>
-		  <tr>
-		    <th>table header</th>
-		    <th>table header</th>
-		  </tr>
-		  </thead>
-		  <tbody>
-		  <tr>
-		    <td>table data</td>
-		    <td>table data</td>
-		  </tr>
-		  </tbody>
-		  <tfoot>
-		  <tr>
-		    <td>table footer</td>
-		    <td>table footer</td>
-		  </tr>
-		  </tfoot>
+				<tr>
+					<th>table header</th>
+					<th>table header</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>table data</td>
+					<td>table data</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>table footer</td>
+					<td>table footer</td>
+				</tr>
+			</tfoot>
 		</table>
 	</div>
 				</section>
@@ -501,7 +507,7 @@
 				</section>
 				<section class="annotated">
 					<h1>Form</h1>
-<pre><code contenteditable data-trim style='width: -webkit-calc(80% + 4px)'>
+<pre><code contenteditable data-trim style='width: calc(80% + 4px)'>
 <form action="demo_form.asp" method="post">
 <input type="text" name="email" size="40" maxlength="50">
 <input type="password">
@@ -511,14 +517,14 @@
 <input type="reset">
 <input type="hidden">
 <select>
-<option>Apples</option>
-<option selected="selected">Bananas</option>
-<option>Cherries</option>
+  <option>Apples</option>
+  <option selected="selected">Bananas</option>
+  <option>Cherries</option>
 </select>
 <textarea name="comment" rows="60" cols="20"></textarea>
 </form>
 </code></pre>
-				<div class="comments" style='width: -webkit-calc(20% - 4px); margin:0'>
+				<div class="comments" style='width: calc(20% - 4px); margin:0'>
 					<form action="demo_form.asp" method="post/get">
 						<input type="text" name="email" size="40" maxlength="50">
 						<input type="password">
@@ -532,7 +538,7 @@
 						<option selected="selected">Bananas</option>
 						<option>Cherries</option>
 						</select>
-						<textarea name="comment" rows="5" cols="5"></textarea>
+						<p><textarea name="comment" rows="5" cols="25"></textarea></p>
 					</form>
 				</div><br>
 				<p><a href="http://nativeformelements.com/">Native form elements</a> (
@@ -543,19 +549,17 @@
 				<section>
 					<h3>Bunch of new structural tags from HTML5</h3>
 					<ul class="plain-list small-list">
-					<li><span class="inline-code">&ltarticle></span> - as in clothing article</li>
-					<li class='fragment'><span class="inline-code">&ltaside></span> - aside from the page content</li>
-					<li class='fragment'><span class="inline-code">&ltbdi></span> - might be formatted in different direction</li>
-					<li class='fragment'><span class="inline-code">&ltcommand></span> - command button for user to invoke</li>
-					<li class='fragment'><span class="inline-code">&ltdetails></span> - additional details that can be shown/hidden</li>
-					<li class='fragment'><span class="inline-code">&ltdialog></span> - dialog box/window</li>
-					<li class='fragment'><span class="inline-code">&ltfooter></span> - footer for document/section</li>
-					<li class='fragment'><span class="inline-code">&ltheader></span>- header for document/section </li>
-					<li class='fragment'><span class="inline-code">&ltprogress></span> - progress of a task</li>
-					<li class='fragment'><span class="inline-code">&ltruby> - ruby annotation for East Asian typography</span></li>
-					<li class='fragment'><span class="inline-code">&ltsection> - section in document</span></li>
-
-
+						<li><span class="inline-code">&ltheader></span>- header for document/section </li>
+						<li class='fragment'><span class="inline-code">&ltfooter></span> - footer for document/section</li>
+						<li class='fragment'><span class="inline-code">&ltsection> - section in document</span></li>
+						<li class='fragment'><span class="inline-code">&ltarticle></span> - as in clothing article</li>
+						<li class='fragment'><span class="inline-code">&ltaside></span> - aside from the page content</li>
+						<li class='fragment'><span class="inline-code">&ltbdi></span> - might be formatted in different direction</li>
+						<li class='fragment'><span class="inline-code">&ltcommand></span> - command button for user to invoke</li>
+						<li class='fragment'><span class="inline-code">&ltdetails></span> - additional details that can be shown/hidden</li>
+						<li class='fragment'><span class="inline-code">&ltdialog></span> - dialog box/window</li>
+						<li class='fragment'><span class="inline-code">&ltprogress></span> - progress of a task</li>
+						<li class='fragment'><span class="inline-code">&ltruby> - ruby annotation for East Asian typography</span></li>
 					</ul>
 				</section>
 
@@ -583,20 +587,7 @@
 							Web page layout is very important to make your website look good. It defines structure relative to <span title='you have main content, your navigation, header/footer, etc.'>content </span> and <span title="you wouldn't format your header same way you format main content">styling</span>.
 						</p>
 					</section>
-					<section>
-						<h1><a href="http://ryanfait.com/sticky-footer/">Sticky-footer example</a></h1>
-
-<pre><code contenteditable data-trim>
-&ltbody>
-<div class="wrapper">
-	<div class="header"></div>
-	Content goes here
-	<div class="push"></div>
-</div>
-<div class="footer"></div>
-&lt/body>
-</code></pre>
-					</section>
+					
 					<section>
 						<h1><a href="http://getbootstrap.com/2.3.2/getting-started.html#examples">Bootstrap examples</a></h1>
 						<a href="http://getbootstrap.com/2.3.2/examples/starter-template.html">i.e.</a>:
@@ -637,7 +628,8 @@
 					<section>
 						<h1>Grids</h1>
 						<p>Table idea succesors</p>
-						<a href="http://getbootstrap.com/2.3.2/scaffolding.html#gridSystem">Bootstrap grid</a><br/>
+						<a href="http://gridpak.com/">Gridpak</a><br/>
+						<a href="http://getbootstrap.com/css/#grid">Bootstrap grid</a><br/>
 						<a href="http://cobyism.com/gridism/">Gridism</a><br/>
 						<a href="http://960.gs/">960 grid system</a><br/>
 						<p>Good thing you can generate your own grid using sass/less loops.</p>
@@ -650,18 +642,7 @@
 </code></pre>
 						</p>
 					</section>
-					<section>
-						<h1>Flexboxes</h1>
-						<a href="http://www.netmagazine.com/files/tutorials/demos/2011/02/the-css3-flexible-box-model-explained/demo/demo.html">Flex box demo</a><br/>
-						<a href="http://www.netmagazine.com/tutorials/css3-flexible-box-model-explained">Read the article</a><br/>
-						<a href="http://coding.smashingmagazine.com/2011/09/19/css3-flexible-box-layout-explained/">Read some more</a><br/>
-						<p>Not much at layouting routine - css handles it for us.</p>
-					</section>
-					<section>
-						<h1>CSS column feature</h1>
-						<a href="http://davidwalsh.name/demo/css-columns.php">css-columns</a>
-						<p>Same as flexboxes.</p>
-					</section>
+
 					<section>
 						<h1>Mostly fluid layout</h1>
 						As can be found <a href="http://codepen.io/bradfrost/full/Iardn">here</a>.
@@ -724,14 +705,14 @@
 					<h1>Sample usage</h1>
 <pre class='fragment'><code contenteditable >Иван Пупкин, pupkin@gmail.com</code></pre>
 <p class="fragment">
-Let's <i>title</i> person and give his e-mail <i>address</i>.
+Let's <i>title</i> person and give his e-mail address.
 <pre class="fragment"><code contenteditable >&lth3>Иван Пупкин&lt/h3>
-&ltaddress>pupkin@gmail.com&lt/address></code></pre>
+&ltp>pupkin@gmail.com&lt/p></code></pre>
 </p>
 <p class="fragment">
 In case of styling, name classes accordingly
 <pre class="fragment"><code contenteditable >&lth3 class='name'>Иван Пупкин&lt/h3>
-&ltaddress class='email'>pupkin@gmail.com&lt/address>
+&ltp class='email'>pupkin@gmail.com&lt/p>
 </code></pre>
 </p>
 <p class="fragment">
@@ -741,18 +722,17 @@ In case of styling, name classes accordingly
         &ltspan class="given-name">Иван&lt/span>
         &ltspan class="family-name">Пупкин&lt/span>
     &lt/h3>
-    &ltaddress class="email">pupkin@gmail.com&lt/address>
+    &ltp class="email">pupkin@gmail.com&lt/p>
 </div></code></pre>
 </p>
 				</section>
-				<section>
-					<a href="http://pepelsbey.net/pres/push-it/">Additional reading on buttons</a>
-				</section>
+				
 				<section>
 					<h1>Special characters</h1>
 					<p>In case you need special characters, like &yen or &copy, you can either copy-paste them or use entity, that represent them <span class="inline-code">&ampyen</span> and <span class="inline-code">&ampcopy</span>
 					</p>
-					<a href="http://dev.w3.org/html5/html-author/charref">Full reference</a>
+					<a href="http://dev.w3.org/html5/html-author/charref">Full reference</a><br/>
+					<a href="http://www.ascii.cl/htmlcodes.htm">HTML entities</a>
 				</section>
 				<section class="stack">
 					<section>
