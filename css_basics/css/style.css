@@ -215,5 +215,30 @@ ul.list_example + p {
     width: 200px;
     background: lightblue;
     transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
+}
+
+.reveal .animation_example {
+    background: #0080ff;
+    margin: 0 auto;
+    padding-top: 70px;
+    width: 200px;
+    height: 200px;
+    box-sizing: border-box;
+    position: relative;
+    -webkit-animation: tralala 3s infinite alternate;
+    animation: tralala 5s infinite alternate;
+}
+
+@-webkit-keyframes tralala {
+    0%   {top: 0px; left: 0;}
+    25%  {top: 100px; left: 100px; background: #0080ff; border-radius: 100px;}
+    75%  {top: 50px; left: 5px; background: #ff0;}
+    100% {top: 0px; left: 0px; border-radius: 0px;}
+}
+
+@keyframes tralala {
+    0%   {top: 0px; left: 0;}
+    25%  {top: 100px; left: 100px; background: #0080ff; border-radius: 100px;}
+    75%  {top: 50px; left: 5px; background: #ff0;}
+    100% {top: 0px; left: 0px; border-radius: 0px;}
 }
