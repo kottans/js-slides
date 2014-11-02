@@ -35,7 +35,6 @@
                                         <ul class="list2">
                                             <li>-moz-</li>
                                             <li>-webkit-</li>
-                                            <li>-o-</li>
                                             <li>-ms-</li>
                                         </ul>
                                     </section>
@@ -47,10 +46,9 @@
                                         <p><a href="http://caniuse.com/">http://caniuse.com/</a></p>
                                         <br/><br/>
                                         <h4>Prefixers:</h4>
-                                        <p><a href="http://prefixmycss.com/">http://prefixmycss.com/</a></p>
                                         <p><a href="http://cssprefixer.appspot.com/">http://cssprefixer.appspot.com/</a></p>
 					<p><a href="http://css3please.com/">http://css3please.com/</a></p>
-					<p><a href="http://prefixr.com/index.php">http://prefixr.com/index.php</a></p>
+					<p><a href="https://github.com/postcss/autoprefixer">https://github.com/postcss/autoprefixer</a></p>
                                     </section>
                                     <section>
                                         <h2>Other examples for your motivation:</h2>
@@ -69,8 +67,8 @@
                                         </ul>
 <pre><code data-trim contenteditable>
 div {
-    transform: rotate(Xdeg);
     transform: matrix(n,n,n,n,n,n);
+    transform: rotate(Xdeg);
     transform: translate(Xpx,Xpx);
     transform: translateX(x);
     transform: translateY(y);
@@ -82,6 +80,7 @@ div {
     transform: skewY(angle);
 }
 </code></pre>
+<p><a href="http://css3.bradshawenterprises.com/transforms/">transforms</a></p>
                                 </section>
                                 <section>
                                     <section>
@@ -102,7 +101,6 @@ div:hover {
     width: 200px;
     background: lightblue;
     transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
 }
 </code></pre>
                                     </section>
@@ -111,7 +109,7 @@ div:hover {
                                         <ul class="list2">
                                             <li>transition-property: none | all | property <small>can be multiple</small></li>
                                             <li>transition-duration: s | ms</li>
-                                            <li>transition-timing-function: linear | ease<small>default</small> | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n)</li>
+                                            <li>transition-timing-function: linear | ease<small>default</small> | ease-in | ease-out | ease-in-out | steps</li>
                                             <li>transition-delay: s | ms</li>
                                         </ul>
                                     </section>
@@ -126,6 +124,67 @@ div:hover {
                                             <li>media queries</li>
                                         </ul>
                                     </section>
+				</section>
+				<section>
+					<section>
+						<h2>Animation</h2>
+						<div class="animation_example">tra-la-la</div>
+					</section>
+					<section>
+<pre><code data-trim contenteditable>
+<div>tra-la-la</div>
+</code></pre>
+<pre><code data-trim contenteditable>
+div {
+    position: relative; margin: 0 auto; padding-top: 70px;
+    background: #0080ff; box-sizing: border-box;
+    width: 200px;height: 200px;   
+    animation: tralala 5s infinite alternate;
+}
+@keyframes tralala {
+    0%   {top: 0px; left: 0;}
+    25%  {top: 100px; left: 100px; background: #0080ff;
+          border-radius: 100px;}
+    75%  {top: 50px; left: 5px; background: #ff0;}
+    100% {top: 0px; left: 0px; border-radius: 0px;}
+}
+</code></pre>
+<p>Don't forget about -webkit vendor prefix:</p>
+<p>-webkit-animation, @-webkit-keyframes</p>
+					</section>
+					<section>
+						<h4>Properties</h4>
+<pre><code data-trim contenteditable>
+animation: [name] [duration] [iteration-count] [direction]
+[timing-function] [fill-mode] [delay]
+</code></pre>
+<pre><code data-trim contenteditable>
+@keyframes tralala {
+    from {property: value;}
+    to {property: value;}
+}
+</code></pre>
+					</section>
+					<section>
+<pre><code data-trim contenteditable>
+animation-name: name;
+animation-duration: Xs;
+animation-iteration-count: [integer];
+animation-direction: normal|alternate|reverse|alternate-reverse;
+animation-timing-function: linear|ease|ease-in|ease-out|etc;
+animation-fill-mode: forwards|backwards|both;
+animation-delay: Xs;
+</code></pre>
+					</section>
+				</section>
+				<section>
+					<h2>Calc( )</h2>
+					<h4>Examples</h4>
+<pre><code data-trim contenteditable>
+width: calc(100% / 7 * 2);
+height: calc(100% - 50px);
+background-position: calc(100% - 350px) calc(50% + 20px);
+</code></pre>
 				</section>
 			</div>
 		</div>
