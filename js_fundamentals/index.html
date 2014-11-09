@@ -275,7 +275,7 @@ Math.PI // 3.141592653589793 - Returns PI
         </section>
         <section>
             <h2>Objects as Hash</h2>
-          <pre><code class="javascript"
+          <pre><code class="javascript" style="max-height: none"
 >var obj = {},
      anotherObj = new Object();
 obj.hello = world;
@@ -286,7 +286,11 @@ obj['123']; // 345
 
 delete obj.hello;
 
-for (var i in obj) { console.log(i); }
+for (var i in obj) {
+  if(obj.hasOwnProperty(i)){
+   console.log(i); 
+  }
+}
 
 'prop' in obj // false
           </code></pre>
@@ -321,7 +325,7 @@ for(var i = 0, l = arr.length; i < l; i++) {
     console.log(arr[i]);
 }
         </code></pre>
-        <pre class="text-left fragment" data-fragment-index="2"><code class="javascript"
+        <pre class="text-left fragment" data-fragment-index="2"><code class="javascript" style="max-height: none"
         >var arr = [];
 arr[1]= 123;
 arr[100] = 456;
@@ -360,7 +364,7 @@ a.sort(function(a, b){
 }); // [1, 2, 5, 10]</code></pre>
         </section>
         <section>
-            <h2>Array's methods(requires Javascript 1.6)</h2>
+            <h2>Array's methods</h2>
           <pre><code class="javascript" style="max-height: none"
 >var arr = [1, 'some el', 5, 4], tmp = {};
 arr.forEach(function(el){
@@ -381,7 +385,6 @@ var items = [
 ];
 items.map(function(el){return el.id;}); // [1, 2, 3]
 
-// Requires Javascript 1.8
 [1,2,3,4,5].reduce(function(x, y){return x + y;}); // 15</code></pre>
 <div class="fragment" data-fragment-index="1">
   <a href="https://github.com/kriskowal/es5-shim/blob/master/es5-shim.js">es5-shim</a> contains all EcmaScript 5 methods that can be faithfully emulated with a legacy JavaScript engine.
@@ -464,7 +467,7 @@ d.x // undefined
 })('Hello World', 42); //42
           </code></pre>
           <div class="text-left fragment" data-fragment-index="1">&nbsp; &nbsp; &nbsp; <font style="font-size: 32px;">
-            <b>&nbsp;ES6 strict mode: undefined is read only</b>
+            <b>&nbsp;ES5 strict mode: undefined is read only</b>
         </font>
         </div>
         </section>
@@ -519,6 +522,7 @@ function f2c(x) {
 }
         </code></pre>
         <br>
+        <a href="http://javascript.ru/basic/regular-expression">Manual on javascript.ru</a>
         </section>
         <section>
         <h2>Exceptions</h2>
