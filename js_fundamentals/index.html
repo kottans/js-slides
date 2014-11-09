@@ -64,21 +64,6 @@
             <h2>General aspects</h2>
         </section>
         <section>
-          <h2>Hello World</h2>
-          <pre><code>
-&lt;!DOCTYPE HTML>
-&lt;html>
-    &lt;head>
-      &lt;meta charset='utf-8'/>
-    &lt;/head>
-    &lt;body>
-        &lt;script src='http://code.jquery.com/jquery-latest.min.js'>&lt;/script>
-        &lt;script>alert('Hello world');&lt;/script>
-    &lt;/body>
-&lt;/html>
-          </code></pre>
-        </section>
-        <section>
           <h2>Code Structure</h2>
           <pre><code class="javascript"
 >(function(w) {
@@ -136,11 +121,12 @@ function f(x, x) { }// is a SyntaxError - duplicate parameters
             <h2>Core JavaScript</h2>
         </section>
         <section>
+        <section>
           <h2>Variables</h2>
-          <pre><code  data-trim contenteditable style="word-wrap: break-word"  class="javascript"
->var localVar = 123,
-    anotherLocalVar = 345;
-    unexpectedGlobalVar = 567;
+          <pre><code  data-trim contenteditable style="word-wrap: break-word"  class="javascript">
+var localVar = 123,
+  anotherLocalVar = 345;
+  unexpectedGlobalVar = 567;
 /*
  * Variables in JavaScript can consist letters, numbers and symbols $ and _
  * Variables cannot be started with number
@@ -154,6 +140,28 @@ var MY_PI = 3.14, // constant, just our agreement
     3abc = 321, // incorrect
     _ = 5; // correct
           </code></pre>
+        </section>
+        <section>
+        <h2>Reserved Words</h2>
+        <pre><code  data-trim contenteditable style="word-wrap: break-word"  class="javascript">
+break          delete         function       return         typeof
+case           do             if             switch         var
+catch          else           in             this           void
+continue       false          instanceof     throw          while
+debugger       finally        new            true           with
+default        for            null           try
+</code></pre>
+
+<div class="text-center">Additionally in ES5</div>
+        <pre><code  data-trim contenteditable style="word-wrap: break-word"  class="javascript">
+class     const     enum      export    extends   import    super
+        </code></pre>
+        <div class="text-center">Additionally in Strict Mode</div>
+        <pre><code  data-trim contenteditable style="word-wrap: break-word"  class="javascript">
+implements     let            private        public         yield
+interface      package        protected      static
+        </code></pre>
+        </section>
         </section>
         <section>
           <h2 style="text-align: center;">String</h2>
@@ -920,6 +928,7 @@ setTimeout(showResult, 0);//setImmediate(func) as alternative technique
 result = 2*2;</code></pre>
         </section>
         <section>
+        <section>
           <h2>Client-Side JavaScript Overview</h2>
           <p class="text-left fragment">The main things, that JavaScript can do:</p>
           <p class="text-left"></p>
@@ -942,6 +951,22 @@ result = 2*2;</code></pre>
           <div>
             <br>
           </div>
+        </section>
+          <section>
+          <h2>Client-Side Declaration</h2>
+          <pre><code>
+&lt;!DOCTYPE HTML>
+&lt;html>
+    &lt;head>
+      &lt;meta charset='utf-8'/>
+    &lt;/head>
+    &lt;body>
+        &lt;script src='http://code.jquery.com/jquery-latest.min.js'>&lt;/script>
+        &lt;script>alert('Hello world');&lt;/script>
+    &lt;/body>
+&lt;/html>
+          </code></pre>
+        </section>
         </section>
         <section>
         <section>
