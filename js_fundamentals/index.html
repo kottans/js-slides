@@ -64,7 +64,7 @@
             <h2>General aspects</h2>
         </section>
         <section>
-          <h2>Code Structure</h2>
+          <h2>Automatic Semicolon Insertion</h2>
           <pre><code class="javascript"
 >(function(w) {
     function my(options) {
@@ -83,12 +83,13 @@
           <pre class="fragment" data-fragment-index="1"><code class="javascript"
 >(function(w) {
     function my(options) {
-        var myArr = [];
+        var myArr = [];// (1) <- inserted
+        // (2) Not inserted, lines got merged
         console.log('test')(myArr || []).forEach(function(i) {});
-        return;
+        return;// (3) <- inserted, breaks the return statement
         {
            attr: 'something'
-        }
+        }; // (4) <- inserted
     }
 })(window)</code></pre>
         </section>
@@ -115,6 +116,16 @@ function f(x, x) { }// is a SyntaxError - duplicate parameters
           <h2>Coding Style</h2>
           <div>
             <img src="img/cheatsheet.png" />
+          </div>
+        </section>
+        <section>
+        <h2>Linting utilities to use</h2>
+        <ul>
+          <li>JSHint</li>
+          <li>ESLint</li>
+        </ul>
+        <div>
+            <img src="img/jshint.png" />
           </div>
         </section>
         <section>
