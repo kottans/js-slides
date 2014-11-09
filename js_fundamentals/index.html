@@ -180,6 +180,7 @@ var MY_PI = 3.14, // constant, just our agreement
                 </code></pre>
         </section>
         <section>
+        <section>
         <h2>Number</h2>
         <div class="text-left">64-bit format, standart&nbsp;IEEE 754</div>
         <pre><code class="javascript"
@@ -202,6 +203,29 @@ var MY_PI = 3.14, // constant, just our agreement
         <div class="text-left">
         <br>
         </div>
+        </section>
+        <section>
+            <h2>Module Math</h2>
+        <pre><code class="javascript" style="max-height: none"
+>Math.random() //0.1099012941122055 - random number between 0 and 1
+
+Math.ceil(3.1) // 4 - rounded upwards to the nearest integer
+Math.floor(3.99) // 3 - rounded downwards to the nearest integer
+Math.round(3.4) // 3 - rounds x to the nearest integer
+Math.round(3.5) // 4
+Math.abs(-2) // 2 - returns the absolute value of x
+Math.max(x,y,z) // returns the largest argument
+Math.min(x,y,z) // returns the smallest argument
+Math.sqrt(3) // The square root of 3
+Math.pow(2, 3) // 8 - returns the value of 2 to the power of 3
+
+Math.sin, Math.cos, Math.tan // Trigonometric functions
+
+Math.PI // 3.141592653589793 - Returns PI
+
+// and many other useful functions...</code></pre>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math">Math on MDN</a>
+        </section>
         </section>
         <section>
             <h2>Boolean</h2>
@@ -436,25 +460,6 @@ if (typeof anyVar !== 'undefined') {...}
 if (anyVar) {...} // ReferenceError , if anyVar is not defined</code></pre>
         </section>
         <section>
-            <h2>Module Math</h2>
-        <pre><code class="javascript" style="max-height: none"
->Math.random() //0.1099012941122055 - random number between 0 and 1
-
-Math.ceil(3.1) // 4 - rounded upwards to the nearest integer
-Math.floor(3.99) // 3 - rounded downwards to the nearest integer
-Math.round(3.4) // 3 - rounds x to the nearest integer
-Math.round(3.5) // 4
-Math.abs(-2) // 2 - returns the absolute value of x
-
-Math.pow(2, 3) // 8 - returns the value of 2 to the power of 3
-
-Math.sin, Math.cos, Math.tan // Trigonometric functions
-
-Math.PI // 3.141592653589793 - Returns PI
-
-// and many other useful functions...</code></pre>
-        </section>
-        <section>
             <h2>RegExp</h2>
         <pre><code class="javascript" style="max-height: none"
 >var regexp = /hello/gi,
@@ -511,25 +516,34 @@ dummyFuncJustForFun(); // Error: I need a flaaaaag
         <br>
         </section>
         <section>
-        <h2 style="text-align: center;">Functions</h2>
-        <pre><code class="javascript" style="max-height: none"
->createObject(); // Object
+          <section>
+          <h2 style="text-align: center;">Functions</h2>
+          </section>
+          <section>
+          <h2 style="text-align: center;">Function Declaration</h2>
+        <pre><code class="javascript" style="max-height: none">
+
+createObject(); // Object
 function createObject() {
   return {};
 }
 
+function(){}(); // SyntaxError: Unexpected token (
+function a(){}(); // SyntaxError: Unexpected token )
++function(){}(); // NaN
+        </code></pre>
+        </section>
+        <section>
+          <h2 style="text-align: center;">Function Expression</h2>
+        <pre><code class="javascript" style="max-height: none">
 func(); // TypeError: undefined is not a function
 func2(); // ReferenceError: func2 is not defined
 var func = function() { return 123;  },
     b = func;
 console.log(func) // Object
 b(); // 123
-function(){}(); // SyntaxError: Unexpected token (
-function a(){}(); // SyntaxError: Unexpected token )
-+function(){}(); // NaN
-        </code></pre>
-        <pre  class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
->var anotherFunc = function(a, b) {
+
+var anotherFunc = function(a, b) {
   var c = 5;
   console.log(a);
   console.log(b);
@@ -539,10 +553,19 @@ anotherFunc(2);
 // 2
 // undefined
 console.log(c); // ReferenceError: c is not defined
+</code></pre>
+        <br>
+        </section>
+        <section>
+          <h2 style="text-align: center;">Named Function Expression</h2>
+        <pre><code class="javascript" style="max-height: none">
+var foo = function bar() { 
+  bar(); // works
+} 
 
-var foo = function bar() { bar(); } // works
 bar(); // ReferenceError</code></pre>
         <br>
+        </section>
         </section>
         <section>
           <h2>Closure</h2>
