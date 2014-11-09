@@ -168,7 +168,7 @@ interface      package        protected      static
           <pre><code class="javascript"
   >var newString = "My string",
        alsoNewString = 'Another string',
-       usingConstructor = new String("Something else");
+       usingConstructor = new String("Something else");//not recommended
                   </code></pre>
                   <pre><code class="javascript"
 >'Hello' + ' world' // => 'Hello world'
@@ -191,9 +191,9 @@ interface      package        protected      static
         <section>
         <h2>Number</h2>
         <div class="text-left">64-bit format, standart&nbsp;IEEE 754</div>
-        <pre><code class="javascript"
->var num = 123,
-    alsoANumber = new Number(567);
+        <pre><code class="javascript" style="max-height: none">
+var num = 123,
+    alsoANumber = new Number(567);// not recommended
 
  0xAA // 170 in hexadecimal
  010 // 8 in octal
@@ -202,11 +202,14 @@ interface      package        protected      static
  1/0 // Infinity
  1e1000 // Infinity
  'a' * 1 // NaN
- isNaN('abc' // true
+ isNaN('abc') // true
  isFinite(123) // true if value is not NaN or Infinity
 
  123.45678.toFixed(2) // "123.46"
  0.1 + 0.2 // 0.30000000000000004
+ parseInt('010') // 8
+ parseInt('0x10') // 16
+ parseInt('010', 10) // 10
         </code></pre>
         <div class="text-left">
         <br>
@@ -284,6 +287,7 @@ obj.a; // 3
           </code></pre>
         </section>
         <section>
+        <section>
             <h2>Array</h2>
           <pre><code class="javascript"
 >var arr = [1, 2, 'any string', {a: 1}],
@@ -301,15 +305,20 @@ matrix[1][2]; // 7
   arr.length; // 1001
         </code></pre>
         <pre class="fragment" data-fragment-index="1"><code class="javascript"
->var list = [1, 2, 3, 4, 5, ...... 100000000];
-for(var i = 0, l = list.length; i < l; i++) {
-    console.log(list[i]);
+>var arr = [1, 2, 3, 4, 5, ...... 100000000];
+for(var i = 0, l = arr.length; i < l; i++) {
+    console.log(arr[i]);
 }
         </code></pre>
-        <div class="text-left fragment" data-fragment-index="2">&nbsp; &nbsp; &nbsp; <font style="font-size: 32px;">
-            <b>&nbsp;Don't use for in</b>
-        </font>
-        </div>
+        <pre class="text-left fragment" data-fragment-index="2"><code class="javascript"
+        >var arr = [];
+arr[1]= 123;
+arr[100] = 456;
+for(var i in arr){
+  if (arr.hasOwnProperty(i)){
+    console.log(arr[i]);
+  }
+}</code></pre>
         </section>
         <section>
             <h2>Array's methods</h2>
@@ -366,6 +375,7 @@ items.map(function(el){return el.id;}); // [1, 2, 3]
 <div class="fragment" data-fragment-index="1">
   <a href="https://github.com/kriskowal/es5-shim/blob/master/es5-shim.js">es5-shim</a> contains all EcmaScript 5 methods that can be faithfully emulated with a legacy JavaScript engine.
 </div>
+        </section>
         </section>
         <section>
           <h2>Equality</h2>
@@ -427,7 +437,7 @@ foo === foo;                 // true
         </section>
         <section>
             <h2>undefined and null</h2>
-          <pre><code class="javascript"
+          <pre data-fragment-index="0"><code class="javascript"
 > var a,
     b = function(){},
     c = function(){ return; },
@@ -442,6 +452,10 @@ d.x // undefined
     return undefined || 3;
 })('Hello World', 42); //42
           </code></pre>
+          <div class="text-left fragment" data-fragment-index="1">&nbsp; &nbsp; &nbsp; <font style="font-size: 32px;">
+            <b>&nbsp;ES6 strict mode: undefined is read only</b>
+        </font>
+        </div>
         </section>
         <section>
             <h2>typeof and instanceOf</h2>
