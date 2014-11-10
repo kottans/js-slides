@@ -37,6 +37,7 @@
     <div class="reveal">
       <div class="slides">
           <section>
+          <section>
               <h3 style="text-transform: none;">JavaScript creation</h3>
           <div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
             <ul>
@@ -50,7 +51,7 @@
             </div>
             <ul>
               <li>June, 1996 - JScript (JavaScript from Microsoft);</li>
-                <li>November, 1996 - EcmaScript;</li>
+              <li>November, 1996 - EcmaScript</li>
             </ul>
           </div>
           <div style="position: absolute; width: 150px; height: 220px; z-index: 4; left: 799px; top: 85px; margin: 0px;" class="text-left absolute-element">
@@ -59,7 +60,22 @@
                   <font style="font-size: 24px;">Brendan Eich</font>
               </div>
           </div>
+          <br>
+          <br>
+          <a class="fragment" data-fragment-index="0" href="http://devchat.tv/js-jabber/124-jsj-the-origin-of-javascript-with-brendan-eich">Origin of JavaScript</a>
         </section>
+        <section>
+        <h3 style="text-transform: none;">History of EcmaScript</h3>
+        <ul>
+              <li>EcmaScript (November 1996)</li>
+              <li>EcmaScript 3 (December 1999)</li>
+              <li>EcmaScript 4 (abandoned July 2008)</li>
+              <li>EcmaScript 5 (December 2008)</li>
+              <li>EcmaScript 6 (planned summer 2015)</li>
+            </ul>
+        </section>
+        </section>
+
         <section>
             <h2>General aspects</h2>
         </section>
@@ -197,6 +213,7 @@ interface      package        protected      static
 'азбука'.charCodeAt(0) // => 1072
 'z' > 'a' // true
                 </code></pre>
+                <a class="fragment" data-fragment-index="1" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String on MDN</a>
         </section>
         <section>
         <section>
@@ -357,9 +374,10 @@ a.reverse(); // [5, 2, 10, 1]
 a.sort(function(a, b){
     return a - b;
 }); // [1, 2, 5, 10]</code></pre>
+<a class="fragment" data-fragment-index="1" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype#Methods">Array methods on MDN</a>
         </section>
         <section>
-            <h2>Array's methods</h2>
+            <h2>Array's methods (ES5)</h2>
           <pre><code class="javascript" style="max-height: none"
 >var arr = [1, 'some el', 5, 4], tmp = {};
 arr.forEach(function(el){
@@ -727,34 +745,6 @@ var iphone = new Gadget();
 iphone.setPrice(500);</code></pre>
         </section>
         <section>
-          <h2>Factory constructor pattern</h2>
-        <pre><code class="javascript" style="max-height: none"
->function Bar() {
-    var obj = {};
-    obj.value = 'blub';
-
-    var private = 2;
-    obj.someMethod = function(value) {
-        this.value = value;
-    }
-    obj.getPrivate = function() {
-        return private;
-    }
-    return obj;
-}
-Bar();      </code></pre>
-        </section>
-        <section>
-          <h2>Prototype chain</h2>
-          <pre><code class="javascript" style="max-height: none"
->if (typeof Array.prototype.myMethod === 'undefined') {
-    Array.prototype.myMethod = function(){
-        // put your code here
-    };
-}</code></pre>
-          <img src="img/prototype_chain.png" style="background-color: white" />
-        </section>
-        <section>
           <h2>this</h2>
         <pre><code class="javascript" style="max-height: none"
 > var person = {
@@ -803,6 +793,34 @@ function f(a, b) {
     console.log('Arguments: ' + [].slice.call(arguments).join('; ');
 };
 argumentsDetector('1', 2, 'afff'); //Arguments: 1; 2; afff</code></pre>
+        </section>
+        <section>
+          <h2>Factory constructor pattern</h2>
+        <pre><code class="javascript" style="max-height: none"
+>function Bar() {
+    var obj = {};
+    obj.value = 'blub';
+
+    var private = 2;
+    obj.someMethod = function(value) {
+        this.value = value;
+    }
+    obj.getPrivate = function() {
+        return private;
+    }
+    return obj;
+}
+Bar();      </code></pre>
+        </section>
+        <section>
+          <h2>Prototype chain</h2>
+          <pre><code class="javascript" style="max-height: none"
+>if (typeof Array.prototype.myMethod === 'undefined') {
+    Array.prototype.myMethod = function(){
+        // put your code here
+    };
+}</code></pre>
+          <img src="img/prototype_chain.png" style="background-color: white" />
         </section>
         <section>
         <section>
