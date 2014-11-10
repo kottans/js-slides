@@ -338,11 +338,6 @@ for(var i in arr){
         <section>
             <h2>Array's methods</h2>
           <pre><code class="javascript"
->var obj = {a: 1, b: 2};
-Object.keys(obj); // ['a', 'b'] !! IE9-
-"Say hello to any".split(' '); // ["Say", "hello", "to", "any"]
-["Say", "hello", "to", "anybody"].join(','); //"Say,hello,to,anybody"</code></pre>
-          <pre class="fragment" data-fragment-index="0"><code class="javascript"
 >var arr = [7, 5, 2];
 delete arr[1] // [7, undefined, 2] oops
 arr.splice(1, 2, "some el", 5); // [undefined, 2]
@@ -355,7 +350,7 @@ arr.pop(); // 5 arr => [7, 2]
 arr.push(3); // 3 arr => [7, 2, 3]
 arr.shift(); // 7 arr => [2, 3]
 arr.unshift(10); // 3 arr => [10, 2, 3]</code></pre>
-          <pre class="fragment" data-fragment-index="1"><code class="javascript"
+          <pre class="fragment" data-fragment-index="0"><code class="javascript"
 >var a = [1, 2, 5, 10];
 a.sort(); // [1, 10, 2, 5] oops
 a.reverse(); // [5, 2, 10, 1]
@@ -462,8 +457,9 @@ c() // undefined
 d.a // undefined
 d.x // undefined
 
-(function(something, undefined) {
-    return undefined || 3;
+(function(something, foo, undefined) {
+    // local undefined
+    return foo || undefined;
 })('Hello World', 42); //42
           </code></pre>
           <div class="text-left fragment" data-fragment-index="1">&nbsp; &nbsp; &nbsp; <font style="font-size: 32px;">
@@ -622,13 +618,14 @@ var counter = counterConstructor();
 counter(); // 1
 counter(); // 2</code></pre>
         <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
->for (var i = 0; i < links.length; i++) {
-   //(function(i){}
-     links[i].onclick = function() {
+>for (var i = 0; i < divs.length; i++) {
+   //(function(i)
+     divs[i].onclick = function() {
         console.log(i);
      }
    //)(i)
 }</code></pre>
+        <a class="fragment" data-fragment-index="1" href="http://jsbin.com/boguha/1/edit?html,js,console,output">JS Bin</a>
         </section>
         <section>
         <h2 style="text-align: center;">arguments</h2>
@@ -808,6 +805,10 @@ function f(a, b) {
 argumentsDetector('1', 2, 'afff'); //Arguments: 1; 2; afff</code></pre>
         </section>
         <section>
+        <section>
+        <h2>Inheritance patterns</h2>
+        </section>
+        <section>
           <h2>Inheritance pattern I</h2>
         <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
 >function Parent(name) {
@@ -878,6 +879,7 @@ C.prototype.constructor = C;
         <div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
           <img src="img/inh_pat_3.png" />
         </div>
+        </section>
         </section>
         <section>
           <h2>Namespace</h2>
