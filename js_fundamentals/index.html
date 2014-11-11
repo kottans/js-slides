@@ -674,7 +674,17 @@ function b() {
         <br>
         </section>
         <section>
-        <h2 style="text-align: center;">Continue with objects</h2>
+          <h2>Prototype chain</h2>
+          <pre><code class="javascript" style="max-height: none"
+>if (typeof Array.prototype.myMethod === 'undefined') {
+    Array.prototype.myMethod = function(){
+        // put your code here
+    };
+}</code></pre>
+          <img src="img/prototype_chain.png" style="background-color: white" />
+        </section>
+        <section>
+        <h2 style="text-align: center;">Example with __proto__</h2>
         <pre><code class="javascript" style="max-height: none"
 >var alien = {kind: 'alien'},
     person = {kind: 'person'},
@@ -698,6 +708,7 @@ console.log(person.kind); //=> 'person'
         <br>
         </section>
         <section>
+        <section>
           <h2>Object.create</h2>
           <div class="text-left"><i>__proto__</i> is not a well supported way of assigning prototypes to objects.
 <i>Object.create</i> is available in ES5, but old browsers / engines can be shimmed using this <a href="https://github.com/kriskowal/es5-shim">es5-shim</a>.
@@ -712,6 +723,39 @@ console.log(zack.age); // => '13'
 console.log(zack.kind); // => 'person'
 Object.getPrototypeOf(zack); // => 'person'
 </code></pre>
+        </section>
+        <section>
+<h2>Object.create shim</h2>
+        <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>function create(prototype, properties) {
+
+        var object;
+        function F() {}  // An empty constructor.
+
+        if (prototype === null) {
+            object = createEmpty();
+        } else {
+            if (typeof prototype !== 'object' 
+              && typeof prototype !== 'function') {
+                throw new TypeError('Object prototype may only be an Object or null');
+            }
+            F.prototype = prototype;
+            object = new F();
+            object.__proto__ = prototype;
+        }
+
+        if (properties !== void 0) {
+            Object.defineProperties(object, properties);
+        }
+
+        return object;
+    };
+
+</code></pre>
+        <div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
+          <img src="img/inh_pat_3.png" />
+        </div>
+        </section>
         </section>
         <section>
           <h2>Constructors</h2>
@@ -778,7 +822,7 @@ person.talk();// 'My name is Коля'</code></pre>
         }
     },
     showName = function(place, time) {
-        console.log(['Person', this.name, 'came to the', place, 'at', time].join(' '));
+        console.log(['Person', this._name, 'came to the', place, 'at', time].join(' '));
     };
 showName.call(person, 'shop', '10am'); // 'Person Коля came to the shop at 10am'
 showName.apply(person, ['shop', '10am']); // The same
@@ -793,6 +837,24 @@ function f(a, b) {
     console.log('Arguments: ' + [].slice.call(arguments).join('; ');
 };
 argumentsDetector('1', 2, 'afff'); //Arguments: 1; 2; afff</code></pre>
+        </section>
+        <section>
+          <h2>Function.prototype.bind()</h2>
+        <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>var person = {
+        _name: 'Коля',
+        talk: function() {
+            console.log('My name is ' + this._name);
+        }
+    },
+    showName = function(place, time) {
+        console.log(['Person', this._name, 'came to the', place, 'at', time].join(' '));
+    },
+    showPersonName = showName.bind(person),
+    showPersonNameAtWork = showName.bind(person, 'work');
+showPersonName('shop', '10am'); // 'Person Коля came to the shop at 10am'
+showPersonNameAtWork('9am'); // 'Person Коля came to the work at 9am'
+</code></pre>
         </section>
         <section>
           <h2>Factory constructor pattern</h2>
@@ -813,99 +875,49 @@ argumentsDetector('1', 2, 'afff'); //Arguments: 1; 2; afff</code></pre>
 Bar();      </code></pre>
         </section>
         <section>
-          <h2>Prototype chain</h2>
-          <pre><code class="javascript" style="max-height: none"
->if (typeof Array.prototype.myMethod === 'undefined') {
-    Array.prototype.myMethod = function(){
-        // put your code here
-    };
-}</code></pre>
-          <img src="img/prototype_chain.png" style="background-color: white" />
-        </section>
-        <section>
-        <section>
-        <h2>Inheritance patterns</h2>
-        </section>
-        <section>
-          <h2>Inheritance pattern I</h2>
+          <h2>Classical inheritance with Object.create</h2>
         <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
->function Parent(name) {
-    this.name = name || 'Adam';
+>// Shape - superclass
+function Shape() {
+  this.x = 0;
+  this.y = 0;
 }
 
-Parent.prototype.say = function () {
-    return this.name;
+// superclass method
+Shape.prototype.move = function(x, y) {
+  this.x += x;
+  this.y += y;
+  console.info('Shape moved.');
 };
 
-function Child(name) {}
-
-function inherit(P, C) {
-    C.prototype = new P();
+// Rectangle - subclass
+function Rectangle() {
+  Shape.call(this); // call super constructor.
 }
 
-inherit(Parent, Child);
-</code></pre>
-        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
->var kid = new Child(),
-     kid2 = new Child("Seth");
-kid.name = "Patrick";
-kid.say(); // "Patrick"
+// subclass extends superclass
+Rectangle.prototype = Object.create(Shape.prototype);
+Rectangle.prototype.constructor = Rectangle;
 
-kid2.say(); // 'Adam' oops
-        </code></pre>
-        <div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
-          <img src="img/inh_pat_1.png" />
-        </div>
-        </section>
-        <section>
-          <h2>Inheritance pattern II</h2>
-        <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
->function Child(a, b, c, d) {
-  Parent.apply(this, arguments);
-}
-</code></pre>
-        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
->Child.prototype = new Parent();
-        </code></pre>
-        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
->var kid = new Child("Patrick");
-kid.name; // "Patrick"
-kid.say(); // "Patrick"
-delete kid.name;
-kid.say(); // "Adam"
-        </code></pre>
-        <div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
-          <img src="img/inh_pat_2.png" />
-        </div>
-        </section>
-        <section>
-          <h2>Inheritance pattern III</h2>
-        <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
->function inherit(C, P) {
-    var F = function () {};
-    F.prototype = P.prototype;
-    C.prototype = new F();
-}
+var rect = new Rectangle();
 
+rect instanceof Rectangle; // true
+rect instanceof Shape; // true
+
+rect.move(1, 1); // Outputs, 'Shape moved.'
 </code></pre>
-        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
->C._super = P.prototype; // link to the parent constructor
-C.prototype.constructor = C;
-// if it's not reseted, then all child objects will report,
-// that Parent() is their constructor.
-        </code></pre>
-        <div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
-          <img src="img/inh_pat_3.png" />
-        </div>
-        </section>
         </section>
         <section>
-          <h2>Namespace</h2>
+        <section>
+          <h2>Immediate function</h2>
         <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
 >(function( window, undefined ) {
   //  Put your code hre
 })(window);</code></pre>
-        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+        </section>
+        <section>
+        <h2>Immediate object initialization</h2>
+        <pre><code class="javascript" style="max-height: none"
 >({
   width: '600px',
   height: '400px',
@@ -920,6 +932,7 @@ C.prototype.constructor = C;
     // more init code
   }
 }).init();</code></pre>
+        </section>
         </section>
         <section>
           <h2>Etc....</h2>
