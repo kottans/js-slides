@@ -637,11 +637,11 @@ counter(); // 1
 counter(); // 2</code></pre>
         <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
 >for (var i = 0; i < divs.length; i++) {
-   //(function(i)
+   //(function(i) {
      divs[i].onclick = function() {
         console.log(i);
      }
-   //)(i)
+   //})(i)
 }</code></pre>
         <a class="fragment" data-fragment-index="1" href="http://jsbin.com/boguha/1/edit?html,js,console,output">JS Bin</a>
         </section>
