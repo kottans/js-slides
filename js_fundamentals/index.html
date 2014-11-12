@@ -674,13 +674,69 @@ function b() {
         <br>
         </section>
         <section>
-          <h2>Prototype chain</h2>
-          <pre><code class="javascript" style="max-height: none"
->if (typeof Array.prototype.myMethod === 'undefined') {
-    Array.prototype.myMethod = function(){
-        // put your code here
+          <h2>Constructors</h2>
+        <pre><code class="javascript" style="max-height: none"
+>function Foo() {
+    this.bla = 1;
+}
+Foo.prototype.test = function() {
+    console.log(this.bla);
+};
+
+var f = new Foo();
+f.test(); // 1
+Foo(); //undefined</code></pre>
+        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>// constructor
+var Gadget = function () {};
+// a static method
+Gadget.isShiny = function () {
+    return "you bet";
+};
+// a normal method added to the prototype
+Gadget.prototype.setPrice = function (price) {
+    this.price = price;
+};
+
+// calling a static method
+Gadget.isShiny(); // "you bet"
+// creating an instance and calling a method
+var iphone = new Gadget();
+iphone.setPrice(500);</code></pre>
+        </section>
+        <section>
+          <h2>this</h2>
+        <pre><code class="javascript" style="max-height: none"
+> var person = {
+  _name: 'Коля',
+  talk: function() {
+    console.log('My name is ' + this._name);
+  }
+};
+person.talk();// 'My name is Коля'</code></pre>
+        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+> var Person = function(name){
+    this._name = name;
+    this.talk = function() {
+      console.log('My name is ' + this._name);
     };
-}</code></pre>
+  },
+  person = new Person('Коля');
+
+person.talk();// 'My name is Коля'</code></pre>
+        <pre class="fragment" data-fragment-index="1"><code class="javascript" style="max-height: none"
+> var func = person.talk;
+ func(); // 'My name is undefined'</code></pre>
+        </section>
+        <section>
+          <h2>Prototype chain</h2>
+          <ul>
+            <li>__proto__ is the actual object that is used in the lookup chain to resolve methods, etc.</li>
+            <li>prototype is the object that is used to build __proto__ when you create an object with new</li>
+          </ul>
+          <pre><code class="javascript" style="max-height: none"
+>( new Foo ).__proto__ === Foo.prototype
+( new Foo ).prototype === undefined</code></pre>
           <img src="img/prototype_chain.png" style="background-color: white" />
         </section>
         <section>
@@ -756,61 +812,6 @@ Object.getPrototypeOf(zack); // => 'person'
           <img src="img/inh_pat_3.png" />
         </div>
         </section>
-        </section>
-        <section>
-          <h2>Constructors</h2>
-        <pre><code class="javascript" style="max-height: none"
->function Foo() {
-    this.bla = 1;
-}
-Foo.prototype.test = function() {
-    console.log(this.bla);
-};
-
-var f = new Foo();
-f.test(); // 1
-Foo(); //undefined</code></pre>
-        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
->// constructor
-var Gadget = function () {};
-// a static method
-Gadget.isShiny = function () {
-    return "you bet";
-};
-// a normal method added to the prototype
-Gadget.prototype.setPrice = function (price) {
-    this.price = price;
-};
-
-// calling a static method
-Gadget.isShiny(); // "you bet"
-// creating an instance and calling a method
-var iphone = new Gadget();
-iphone.setPrice(500);</code></pre>
-        </section>
-        <section>
-          <h2>this</h2>
-        <pre><code class="javascript" style="max-height: none"
-> var person = {
-  _name: 'Коля',
-  talk: function() {
-    console.log('My name is ' + this._name);
-  }
-};
-person.talk();// 'My name is Коля'</code></pre>
-        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
-> var Person = function(name){
-    this._name = name;
-    this.talk = function() {
-      console.log('My name is ' + this._name);
-    };
-  },
-  person = new Person('Коля');
-
-person.talk();// 'My name is Коля'</code></pre>
-        <pre class="fragment" data-fragment-index="1"><code class="javascript" style="max-height: none"
-> var func = person.talk;
- func(); // 'My name is undefined'</code></pre>
         </section>
         <section>
           <h2>apply and call</h2>
@@ -966,6 +967,21 @@ var func = function (param) {
 };</code></pre>
         </section>
         <section>
+        <h2>Concurrency model</h2>
+        <ul>
+          <li>Based on event loop</li>
+          <li>Runtime processing in a single thread</li>
+          <li>Never blocking</li>
+        </ul>
+        </section>
+        <section>
+        <h2>The Event Loop</h2>
+        <div>
+            <img src="img/event-loop.jpg" />
+        </div>
+        <a href="http://latentflip.com/loupe/?code=Y29uc29sZS5sb2coIkhlbGxvLCB3b3JsZCEiKTsgIAp2YXIgdGltZSA9IDA7CmZ1bmN0aW9uIG15Rm0oKXsKICAgIGlmICh0aW1lIDwgNSkgewogICAgICAgIHRpbWUgKysKICAgICAgICBteUZtKCk7CiAgICB9IGVsc2UgewogICAgICAgIGNvbnNvbGUubG9nKCdoaScpOwogICAgfQp9Ci8vbXlGbSgpOwpzZXRUaW1lb3V0KGZ1bmN0aW9uKCl7CiAgICBteUZtKCkKfSwgMTAwKQo%3D!!!">Demo</a>
+        </section>
+        <section>
           <h2>Timers</h2>
         <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
 >var timerId = setTimeout(function(){
@@ -1023,6 +1039,8 @@ result = 2*2;</code></pre>
       &lt;meta charset='utf-8'/>
     &lt;/head>
     &lt;body>
+        &lt;img src="hello.png" onclick="alert('Hi')">
+        &lt;a href="ja­va­cript:void window.open('about:blank');">Open Window&lt;/a>
         &lt;script src='http://code.jquery.com/jquery-latest.min.js'>&lt;/script>
         &lt;script>alert('Hello world');&lt;/script>
     &lt;/body>
