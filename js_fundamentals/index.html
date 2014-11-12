@@ -674,46 +674,6 @@ function b() {
         <br>
         </section>
         <section>
-        <h2 style="text-align: center;">Continue with objects</h2>
-        <pre><code class="javascript" style="max-height: none"
->var alien = {kind: 'alien'},
-    person = {kind: 'person'},
-    zack = {};
-
-zack.__proto__ = alien; // assign alien as the prototype of zack
-console.log(zack.kind); //=> 'alien'
-
-console.log(alien.isPrototypeOf(zack)); //=> true
-
-zack.__proto__ = person;
-console.log(zack.kind); //=> 'person'
-
-zack.kind = 'zack';
-console.log(zack.kind); //=> 'zack'
-console.log(person.kind); //=> 'person'
-</code></pre>
-<pre class="fragment" data-fragment-index="0">
-  <img src="img/prototype_object_chain.png" style="background-color: white" />
-</pre>
-        <br>
-        </section>
-        <section>
-          <h2>Object.create</h2>
-          <div class="text-left"><i>__proto__</i> is not a well supported way of assigning prototypes to objects.
-<i>Object.create</i> is available in ES5, but old browsers / engines can be shimmed using this <a href="https://github.com/kriskowal/es5-shim">es5-shim</a>.
-          </div>
-          <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
->var person = {
-  kind: 'person'
-}
-
-var zack = Object.create(person, {age: {value:  13} });
-console.log(zack.age); // => '13'
-console.log(zack.kind); // => 'person'
-Object.getPrototypeOf(zack); // => 'person'
-</code></pre>
-        </section>
-        <section>
           <h2>Constructors</h2>
         <pre><code class="javascript" style="max-height: none"
 >function Foo() {
@@ -769,6 +729,91 @@ person.talk();// 'My name is Коля'</code></pre>
  func(); // 'My name is undefined'</code></pre>
         </section>
         <section>
+          <h2>Prototype chain</h2>
+          <ul>
+            <li>__proto__ is the actual object that is used in the lookup chain to resolve methods, etc.</li>
+            <li>prototype is the object that is used to build __proto__ when you create an object with new</li>
+          </ul>
+          <pre><code class="javascript" style="max-height: none"
+>( new Foo ).__proto__ === Foo.prototype
+( new Foo ).prototype === undefined</code></pre>
+          <img src="img/prototype_chain.png" style="background-color: white" />
+        </section>
+        <section>
+        <h2 style="text-align: center;">Example with __proto__</h2>
+        <pre><code class="javascript" style="max-height: none"
+>var alien = {kind: 'alien'},
+    person = {kind: 'person'},
+    zack = {};
+
+zack.__proto__ = alien; // assign alien as the prototype of zack
+console.log(zack.kind); //=> 'alien'
+
+console.log(alien.isPrototypeOf(zack)); //=> true
+
+zack.__proto__ = person;
+console.log(zack.kind); //=> 'person'
+
+zack.kind = 'zack';
+console.log(zack.kind); //=> 'zack'
+console.log(person.kind); //=> 'person'
+</code></pre>
+<pre class="fragment" data-fragment-index="0">
+  <img src="img/prototype_object_chain.png" style="background-color: white" />
+</pre>
+        <br>
+        </section>
+        <section>
+        <section>
+          <h2>Object.create</h2>
+          <div class="text-left"><i>__proto__</i> is not a well supported way of assigning prototypes to objects.
+<i>Object.create</i> is available in ES5, but old browsers / engines can be shimmed using this <a href="https://github.com/kriskowal/es5-shim">es5-shim</a>.
+          </div>
+          <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>var person = {
+  kind: 'person'
+}
+
+var zack = Object.create(person, {age: {value:  13} });
+console.log(zack.age); // => '13'
+console.log(zack.kind); // => 'person'
+Object.getPrototypeOf(zack); // => 'person'
+</code></pre>
+        </section>
+        <section>
+<h2>Object.create shim</h2>
+        <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>function create(prototype, properties) {
+
+        var object;
+        function F() {}  // An empty constructor.
+
+        if (prototype === null) {
+            object = createEmpty();
+        } else {
+            if (typeof prototype !== 'object' 
+              && typeof prototype !== 'function') {
+                throw new TypeError('Object prototype may only be an Object or null');
+            }
+            F.prototype = prototype;
+            object = new F();
+            object.__proto__ = prototype;
+        }
+
+        if (properties !== void 0) {
+            Object.defineProperties(object, properties);
+        }
+
+        return object;
+    };
+
+</code></pre>
+        <div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
+          <img src="img/inh_pat_3.png" />
+        </div>
+        </section>
+        </section>
+        <section>
           <h2>apply and call</h2>
         <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
 >var person = {
@@ -778,7 +823,7 @@ person.talk();// 'My name is Коля'</code></pre>
         }
     },
     showName = function(place, time) {
-        console.log(['Person', this.name, 'came to the', place, 'at', time].join(' '));
+        console.log(['Person', this._name, 'came to the', place, 'at', time].join(' '));
     };
 showName.call(person, 'shop', '10am'); // 'Person Коля came to the shop at 10am'
 showName.apply(person, ['shop', '10am']); // The same
@@ -793,6 +838,24 @@ function f(a, b) {
     console.log('Arguments: ' + [].slice.call(arguments).join('; ');
 };
 argumentsDetector('1', 2, 'afff'); //Arguments: 1; 2; afff</code></pre>
+        </section>
+        <section>
+          <h2>Function.prototype.bind()</h2>
+        <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>var person = {
+        _name: 'Коля',
+        talk: function() {
+            console.log('My name is ' + this._name);
+        }
+    },
+    showName = function(place, time) {
+        console.log(['Person', this._name, 'came to the', place, 'at', time].join(' '));
+    },
+    showPersonName = showName.bind(person),
+    showPersonNameAtWork = showName.bind(person, 'work');
+showPersonName('shop', '10am'); // 'Person Коля came to the shop at 10am'
+showPersonNameAtWork('9am'); // 'Person Коля came to the work at 9am'
+</code></pre>
         </section>
         <section>
           <h2>Factory constructor pattern</h2>
@@ -813,99 +876,49 @@ argumentsDetector('1', 2, 'afff'); //Arguments: 1; 2; afff</code></pre>
 Bar();      </code></pre>
         </section>
         <section>
-          <h2>Prototype chain</h2>
-          <pre><code class="javascript" style="max-height: none"
->if (typeof Array.prototype.myMethod === 'undefined') {
-    Array.prototype.myMethod = function(){
-        // put your code here
-    };
-}</code></pre>
-          <img src="img/prototype_chain.png" style="background-color: white" />
-        </section>
-        <section>
-        <section>
-        <h2>Inheritance patterns</h2>
-        </section>
-        <section>
-          <h2>Inheritance pattern I</h2>
+          <h2>Classical inheritance with Object.create</h2>
         <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
->function Parent(name) {
-    this.name = name || 'Adam';
+>// Shape - superclass
+function Shape() {
+  this.x = 0;
+  this.y = 0;
 }
 
-Parent.prototype.say = function () {
-    return this.name;
+// superclass method
+Shape.prototype.move = function(x, y) {
+  this.x += x;
+  this.y += y;
+  console.info('Shape moved.');
 };
 
-function Child(name) {}
-
-function inherit(P, C) {
-    C.prototype = new P();
+// Rectangle - subclass
+function Rectangle() {
+  Shape.call(this); // call super constructor.
 }
 
-inherit(Parent, Child);
-</code></pre>
-        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
->var kid = new Child(),
-     kid2 = new Child("Seth");
-kid.name = "Patrick";
-kid.say(); // "Patrick"
+// subclass extends superclass
+Rectangle.prototype = Object.create(Shape.prototype);
+Rectangle.prototype.constructor = Rectangle;
 
-kid2.say(); // 'Adam' oops
-        </code></pre>
-        <div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
-          <img src="img/inh_pat_1.png" />
-        </div>
-        </section>
-        <section>
-          <h2>Inheritance pattern II</h2>
-        <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
->function Child(a, b, c, d) {
-  Parent.apply(this, arguments);
-}
-</code></pre>
-        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
->Child.prototype = new Parent();
-        </code></pre>
-        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
->var kid = new Child("Patrick");
-kid.name; // "Patrick"
-kid.say(); // "Patrick"
-delete kid.name;
-kid.say(); // "Adam"
-        </code></pre>
-        <div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
-          <img src="img/inh_pat_2.png" />
-        </div>
-        </section>
-        <section>
-          <h2>Inheritance pattern III</h2>
-        <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
->function inherit(C, P) {
-    var F = function () {};
-    F.prototype = P.prototype;
-    C.prototype = new F();
-}
+var rect = new Rectangle();
 
+rect instanceof Rectangle; // true
+rect instanceof Shape; // true
+
+rect.move(1, 1); // Outputs, 'Shape moved.'
 </code></pre>
-        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
->C._super = P.prototype; // link to the parent constructor
-C.prototype.constructor = C;
-// if it's not reseted, then all child objects will report,
-// that Parent() is their constructor.
-        </code></pre>
-        <div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
-          <img src="img/inh_pat_3.png" />
-        </div>
-        </section>
         </section>
         <section>
-          <h2>Namespace</h2>
+        <section>
+          <h2>Immediate function</h2>
         <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
 >(function( window, undefined ) {
   //  Put your code hre
 })(window);</code></pre>
-        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+        </section>
+        <section>
+        <h2>Immediate object initialization</h2>
+        <pre><code class="javascript" style="max-height: none"
 >({
   width: '600px',
   height: '400px',
@@ -920,6 +933,7 @@ C.prototype.constructor = C;
     // more init code
   }
 }).init();</code></pre>
+        </section>
         </section>
         <section>
           <h2>Etc....</h2>
@@ -951,6 +965,21 @@ var func = function (param) {
   }
   return func.cache[param];
 };</code></pre>
+        </section>
+        <section>
+        <h2>Concurrency model</h2>
+        <ul>
+          <li>Based on event loop</li>
+          <li>Runtime processing in a single thread</li>
+          <li>Never blocking</li>
+        </ul>
+        </section>
+        <section>
+        <h2>The Event Loop</h2>
+        <div>
+            <img src="img/event-loop.jpg" />
+        </div>
+        <a href="http://latentflip.com/loupe/?code=Y29uc29sZS5sb2coIkhlbGxvLCB3b3JsZCEiKTsgIAp2YXIgdGltZSA9IDA7CmZ1bmN0aW9uIG15Rm0oKXsKICAgIGlmICh0aW1lIDwgNSkgewogICAgICAgIHRpbWUgKysKICAgICAgICBteUZtKCk7CiAgICB9IGVsc2UgewogICAgICAgIGNvbnNvbGUubG9nKCdoaScpOwogICAgfQp9Ci8vbXlGbSgpOwpzZXRUaW1lb3V0KGZ1bmN0aW9uKCl7CiAgICBteUZtKCkKfSwgMTAwKQo%3D!!!">Demo</a>
         </section>
         <section>
           <h2>Timers</h2>
@@ -1010,6 +1039,8 @@ result = 2*2;</code></pre>
       &lt;meta charset='utf-8'/>
     &lt;/head>
     &lt;body>
+        &lt;img src="hello.png" onclick="alert('Hi')">
+        &lt;a href="ja­va­cript:void window.open('about:blank');">Open Window&lt;/a>
         &lt;script src='http://code.jquery.com/jquery-latest.min.js'>&lt;/script>
         &lt;script>alert('Hello world');&lt;/script>
     &lt;/body>
@@ -1041,26 +1072,6 @@ result = 2*2;</code></pre>
               <li>It can call JavaScript functions;</li>
             </ul>
             </div>
-          </div>
-        </section>
-        <section>
-          <h2 style="text-transform: none;">ActiveX</h2>
-          <pre><code>
-&lt;object classid="clsid:6BF52A52-394A-11d3-B153-00C04F79FAA6">
-    <param name="URL" value="example.wmv">
-    <param name="autoStart" value="-1">
-&lt;/object>
-          </code></pre>
-          <div class="text-left">
-            <font style="font-size: 24px;">where <i>classid</i> - identifier of class of our component;</font>
-          </div>
-          <div class="text-left">
-            <font style="font-size: 24px;">
-                <br>
-            </font>
-          </div>
-          <div class="text-left">
-            <font style="font-size: 32px;">Languages: C++, VB, Delphi, C#/VB.NET</font>
           </div>
         </section>
         <section>
@@ -1111,7 +1122,7 @@ result = 2*2;</code></pre>
           <ul>
             <li><a href="http://learn.javascript.ru/">javascript.ru</a></li>
             <li><a href="http://shamansir.github.io/JavaScript-Garden/">JavaScript Гарден - shamansir.github.com</a></li>
-            <li><a href="http://www.w3schools.com/js/default.asp">W3Schools Javascript Tutorial</a></li>
+            <li><a href="http://www.amazon.com/JavaScript-Definitive-Guide-David-Flanagan/dp/0596000480">JavaScript: The Definitive Guide</a></li>
             <li><a href="http://sporto.github.io/blog/2013/02/22/a-plain-english-guide-to-javascript-prototypes/">A Plain English Guide to JavaScript Prototypes</a></li>
             <li><a href="http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752">JavaScript Patterns by Stoyan Stefanov</a></li>
           </ul>
