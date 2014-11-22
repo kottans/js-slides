@@ -729,6 +729,68 @@ person.talk();// 'My name is Коля'</code></pre>
  func(); // 'My name is undefined'</code></pre>
         </section>
         <section>
+          <h2>apply and call</h2>
+        <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>var person = {
+        _name: 'Коля',
+        talk: function() {
+            console.log('My name is ' + this._name);
+        }
+    },
+    showName = function(place, time) {
+        console.log(['Person', this._name, 'came to the', place, 'at', time].join(' '));
+    };
+showName.call(person, 'shop', '10am'); // 'Person Коля came to the shop at 10am'
+showName.apply(person, ['shop', '10am']); // The same
+showName.call(null, 'shop', '10am'); // The same as showName.call(window, 'shop', '10am');</code></pre>
+        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>function g() {...}
+function f(a, b) {
+  g.apply(this, arguments);
+}       </code></pre>
+        <pre class="fragment" data-fragment-index="1"><code class="javascript" style="max-height: none"
+>var argumentsDetector = function() {
+    console.log('Arguments: ' + [].slice.call(arguments).join('; ');
+};
+argumentsDetector('1', 2, 'afff'); //Arguments: 1; 2; afff</code></pre>
+        </section>
+        <section>
+          <h2>Function.prototype.bind()</h2>
+        <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>var person = {
+        _name: 'Коля',
+        talk: function() {
+            console.log('My name is ' + this._name);
+        }
+    },
+    showName = function(place, time) {
+        console.log(['Person', this._name, 'came to the', place, 'at', time].join(' '));
+    },
+    showPersonName = showName.bind(person),
+    showPersonNameAtWork = showName.bind(person, 'work');
+showPersonName('shop', '10am'); // 'Person Коля came to the shop at 10am'
+showPersonNameAtWork('9am'); // 'Person Коля came to the work at 9am'
+</code></pre>
+        </section>
+        <section>
+          <h2>Factory constructor pattern</h2>
+        <pre><code class="javascript" style="max-height: none"
+>function Bar() {
+    var obj = {};
+    obj.value = 'blub';
+
+    var private = 2;
+    obj.someMethod = function(value) {
+        this.value = value;
+    }
+    obj.getPrivate = function() {
+        return private;
+    }
+    return obj;
+}
+Bar();      </code></pre>
+        </section>
+        <section>
           <h2>Prototype chain</h2>
           <ul>
             <li>__proto__ is the actual object that is used in the lookup chain to resolve methods, etc.</li>
@@ -812,68 +874,6 @@ Object.getPrototypeOf(zack); // => 'person'
           <img src="img/inh_pat_3.png" />
         </div>
         </section>
-        </section>
-        <section>
-          <h2>apply and call</h2>
-        <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
->var person = {
-        _name: 'Коля',
-        talk: function() {
-            console.log('My name is ' + this._name);
-        }
-    },
-    showName = function(place, time) {
-        console.log(['Person', this._name, 'came to the', place, 'at', time].join(' '));
-    };
-showName.call(person, 'shop', '10am'); // 'Person Коля came to the shop at 10am'
-showName.apply(person, ['shop', '10am']); // The same
-showName.call(null, 'shop', '10am'); // The same as showName.call(window, 'shop', '10am');</code></pre>
-        <pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
->function g() {...}
-function f(a, b) {
-  g.apply(this, arguments);
-}       </code></pre>
-        <pre class="fragment" data-fragment-index="1"><code class="javascript" style="max-height: none"
->var argumentsDetector = function() {
-    console.log('Arguments: ' + [].slice.call(arguments).join('; ');
-};
-argumentsDetector('1', 2, 'afff'); //Arguments: 1; 2; afff</code></pre>
-        </section>
-        <section>
-          <h2>Function.prototype.bind()</h2>
-        <pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
->var person = {
-        _name: 'Коля',
-        talk: function() {
-            console.log('My name is ' + this._name);
-        }
-    },
-    showName = function(place, time) {
-        console.log(['Person', this._name, 'came to the', place, 'at', time].join(' '));
-    },
-    showPersonName = showName.bind(person),
-    showPersonNameAtWork = showName.bind(person, 'work');
-showPersonName('shop', '10am'); // 'Person Коля came to the shop at 10am'
-showPersonNameAtWork('9am'); // 'Person Коля came to the work at 9am'
-</code></pre>
-        </section>
-        <section>
-          <h2>Factory constructor pattern</h2>
-        <pre><code class="javascript" style="max-height: none"
->function Bar() {
-    var obj = {};
-    obj.value = 'blub';
-
-    var private = 2;
-    obj.someMethod = function(value) {
-        this.value = value;
-    }
-    obj.getPrivate = function() {
-        return private;
-    }
-    return obj;
-}
-Bar();      </code></pre>
         </section>
         <section>
           <h2>Classical inheritance with Object.create</h2>
