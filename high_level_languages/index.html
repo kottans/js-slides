@@ -876,9 +876,23 @@ _.sort(_.where(myData, {name: "Rich"}))
           </p>
         </section>
         <section>
-
+          <pre><code data-trim>
+(def a (list 1 2 3))
+(def b (conj a 4))
+(def c (conj (rest a) 5))
+          </code></pre>
+          <a href="cljs-lists.gif"><img style='width: 80%' src="cljs-lists.gif" alt="Sharing list structures"></a>
         </section>
-
+<section>
+  <pre><code data-trim>
+(def brown [0 1 2 3 4 5 6 7 8])
+(def blue (assoc brown 5 'beef))
+  </code></pre>
+  <a href="cljs-maps.png"><img style='width: 80%' src="cljs-maps.png" alt="Sharing list structures"></a>
+</section>
+<section>
+  <h1>lt-cljs tutorial</h1>
+</section>
         <section>
           <h1>Fun time aka homework</h1>
           <p class="text-left">Create a Utils module, that would pass the <a href="https://github.com/sudodoki/sample-utils-test">specs</a>. Class Logger with public method log and with padding/format, maybe some sort of interface for method. </p>
