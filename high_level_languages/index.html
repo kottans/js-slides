@@ -804,6 +804,82 @@ result = (item.name for item in items)
           <h1>Source maps</h1>
         </section>
         <section>
+          <h1>ClojureScript</h1>
+          <p>Check out
+           <a href="http://shop.oreilly.com/product/0636920025139.do">ClojureScript: up and running</a><br/>
+          </p>
+        </section>
+        <section>
+          <h1>Aim</h1>
+          <p>
+            Language, fully compatible with clojure that can be transpiled to JS.
+            Successful at doing that, although some features are missing. For example,
+            those connected with concurrency.
+          </p>
+        </section>
+        <section>
+           <h2>How to run program written in clojurescript?</h2>
+          <ul class="plain-list">
+            <li>via <a href="http://www.tryclj.com/">online clojure REPL</a></li>
+            <li class='fragment'>using <a href="http://lighttable.com/">LightTable</a> (<a href="https://github.com/swannodette/lt-cljs-tutorial">lt-cljs tutorial</a>)</li>
+            <li class='fragment'>REPL/build using <a href="https://github.com/clojure/clojurescript/wiki/Quick-Start">standard tooling</a></li>
+            <li class='fragment'>using <a href="https://github.com/emezeske/lein-cljsbuild">lein-cljsbuild</a> (check out <a href="https://github.com/bhauman/lein-figwheel">figwheel</a>)</li>
+          </ul>
+        </section>
+        <section>
+          <h1>LISP time!</h1>
+<pre class='narrow'><code data-trim >
+2 + 2
+2.add(2)
+document.querySelectorAll('div')
+myClass.method(arg1, arg2)
+_.sort(_.where(myData, {name: "Rich"}))
+</code></pre>
+<pre class='narrow'><code data-trim>
+(+ 2 2)
+(.add 2 2)
+(.querySelectorAll js/document "div")
+(.method myClass arg1 arg2)
+(-> myData
+  ((fn [allData]
+    (filter allData
+      #(= (:name %) "Rich"))))
+  (sort))
+</code></pre>
+        </section>
+        <section>
+          <h1>Uniform Representation</h1>
+          <pre><code data-trim>
+(+ 2 2)
+;; vs
+'(+ 2 2)
+          </code></pre>
+          <ul class="plain-list">
+            <li>Programs can examine other programs</li>
+            <li class="fragment">Programs can write programs</li>
+            <li class="fragment">Programs can modify themselves</li>
+            <li class="fragment">Data structures can contain programs</li>
+          </ul>
+        </section>
+        <section>
+          <h1>Immutable data structures</h1>
+          <p>
+            Clojure(script) has:
+            <ul>
+              <li>Lists ~ collection</li>
+              <li>Vectors ~ array</li>
+              <li>Maps ~ :key value</li>
+              <li>StructMaps ~ Maps w/ set of predef keys</li>
+              <li>Sets</li>
+              <li>ArrayMaps</li>
+            </ul>
+          </p>
+        </section>
+        <section>
+
+        </section>
+
+        <section>
           <h1>Fun time aka homework</h1>
           <p class="text-left">Create a Utils module, that would pass the <a href="https://github.com/sudodoki/sample-utils-test">specs</a>. Class Logger with public method log and with padding/format, maybe some sort of interface for method. </p>
         </section>
