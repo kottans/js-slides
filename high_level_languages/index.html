@@ -47,6 +47,221 @@
           </ol>
         </section>
         <section>
+          <h1>TypeScript</h1>
+          <p>Check out
+           <a href="http://www.syncfusion.com/resources/techportal/ebooks/typescript">TypeScript Succinctly</a> by Steve Fento <br/> or <br/>
+           <a href="http://www.amazon.com/TypeScript-Revealed-Dan-Maharry/dp/1430257253">TypeScript Revealed</a> by Dan Maharry
+          </p>
+        </section>
+        <section>
+           <h2>How to run program written in typescript?</h2>
+          <ul class="plain-list">
+            <li>via <a href="http://www.typescriptlang.org/Playground/">online sandbox</a></li>
+
+            <li class="fragment">in your browser using <a href="https://github.com/choudeshell/TypeScript-Console">typescript console</a> ~ not sure, how good it is.</li>
+            <li class="fragment">in console REPL <a href="https://npmjs.org/package/tsi">using `tsi` package</a> or some fancy <a href="http://mnajder.blogspot.com/2012/10/typescript-interactive-in-visual-studio.html">VS REPL</a></li>
+            <li class="fragment">letting serverside handle this (<a href="https://github.com/antage/sprockets-typescript">Sprocket</a>, <a href="https://github.com/k-maru/grunt-typescript">Grunt</a>, <a href="https://npmjs.org/package/typescript">typescript</a>)</li>
+            <li class="fragment">usning some GUI/browser extension (<a href="http://www.microsoft.com/en-us/download/details.aspx?id=34790">Visual Studio</a>,<a href="http://www.jetbrains.com/idea/webhelp/transpiling-typescript-to-javascript.html">Jetbrains' IDE</a>)</li>
+            <li class="fragment">using "text/typescript" Script Tags (with this <a href="https://github.com/niutech/typescript-compile">lib</a>)</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Structure of program in TS</h2>
+          <img src="TS_figure1.png" alt="Ехал модуль через реку, видит модуль в речке модуль, модуль модуль в модуль, модуль модуль модуль модуль">
+        </section>
+        <section>
+          <h2>Main concepts</h2>
+          <ul>
+            <dl>
+              <dt>Program</dt>
+                <dd class="fragment">Collection of source files (declarations or code implementation)</dd>
+              <dt class="fragment">Module</dt>
+                <dd class="fragment">.NETish sense of namespaces, can contain classes/interfaces. Can have <i>Classes</i> exposed through <span class="inline_code">exports</span> keyword</dd>
+              <dt class="fragment">Interface</dt>
+                <dd class="fragment">Just like .NET interface.</dd>
+              <dt class="fragment">Class</dt>
+                <dd class="fragment">Sometimes <span class="inline_code">implements</span> interfaces, can have <span class="inline_code">private</span> or <span class="inline_code">public</span> methods. Can inherit (extend) other classes.</dd>
+            </dl>
+          </ul>
+        </section>
+        <section>
+          <h2>Design time parts</h2>
+          <ul>
+            <li>Type/signature check</li>
+            <li>Private/public</li>
+          </ul>
+          <h2>Run time parts</h2>
+          <ul>
+            <li>Modules</li>
+            <li>Classes</li>
+          </ul>
+        </section>
+<section class='stack'><section><h1>Syntax</h1></section>
+        <section>
+          <h2>Built-in types</h2>
+          <ul>
+            <li>number</li>
+            <li>boolean</li>
+            <li>string</li>
+            <li>null</li>
+            <li>undefined</li>
+            <li>any</li>
+          </ul>
+        </section>
+        <section>
+          <pre><code contenteditable data-trim>
+// allowed
+var a: string = null;
+var b: number = undefined;
+// not allowed
+var c: null;
+var d: undefined;
+// has a value of undefined
+var e: string;
+          </code></pre>
+        </section>
+        <section>
+          <h2>Custom Types</h2>
+          <pre class="fragment"><code data-trim contenteditable>
+interface ILogger {
+}
+class Logger {
+}
+var loggerA: ILogger;
+var loggerB: Logger;
+          </code></pre>
+        </section>
+        <section>
+          <h2>Functions/Arrays</h2>
+          <pre class="fragment"><code data-trim contenteditable>
+var exampleA: string[] = [];
+var allTheLoggers: Logger[] = [];
+exampleA.push('LOL')
+allTheLoggers.push(new Logger())
+          </code></pre>
+          <pre class="fragment"><code data-trim contenteditable>
+var lengthFn: { (input: string): number; };
+lengthFn = function (input: string) {
+  return string.length;
+}
+          </code></pre>
+        </section>
+        <section>
+          <h2>Optional/default parameters</h2>
+          <pre class="narrow"><code data-trim contenteditable>
+function lol(a:number = 2, b?) {
+}
+
+lol(2) // => ok
+lol(2,3) // => ok
+lol(3,4,5) // => error TS2081: Supplied
+// parameters do not match any signature of
+// call target.
+          </code></pre>
+          <pre class="narrow"><code data-trim contenteditable>
+function lol(a, b) {
+    if (typeof a === "undefined") {
+      a = 2;
+    }
+}
+          </code></pre>
+        </section>
+        <section>
+          <h2>Rest parameters ~ splat</h2>
+          <p>Placeholders for multiple arguments of the same type</p>
+          <pre><code data-trim contenteditable>
+function addManyNumbers(...numbers: number[]) {
+var sum = 0;
+for (var i = 0; i < numbers.length; i++) {
+sum += numbers[i];
+}
+return sum;
+}
+var result = addManyNumbers(1,2,3,5,6,7,8,9); // 41
+          </code></pre>
+        </section>
+        <section>
+          <h2>Combine all the things!</h2>
+          <pre><code data-trim contenteditable>
+var stringUtils: { (input: string, second?:string): number; } [] = [
+lengthFn, levensteinFn];
+          </code></pre>
+        </section>
+        <section>
+          <h2>When to Use Types?</h2>
+          <p class="fragment text-left">
+            Whether to make a type explicit or not is a matter of personal taste, so you should agree on
+your team’s preferred style in this respect.
+          </p>
+        </section>
+</section>
+<section class='stack'><section><h1>Classes</h1></section>
+        <section>
+          <h2>Sample Class</h2>
+          <pre><code data-trim contenteditable>
+export class AnnoyingLogger extends Logger {
+  constructor (private formatter: Formatter) {}
+  log(message: string): void {
+    alert(message);
+    super.log(message);
+  }
+}
+          </code></pre>
+        </section>
+        <section>
+          <h2>Implementing interfaces</h2>
+          <pre><code data-trim>
+export class MyClass implements IInterface {...}
+export class Molotov implements IThrowable, IFlamable {...}
+          </code></pre>
+        </section>
+        <section>
+          <h2>Multiple Inheritance</h2>
+          <pre><code data-trim contenteditable>
+interface IMover {
+  move() : void;
+}
+interface IShaker {
+  shake() : void;
+}
+interface IMoverShaker extends IMover, IShaker {
+}
+class MoverShaker implements IMoverShaker {
+  move() {
+  }
+  shake() {
+  }
+}
+          </code></pre>
+        </section>
+        <section>
+          <h2>private/public/static</h2>
+        </section>
+
+</section>
+        <section>
+          <h2>Using multiple files</h2>
+          <ul>
+            <li>AMD</li>
+            <li>CommonJS
+              <pre><code>import myModule = module('MyModule');
+              // MyModule.ts</code></pre>
+            </li>
+            <li>Concatenate, but add reference
+            <pre><code>///&lt;reference path="../typings/lol.d.ts"/></code></pre>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2><span class="inline-code">exports</span> keyword</h2>
+        </section>
+        <section>
+          <h2><span class="inline-block">declare</span> keyword</h2>
+          <p class='text-left'>The building block of ambient declarations is the declare keyword. TypeScript uses
+information supplied by a declaration to add design-time support and compile-time checking, but
+doesn’t emit any JavaScript for a declaration.</p>
+        </section>
+        <section>
           <h1>Coffeescript</h1>
           <p>Check out
               <a href="http://www.amazon.com/CoffeeScript-Accelerated-Development-Trevor-Burnham/dp/1934356786">CoffeeScript: Accelerated JavaScript Development</a> by Trevor Burnham <br/> or <br/>
@@ -565,7 +780,7 @@ result = (item.name for item in items)
             <li>ES5's filter ~ for .. when</li>
             <li><span class="inline-code">(xs.indexOf(y) != -1)</span> ~ <span class="inline-code">y in xs</span></li>
             <li><span class="inline-code">and, or, or=, ?=</span></li>
-            <li>Destructive assignment <span class="inline-code">[a, b] = [1, 2]</span>, 
+            <li>Destructive assignment <span class="inline-code">[a, b] = [1, 2]</span>,
             <span class="inline-code">{a, b} ={a: 1, b: 2}</span>
             </li>
             <li><span class="inline-code">$ -></span> ~ <span class="inline-code">$(function() {});</span></li>
@@ -589,221 +804,6 @@ result = (item.name for item in items)
           <h1>Fun time</h1>
           <p class="text-left">Create a Utils module, that would pass the specs. Class Logger with public method log and with padding/format, maybe some sort of interface for method. </p>
 
-        </section>
-        <section>
-          <h1>TypeScript</h1>
-          <p>Check out
-           <a href="http://www.syncfusion.com/resources/techportal/ebooks/typescript">TypeScript Succinctly</a> by Steve Fento <br/> or <br/>
-           <a href="http://www.amazon.com/TypeScript-Revealed-Dan-Maharry/dp/1430257253">TypeScript Revealed</a> by Dan Maharry
-          </p>
-        </section>
-        <section>
-           <h2>How to run program written in typescript?</h2>
-          <ul class="plain-list">
-            <li>via <a href="http://www.typescriptlang.org/Playground/">online sandbox</a></li>
-
-            <li class="fragment">in your browser using <a href="https://github.com/choudeshell/TypeScript-Console">typescript console</a> ~ not sure, how good it is.</li>
-            <li class="fragment">in console REPL <a href="https://npmjs.org/package/tsi">using `tsi` package</a> or some fancy <a href="http://mnajder.blogspot.com/2012/10/typescript-interactive-in-visual-studio.html">VS REPL</a></li>
-            <li class="fragment">letting serverside handle this (<a href="https://github.com/antage/sprockets-typescript">Sprocket</a>, <a href="https://github.com/k-maru/grunt-typescript">Grunt</a>, <a href="https://npmjs.org/package/typescript">typescript</a>)</li>
-            <li class="fragment">usning some GUI/browser extension (<a href="http://www.microsoft.com/en-us/download/details.aspx?id=34790">Visual Studio</a>,<a href="http://www.jetbrains.com/idea/webhelp/transpiling-typescript-to-javascript.html">Jetbrains' IDE</a>)</li>
-            <li class="fragment">using "text/typescript" Script Tags (with this <a href="https://github.com/niutech/typescript-compile">lib</a>)</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Structure of program in TS</h2>
-          <img src="TS_figure1.png" alt="Ехал модуль через реку, видит модуль в речке модуль, модуль модуль в модуль, модуль модуль модуль модуль">
-        </section>
-        <section>
-          <h2>Main concepts</h2>
-          <ul>
-            <dl>
-              <dt>Program</dt>
-                <dd class="fragment">Collection of source files (declarations or code implementation)</dd>
-              <dt class="fragment">Module</dt>
-                <dd class="fragment">.NETish sense of namespaces, can contain classes/interfaces. Can have <i>Classes</i> exposed through <span class="inline_code">exports</span> keyword</dd>
-              <dt class="fragment">Interface</dt>
-                <dd class="fragment">Just like .NET interface.</dd>
-              <dt class="fragment">Class</dt>
-                <dd class="fragment">Sometimes <span class="inline_code">implements</span> interfaces, can have <span class="inline_code">private</span> or <span class="inline_code">public</span> methods. Can inherit (extend) other classes.</dd>
-            </dl>
-          </ul>
-        </section>
-        <section>
-          <h2>Design time parts</h2>
-          <ul>
-            <li>Type/signature check</li>
-            <li>Private/public</li>
-          </ul>
-          <h2>Run time parts</h2>
-          <ul>
-            <li>Modules</li>
-            <li>Classes</li>
-          </ul>
-        </section>
-<section class='stack'><section><h1>Syntax</h1></section>
-        <section>
-          <h2>Built-in types</h2>
-          <ul>
-            <li>number</li>
-            <li>boolean</li>
-            <li>string</li>
-            <li>null</li>
-            <li>undefined</li>
-            <li>any</li>
-          </ul>
-        </section>
-        <section>
-          <pre><code contenteditable data-trim>
-// allowed
-var a: string = null;
-var b: number = undefined;
-// not allowed
-var c: null;
-var d: undefined;
-// has a value of undefined
-var e: string;
-          </code></pre>
-        </section>
-        <section>
-          <h2>Custom Types</h2>
-          <pre class="fragment"><code data-trim contenteditable>
-interface ILogger {
-}
-class Logger {
-}
-var loggerA: ILogger;
-var loggerB: Logger;
-          </code></pre>
-        </section>
-        <section>
-          <h2>Functions/Arrays</h2>
-          <pre class="fragment"><code data-trim contenteditable>
-var exampleA: string[] = [];
-var allTheLoggers: Logger[] = [];
-exampleA.push('LOL')
-allTheLoggers.push(new Logger())
-          </code></pre>
-          <pre class="fragment"><code data-trim contenteditable>
-var lengthFn: { (input: string): number; };
-lengthFn = function (input: string) {
-  return string.length;
-}
-          </code></pre>
-        </section>
-        <section>
-          <h2>Optional/default parameters</h2>
-          <pre class="narrow"><code data-trim contenteditable>
-function lol(a:number = 2, b?) {
-}
-
-lol(2) // => ok
-lol(2,3) // => ok
-lol(3,4,5) // => error TS2081: Supplied
-// parameters do not match any signature of
-// call target.
-          </code></pre>
-          <pre class="narrow"><code data-trim contenteditable>
-function lol(a, b) {
-    if (typeof a === "undefined") { 
-      a = 2; 
-    }
-}
-          </code></pre>
-        </section>
-        <section>
-          <h2>Rest parameters ~ splat</h2>
-          <p>Placeholders for multiple arguments of the same type</p>
-          <pre><code data-trim contenteditable>
-function addManyNumbers(...numbers: number[]) {
-var sum = 0;
-for (var i = 0; i < numbers.length; i++) {
-sum += numbers[i];
-}
-return sum;
-}
-var result = addManyNumbers(1,2,3,5,6,7,8,9); // 41
-          </code></pre>
-        </section>
-        <section>
-          <h2>Combine all the things!</h2>
-          <pre><code data-trim contenteditable>
-var stringUtils: { (input: string, second?:string): number; } [] = [
-lengthFn, levensteinFn];
-          </code></pre>
-        </section>
-        <section>
-          <h2>When to Use Types?</h2>
-          <p class="fragment text-left">
-            Whether to make a type explicit or not is a matter of personal taste, so you should agree on
-your team’s preferred style in this respect.
-          </p>
-        </section>
-</section>
-<section class='stack'><section><h1>Classes</h1></section>
-        <section>
-          <h2>Sample Class</h2>
-          <pre><code data-trim contenteditable>
-export class AnnoyingLogger extends Logger {
-  constructor (private formatter: Formatter) {}
-  log(message: string): void {
-    alert(message);
-    super.log(message);
-  }
-}
-          </code></pre>
-        </section>
-        <section>
-          <h2>Implementing interfaces</h2>
-          <pre><code data-trim>
-export class MyClass implements IInterface {...}
-export class Molotov implements IThrowable, IFlamable {...}
-          </code></pre>
-        </section>
-        <section>
-          <h2>Multiple Inheritance</h2>
-          <pre><code data-trim contenteditable>
-interface IMover {
-  move() : void;
-}
-interface IShaker {
-  shake() : void;
-}
-interface IMoverShaker extends IMover, IShaker {
-}
-class MoverShaker implements IMoverShaker {
-  move() {
-  }
-  shake() {
-  }
-}
-          </code></pre>
-        </section>
-        <section>
-          <h2>private/public/static</h2>
-        </section>
-
-</section>
-        <section>
-          <h2>Using multiple files</h2>
-          <ul>
-            <li>AMD</li>
-            <li>CommonJS
-              <pre><code>import myModule = module('MyModule'); 
-              // MyModule.ts</code></pre>
-            </li>
-            <li>Concatenate, but add reference
-            <pre><code>///&lt;reference path="../typings/lol.d.ts"/></code></pre>
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h2><span class="inline-code">exports</span> keyword</h2>
-        </section>
-        <section>
-          <h2><span class="inline-block">declare</span> keyword</h2>
-          <p class='text-left'>The building block of ambient declarations is the declare keyword. TypeScript uses
-information supplied by a declaration to add design-time support and compile-time checking, but
-doesn’t emit any JavaScript for a declaration.</p>
         </section>
         <section>
           <h2>Kthxbye!7</h2>
