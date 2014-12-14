@@ -1,7 +1,7 @@
 title: Modules
 author:
-  name: Johny
-  twitter: sudodoki
+  name: Kottans
+  twitter: kottans_org
 output: index.html
 theme: sudodoki/reveal-cleaver-theme
 
@@ -106,18 +106,23 @@ require([
 ![Anonymous](https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQRvFigO4e0aUOf-NOrDjdPMIejTCTPz-8hqdpv8qfftbbXBIOqKA)  
 ###Anonymous modules
 ##path ~ module_id
+--
 
+#Config
+```javascript
+require.config({
+  baseUrl: '/another/path',
+  paths: {
+    'lodash': 'bower_components/lodash/dist/lodash.js'
+  }
+})
+require(['lodash'], function (_) { /* ... */ })
+```
 --
 #Plugins
 + text!
 + css!
 + [whatever](https://github.com/jrburke/requirejs/wiki/Plugins)!
---
-#[Almond.js](https://github.com/jrburke/almond)
---
-#[R.js](http://requirejs.org/docs/optimization.html)
-##[Example build.js](https://github.com/jrburke/r.js/blob/master/build/example.build.js)
-
 --
 Why?
 + Clear proposal for defining flexible modules.
@@ -126,6 +131,23 @@ Why?
 + Most AMD loaders support loading modules in the browser without a build process.
 + Provides a "transport" approach for including multiple modules in a single file.
 + It's possible to lazy load scripts if this is needed.
+
+--
+#[Almond.js](https://github.com/jrburke/almond)
+--
+#[R.js](http://requirejs.org/docs/optimization.html)
+##[Example build.js](https://github.com/jrburke/r.js/blob/master/build/example.build.js)
+
+--
+
+#CommonJS-like style
+```javascript
+define(function(require) {
+  var $ = require('jquery'),
+      _ = require('lodash'),
+      model = require('./model');
+});
+```
 
 --
 
@@ -168,7 +190,7 @@ console.log(module.exports, typeof module.exports);
 + curl.js
 + PING
 
-###Server-side: 
+###Server-side:
 + Node
 + [Narwhal](https://github.com/tlrobinson/narwhal)
 + [Perservere](http://www.persvr.org/)
@@ -207,45 +229,69 @@ console.log(module.exports, typeof module.exports);
 
 --
 
-#[ES6 modules](http://wiki.ecmascript.org/doku.php?id=harmony:modules)
+#[ES6 modules](http://jsmodules.io/)
 
 --
 
 ##Quick examples
 ```javascript
-import $ from "jquery";
+// default export
+export default jQuery;
+// exports this class as "File"
+export class File() { /* implementation */ }
+// use shorthand objects to export 2 functions
+export { encrypt, decrypt };
 // import the default export of a module
-module crypto from "crypto";
-// binding an external module to a variable
+import $ from "jquery";
+// using 2 non-defaults exports
 import { encrypt, decrypt } from "crypto";
 // binding a module's exports to variables
-import { encrypt as enc } from "crypto";
+import { unlink as rm } from "fs";
 // binding and renaming one of a module's exports
-export * from "crypto";
-// re-exporting another module's exports
-export { foo, bar } from "crypto";
-// re-exporting specified exports from another module
+import * as fs from "fs";
+/* and say, use `fs.unlink` further on */
 ```
 
 --
 ## Get over here, module
 ```javascript
-// inline declaration
-module "foo" {
-    export let x = 42;
-}
 // loading from external
 import { y } from "foo";
 
 import "foo";                // fetches "foo" at compile time
- 
-let foo = System.get("foo"); // succeeds at runtime
+
+System.import("foo").then(function (fooModule) {
+  let foo = fooModule;
+}); // succeeds at runtime
 ```
+
+--
+
+## Module Tag
+```javascript
+<script type="module">
+  // loads the 'q' export from 'mymodule.js' in the same path as the page
+  import { MyConstructor } from 'mymodule';
+
+  new MyConstructor();
+</script>
+```
+
+--
+
+# Config
+```javascript
+System.baseURL = '/another/path';
+System.paths['lodash'] = 'bower_components/lodash/dist/lodash.js'
+System.import('lodash').then(function(_) {
+  /* ... */
+})
+```
+
 --
 
 # Right [here](https://github.com/square/es6-module-transpiler), right [now](https://github.com/ModuleLoader/es6-module-loader).
 
 --
 
-# [All the reading you need](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
-
+# [Module reading you need](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
