@@ -767,9 +767,9 @@ code {
   <section>
     <h1 id="module">Module</h1>
 <pre><code class="lang-javascript"><span class="keyword">var</span> myModule = (<span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span>
-  myPrivateData = <span class="string">"HAXXORSWON'TGETMYSECRET"</span>
+  var myPrivateData = <span class="string">"HAXXORSWON'TGETMYSECRET"</span>
   <span class="keyword">return</span> {
-    publicMethod: doSomeStuff(arg) {
+    publicMethod: function doSomeStuff(arg) {
       <span class="comment">/* use myPrivateData here */</span>
     }
   }
