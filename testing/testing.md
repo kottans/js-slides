@@ -27,8 +27,8 @@ output: index.html
 - Confidence in ones code
 - Regression testing
 - Cheaper to modify code
-- Being able to upgrade vendor libs w/o feat=r
-- Being able to answer 'Does it still work?' question
+- Being able to upgrade vendor libs w/o fear
+- Being able to answer 'Does it still work?'
 - Catching errors early
 
 --
