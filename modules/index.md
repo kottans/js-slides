@@ -40,9 +40,9 @@ var myModule = {
 
 ```javascript
 var myModule = (function (){
-  myPrivateData = "HAXXORSWON'TGETMYSECRET"
+  var myPrivateData = "HAXXORSWON'TGETMYSECRET"
   return {
-    publicMethod: doSomeStuff(arg) {
+    publicMethod: function doSomeStuff(arg) {
       /* use myPrivateData here */
     }
   }
