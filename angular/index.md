@@ -16,10 +16,10 @@ theme: sudodoki/reveal-cleaver-theme
 --
 
 # [Origin](https://www.youtube.com/watch?v=X0VsStcCCM8)
-+ Started in 2009 by Miško Hevery 
++ Started in 2009 by Miško Hevery
 + Googlefeedback: from 6 months x 3 devs (17kLoc - GWT) -> 3 weeks (1,5kLoc)
-+ 20.5k⋆ on github, 4.2k commits, ~650 contributors
-+ 14 core members
++ 36k⋆ on github, 6.6k commits, ~1.2k contributors
++ 14(?) core members
 
 
 --
@@ -104,8 +104,8 @@ angular.module('myModule', []).
 --
 
 ## Controllers
-Define $scope for View.
-<a class="jsbin-embed" href="http://jsbin.com/saduf/1/embed?html,output">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
+Define $scope for View. Or attach stuff to controllers & use them as ViewModel.
+<a class="jsbin-embed" href="http://jsbin.com/docahoyuxa/4/embed?html,output">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 --
 
@@ -130,11 +130,11 @@ Built-in: currency, date, filter, json, limitTo, lowercase, number, orderBy, upp
 --
 
 ## [Factory vs Service vs Providers](http://stackoverflow.com/questions/15666048/angular-js-service-vs-provider-vs-factory)
-<a class="jsbin-embed" href="http://jsbin.com/ohamub/1/embed?html,output">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/vequmihise/2/embed?html,output">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 --
 
-# [Providers conclusion](http://code.angularjs.org/1.2.13/docs/guide/providers#providers_conclusion)
+# [Providers conclusion](https://code.angularjs.org/1.3.14/docs/guide/providers#conclusion)
 
 --
 
@@ -143,9 +143,20 @@ Built-in: currency, date, filter, json, limitTo, lowercase, number, orderBy, upp
 
 --
 
+Style guides:
++ [John Papa's](https://github.com/johnpapa/angular-styleguide)
++ [Todd Motto's](https://github.com/toddmotto/angularjs-styleguide)
+
+
+--
+
 Future:
-+ https://docs.google.com/presentation/d/1Gv-dvU-yy6WY7SiNJ9QRo9XayPS6N2jtgWezdRpoI04/mobilepresent
-+ https://docs.google.com/presentation/d/1rno8HFYcst3nrd6xpruX7r427W5g1RRUL36115OEUnQ/mobilepresent
+
+--
+
+Meta-sources:
++ [guide w/ links](https://code.angularjs.org/1.3.14/docs/guide)
++ [AngularJS-Learning](https://github.com/jmcunningham/AngularJS-Learning)
 
 --
 
@@ -154,13 +165,11 @@ Books:
 + http://www.amazon.com/Mastering-Web-Application-Development-AngularJS/dp/1782161821
 + http://shop.oreilly.com/product/0636920028055.do
 
---
-
 Tutorial:
 + https://egghead.io/tags/AngularJS
 + http://docs.angularjs.org/tutorial
 + http://www.thinkster.io/pick/GUIDJbpIie/angularjs-tutorial-learn-to-build-modern-web-apps
-+ http://youtu.be/tnXO-i7944M 20ish minutes version of AngularJS in 60ish minutes + http://fastandfluid.com/publicdownloads/AngularJSIn60MinutesIsh_DanWahlin_May2013.pdf - http://youtu.be/i9MHigUZKEM
++ http://youtu.be/tnXO-i7944M 20ish minutes version of 60ish minutes Dan Wahlin talk
 
 --
 
