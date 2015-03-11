@@ -151,6 +151,8 @@ Style guides:
 --
 
 Future:
++ [Angular 2.0 blogpost](http://angularjs.blogspot.com/2014/03/angular-20.html)
++ [Design docs](https://drive.google.com/?pli=1#folders/0B7Ovm8bUYiUDR29iSkEyMk5pVUk)
 
 --
 
