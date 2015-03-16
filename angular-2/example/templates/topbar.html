@@ -1,0 +1,5 @@
+<nav>
+  <a href="#/">Home</a>
+  <button ng-if='!isLoggedIn()' ng-click='topbar.signIn()'>Sign in</button>
+  <span ng-if='isLoggedIn()'>Hello {{currentUser}}</span>
+</nav>
