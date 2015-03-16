@@ -405,6 +405,14 @@ pre .chunk {
 </section>
   </div>
   <div class="slide hidden" id="slide-2">
+    <section class="slide-content"><h1 id="dom-manipulation">DOM manipulation</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-3">
+    <section class="slide-content"><h1 id="file-structures">File structures</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-4">
     <section class="slide-content"><h3 id="utils">Utils</h3>
 <ul>
 <li>copy (deep copy, can pass &#39;destination&#39;), equals, extend (shallow extend), merge (deep extend)</li>
@@ -417,7 +425,7 @@ pre .chunk {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-3">
+  <div class="slide hidden" id="slide-5">
     <section class="slide-content"><pre><code>var $div = $(&#39;&lt;div ng-controller=&quot;MyCtrl&quot;&gt;{{content.label}}&lt;/div&gt;&#39;);
 $(document.body).append($div);
 
@@ -427,18 +435,18 @@ angular.element(document).injector().invoke(function($compile) {
 });</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-4">
+  <div class="slide hidden" id="slide-6">
     <section class="slide-content"><h3 id="angular-element">angular.element</h3>
 <p>If <strong>jQuery</strong> is <em>available</em>, angular.element is an <strong>alias</strong> for the jQuery function. If <strong>jQuery</strong> is <em>not available</em>, angular.element delegates to Angular&#39;s built-in subset of jQuery, called &quot;jQuery lite&quot; or &quot;<strong>jqLite</strong>.&quot;</p>
 <p>Limitations: not all methods, <code>children()</code>/<code>next()</code>/<code>find()</code> do not support selectors (or just tag names), <code>on()</code>/<code>off()</code>/<code>bind()</code>/<code>unbind()</code> do not support namespaces/selectors</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-5">
+  <div class="slide hidden" id="slide-7">
     <section class="slide-content"><h1 id="nb">NB</h1>
 <h2 id="-window-document">$window, $document</h2>
 </section>
   </div>
-  <div class="slide hidden" id="slide-6">
+  <div class="slide hidden" id="slide-8">
     <section class="slide-content"><h3 id="directives">Directives</h3>
 <ul>
 <li>ngShow/ngHide</li>
@@ -450,7 +458,7 @@ angular.element(document).injector().invoke(function($compile) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-7">
+  <div class="slide hidden" id="slide-9">
     <section class="slide-content"><ul>
 <li>..</li>
 <li>ngModel/ngModelOptions</li>
@@ -464,12 +472,12 @@ angular.element(document).injector().invoke(function($compile) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-8">
+  <div class="slide hidden" id="slide-10">
     <section class="slide-content"><h2 id="example">Example</h2>
 <p><a class="jsbin-embed" href="http://jsbin.com/zixilirolu/2/embed?html,js,output">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-9">
+  <div class="slide hidden" id="slide-11">
     <section class="slide-content"><h2 id="forms-ngform-">Forms (ngForm)</h2>
 <ul>
 <li>css classes (ng-valid, ng-invalid, ng-pristine, ng-dirty, ng-submitted)</li>
@@ -478,18 +486,18 @@ angular.element(document).injector().invoke(function($compile) {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-10">
+  <div class="slide hidden" id="slide-12">
     <section class="slide-content"><h2 id="ngmodeloptions">ngModelOptions</h2>
 <p>View value might differ from model
 To sync model - view after model-options play their part, call $rollbackViewValue on input field (use form controller).</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-11">
+  <div class="slide hidden" id="slide-13">
     <section class="slide-content"><h2 id="example">Example</h2>
 <p><a class="jsbin-embed" href="http://jsbin.com/sijoki/2/embed?html,js,console,output">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-12">
+  <div class="slide hidden" id="slide-14">
     <section class="slide-content"><h3 id="services">Services</h3>
 <ul>
 <li>$sce</li>
@@ -502,7 +510,7 @@ To sync model - view after model-options play their part, call $rollbackViewValu
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-13">
+  <div class="slide hidden" id="slide-15">
     <section class="slide-content"><h3 id="-q">$q</h3>
 <ul>
 <li>defer()</li>
@@ -512,7 +520,7 @@ To sync model - view after model-options play their part, call $rollbackViewValu
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-14">
+  <div class="slide hidden" id="slide-16">
     <section class="slide-content"><h3 id="-http">$http</h3>
 <ul>
 <li>get</li>
@@ -525,7 +533,7 @@ To sync model - view after model-options play their part, call $rollbackViewValu
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-15">
+  <div class="slide hidden" id="slide-17">
     <section class="slide-content"><h3 id="-cachefactory">$cacheFactory</h3>
 <ul>
 <li>$templateCache - $cacheFactory.get(&#39;templates&#39;)</li>
@@ -535,7 +543,7 @@ $cacheFactory.get(cacheId)</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-16">
+  <div class="slide hidden" id="slide-18">
     <section class="slide-content"><h3 id="cache-instance-methods-">Cache instance Methods:</h3>
 <ul>
 <li>info() — Returns id, size, and options of cache.</li>
@@ -547,12 +555,12 @@ $cacheFactory.get(cacheId)</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-17">
+  <div class="slide hidden" id="slide-19">
     <section class="slide-content"><h1 id="-compile">$compile</h1>
 <p>$compile(domNode)(scope) -&gt; binds dom to scope, frequently used in test</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-18">
+  <div class="slide hidden" id="slide-20">
     <section class="slide-content"><pre><code>var templateElement = angular.element(&#39;&lt;p&gt;{{total}}&lt;/p&gt;&#39;),
     scope = ....;
 
@@ -563,12 +571,12 @@ var clonedElement = $compile(templateElement)(scope, function(clonedElement, sco
 //now we have reference to the cloned DOM via `clonedElement`</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-19">
+  <div class="slide hidden" id="slide-21">
     <section class="slide-content"><h1 id="-parse">$parse</h1>
 <p>$parse(ngExpression)(scope) -&gt; get getter &amp; getter.assign - setter for values</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-20">
+  <div class="slide hidden" id="slide-22">
     <section class="slide-content"><pre><code>var getter = $parse(&#39;user.name&#39;);
 var setter = getter.assign;
 var context = {user:{name:&#39;angular&#39;}};
@@ -580,7 +588,7 @@ expect(context.user.name).toEqual(&#39;newValue&#39;);
 expect(getter(context, locals)).toEqual(&#39;local&#39;);</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-21">
+  <div class="slide hidden" id="slide-23">
     <section class="slide-content"><h3 id="filter">Filter</h3>
 <ul>
 <li>currency</li>
@@ -594,7 +602,7 @@ expect(getter(context, locals)).toEqual(&#39;local&#39;);</code></pre>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-22">
+  <div class="slide hidden" id="slide-24">
     <section class="slide-content"><h3 id="extensions">Extensions</h3>
 <ul>
 <li>ngMessages</li>
@@ -610,24 +618,24 @@ expect(getter(context, locals)).toEqual(&#39;local&#39;);</code></pre>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-23">
+  <div class="slide hidden" id="slide-25">
     <section class="slide-content"><h1 id="-ngmessages-https-docs-angularjs-org-api-ngmessages-directive-ngmessages-"><a href="https://docs.angularjs.org/api/ngMessages/directive/ngMessages">$ngMessages</a></h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-24">
+  <div class="slide hidden" id="slide-26">
     <section class="slide-content"><h1 id="-resource-https-docs-angularjs-org-api-ngresource-service-resource-"><a href="https://docs.angularjs.org/api/ngResource/service/$resource">$resource</a></h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-25">
+  <div class="slide hidden" id="slide-27">
     <section class="slide-content"><h1 id="-uirouter-https-github-com-angular-ui-ui-router-"><a href="https://github.com/angular-ui/ui-router">uiRouter</a></h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-26">
+  <div class="slide hidden" id="slide-28">
     <section class="slide-content"><h1 id="-example-https-github-com-kottans-js-slides-tree-gh-pages-angular-2-example">[Example](<a href="https://github.com/Kottans/js-slides/tree/gh-pages/angular-2/example">https://github.com/Kottans/js-slides/tree/gh-pages/angular-2/example</a></h1>
 <p>)</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-27">
+  <div class="slide hidden" id="slide-29">
     <section class="slide-content"><div class="author">
   <h1 class="name">sudodoki</h1>
     <h3 class="twitter">

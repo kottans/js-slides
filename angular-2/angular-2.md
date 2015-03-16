@@ -11,6 +11,14 @@ author:
 
 --
 
+# DOM manipulation
+
+--
+
+# File structures
+
+--
+
 ### Utils
 + copy (deep copy, can pass 'destination'), equals, extend (shallow extend), merge (deep extend)
 + equals, isArray, isDate, isDefined, isElement, isFunction, isNumber, isObject, isString/isUndefined
