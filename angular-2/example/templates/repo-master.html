@@ -1,0 +1,6 @@
+<h1>This is repo master!</h1>
+<ul>
+  <li ng-repeat='repo in repos.repos'>
+  <a ui-sref='^.details({id: repo.id})' >{{repo.full_name}}</a>
+  </li>
+</ul>
