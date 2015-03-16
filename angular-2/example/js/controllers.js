@@ -1,12 +1,20 @@
 angular.module('githubSample')
-  .controller('RepoCtrl', function (auth, Repos) {
+  .controller('ReposCtrl', function (Repos) {
     console.log('this ran')
     var ctrl = this;
     Repos.getAll().then(function (data) {
-      console.log(data)
       ctrl.repos = data
     })
 
+  })
+  .controller('RepoCtrl', function (Repos, $stateParams) {
+    var ctrl = this
+    ctrl.repo = 'Loading...'
+    Repos.getAll().then(function (repos) {
+      ctrl.repo = repos.filter(function (repo) {
+        return repo.id == $stateParams.id
+      })[0]
+    })
   })
   .controller('TopBarCtrl', function (auth, $state) {
     this.isLoggedIn = auth.isLoggedIn

@@ -17,7 +17,7 @@ angular.module('githubSample')
     }
   })
   // TODO: use interceptors
-  .factory('auth', function ($q, $rootScope) {
+  .factory('auth', function ($q) {
     var loggedIn = false, accessToken = '';
     return {
       getAccessToken: function () {

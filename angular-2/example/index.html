@@ -11,6 +11,14 @@
   <script src='js/router.js'></script>
   <script src='js/controllers.js'></script>
   <script src='js/services.js'></script>
+  <style>
+    [ui-view='master'],
+    [ui-view='detail'] {
+      width: 50%;
+      display: block;
+      float: left;
+    }
+  </style>
 </head>
 <body ng-app='githubSample'>
 <div ui-view='topbar'></div>

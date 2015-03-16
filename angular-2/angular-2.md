@@ -215,6 +215,4 @@ expect(getter(context, locals)).toEqual('local');
 
 --
 
-# [Example](https://github.com/Kottans/js-slides/tree/gh-pages/angular-2/example
-)
-
+# [Example](https://github.com/Kottans/js-slides/tree/gh-pages/angular-2/example)

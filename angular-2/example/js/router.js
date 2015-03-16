@@ -1,8 +1,8 @@
 angular.module('githubSample')
-  .config(function($stateProvider, $urlRouterProvider, $qProvider) {
+  .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('root', {
       url: '',
-      abstract: 'true',
+      abstract: true,
       views: {
         topbar: {
           templateUrl: 'templates/topbar.html',
@@ -27,7 +27,7 @@ angular.module('githubSample')
       views: {
         'main@': {
           templateUrl: 'templates/list.html',
-          controller: 'RepoCtrl',
+          controller: 'ReposCtrl',
           controllerAs: 'repos'
         }
       }
@@ -48,14 +48,12 @@ angular.module('githubSample')
       needsAuth: true,
       views: {
         'master': {
-          template: '<h1>Viewing repo</h1>',
-          // controller: 'RepoCtrl',
-          // controllerAs: 'repos'
+          templateUrl: 'templates/repo-master.html',
         },
         'detail': {
-          template: {
-            templateUrl: 'templates/repo.html'
-          }
+          templateUrl: 'templates/repo.html',
+          controller: 'RepoCtrl',
+          controllerAs: 'repo'
         }
       }
     })
@@ -63,5 +61,5 @@ angular.module('githubSample')
       url: '/404',
       template: '<h1>404</h1>'
     })
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/404');
   })
