@@ -1,3 +1,5 @@
+Kottans also have JS chat room [![Join the chat at https://gitter.im/Kottans/kottans.github.io](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Kottans/js-slides)
+
 A bunch of presenatations for Kottans JS, available at [gh-pages](http://kottans.github.io/js-slides/).
 
 Possible ways to contribute:
