@@ -10,3 +10,6 @@ Possible ways to contribute:
     1. Install cleaver (`npm i -g cleaver`).
     2. Create folder and .md file in it ([sample](https://raw.githubusercontent.com/Kottans/js-slides/gh-pages/angular/index.md)).
     3. Run `cleaver watch index.md` and serve/access that file locally.
+
+
+[![Join the chat at https://gitter.im/Kottans/js-slides](https://badges.gitter.im/Kottans/js-slides.svg)](https://gitter.im/Kottans/js-slides?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
