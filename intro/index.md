@@ -1,8 +1,8 @@
 title: Intro
 author:
-  name: sudodoki
-  email: smd.deluzion@gmail.com
-  twitter: sudodoki
+  name: sudodoki/suchov
+  email: kottans.org@gmail.com
+  twitter: kottans_org
 output: index.html
 
 --
@@ -12,7 +12,8 @@ output: index.html
 
 --
 
-# История котанов
+# История котанов - 
+## история взаимопомощи и поддержки.
 
 --
 
@@ -40,7 +41,16 @@ output: index.html
 --
 
 # [Webstorm](https://www.jetbrains.com/webstorm/)
-## Also [PhpStorm](https://www.jetbrains.com/phpstorm/)
+## Bunch of stuff form [JetBrains](https://www.jetbrains.com/)
+
+--
+
+#Online IDE
+https://c9.io/
+
+https://codeanywhere.com/
+
+https://codenvy.com/
 
 --
 
@@ -57,7 +67,15 @@ http://code.tutsplus.com/courses/perfect-workflow-in-sublime-text-2
 
 #Atom
 https://atom.io
+
 http://www.elijahmanor.com/github-atom-packages/ + seti UI
+
+--
+
+#VI, Emacs
+http://www.openvim.com/
+http://vim-adventures.com/
+https://github.com/VundleVim/Vundle.vim
 
 --
 
@@ -83,6 +101,7 @@ http://discover-devtools.codeschool.com/
 http://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177
 http://httpflies.com/
 http://www.slideshare.net/sanjoysanyal/http-basics
+http://code.tutsplus.com/tutorials/a-beginners-guide-to-http-and-rest--net-16340
 
 --
 
@@ -93,4 +112,5 @@ https://pragprog.com/book/cfcar2/the-passionate-programmer
 
 # Resources
 http://uptodate.frontendrescue.org
-https://github.com/mr-mig/ru-it-chats/
+https://github.com/mr-mig/ru-it-chats
+https://github.com/dypsilon/frontend-dev-bookmarks
