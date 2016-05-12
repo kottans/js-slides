@@ -12,8 +12,19 @@ output: index.html
 
 --
 
+# Gitter chat:
+## [https://goo.gl/DhzOGt](https://goo.gl/DhzOGt)
+## calendar
+
+--
+
 # История котанов - 
 ## история взаимопомощи и поддержки.
+## 2012 - ...
+
+--
+
+# Зачем вам это?
 
 --
 
@@ -27,6 +38,45 @@ output: index.html
 
 # Нет мнимому удивлению
 Нельзя быть шокированным тем, что кто-то не знает того, что знаете вы.
+
+--
+
+# Да критике
+Мы критикуем подходы, код, но не пререходим на личности.
+
+--
+
+# Программа в двух словах:
+
+--
+
+## HTML
+## CSS
+## ES6
+## Typescript/[flow]
+## DOM + Components + ShadowDOM
+
+
+--
+
+## Fetch/SDOP/CORS/cookie
+## Testing
+## NPM/building tools
+## Node
+## Building API / API first
+
+
+--
+
+## SPA / building SPA
+## CI / CD
+## React
+## Angular
+## Ember
+
+--
+
+# Инструменты которые нужно освоить.
 
 --
 
@@ -114,3 +164,31 @@ https://pragprog.com/book/cfcar2/the-passionate-programmer
 http://uptodate.frontendrescue.org
 https://github.com/mr-mig/ru-it-chats
 https://github.com/dypsilon/frontend-dev-bookmarks
+
+--
+
+# Интервью со звездой:
+
+--
+
+# Расскажите о себе?
+
+--
+
+# Почему Вы здесь?
+
+--
+
+# У вас есть мечьта?
+
+--
+
+# Кем вы себя видите через 5 лет?
+
+--
+
+# Доп ДЗ - перевести копию этих слайдов на...
+
+--
+
+# [https://github.com/Kottans/js-slides/](https://github.com/Kottans/js-slides/)
