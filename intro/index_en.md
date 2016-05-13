@@ -37,7 +37,7 @@ output: index.html
 --
 
 # No feigning surprise.
-You canot be shocked by someone not knowing something that you know.
+You cannot be shocked by someone not knowing something that you know.
 
 --
 
@@ -94,7 +94,7 @@ We criticize the approach, the code, but do not go to the individual.
 
 --
 
-#Online IDE
+# Online IDE
 https://c9.io/
 
 https://codeanywhere.com/
@@ -114,21 +114,21 @@ http://code.tutsplus.com/courses/perfect-workflow-in-sublime-text-2
 
 --
 
-#Atom
+# Atom
 https://atom.io
 
 http://www.elijahmanor.com/github-atom-packages/ + seti UI
 
 --
 
-#VI, Emacs
+# VI, Emacs
 http://www.openvim.com/
 http://vim-adventures.com/
 https://github.com/VundleVim/Vundle.vim
 
 --
 
-#Git
+# Git
 https://try.github.io/levels/1/challenges/1
 http://pcottle.github.io/learnGitBranching/
 http://sixrevisions.com/web-development/git-tips/
@@ -175,10 +175,6 @@ https://github.com/dypsilon/frontend-dev-bookmarks
 --
 
 # Why are you here?
-
---
-
-# У вас есть мечьта?
 
 --
 
