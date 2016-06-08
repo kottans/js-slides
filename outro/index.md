@@ -7,7 +7,7 @@ output: index.html
 
 --
 
-# Outro Spring 2014
+# Outro Spring 2015
 
 
 --
@@ -24,12 +24,12 @@ output: index.html
 
 --
 
-# Year ago, I would say: 'Learn coffeescript'
-Now I wouldn't be that sure you might need it.
+# Go ES2015
+
 --
 
-# [Keep up to date](http://uptodate.frontendrescue.org).
-# [Visit events](http://dou.ua/calendar/tags/JavaScript/).
+### [Keep up to date](http://uptodate.frontendrescue.org).
+### [Visit events](http://dou.ua/calendar/tags/JavaScript/).
 --
 
 # We didn't speak about lots of stuff.
@@ -40,24 +40,28 @@ Now I wouldn't be that sure you might need it.
 ### JS & Hardware:
 Overviewish ones:
 + [JavaScript IRL](http://markdaggett.com/images/ExpertJavaScript-ch6.pdf)
-+ [JS beyond web](http://www.sitepoint.com/javascript-beyond-web/)  
++ [JS beyond web](http://www.sitepoint.com/javascript-beyond-web-2014/)  
 
-Now we're talking:
+--
+
+### Now we're talking:
 + [Tessel](https://tessel.io/)
-+ [Nodebots](http://nodebots.io/) <- we should bring this guys to Kyiv
++ [Nodebots](http://nodebots.io/)
 + [Espruino](http://www.espruino.com/)
 + [Johny-five](https://github.com/rwaldron/johnny-five)
 + [Cylon.js](http://cylonjs.com/)
 
 --
 
-### Create desktop apps with [node-webkit](https://github.com/rogerwang/node-webkit)
+### Create desktop apps with [nw.js](https://github.com/nwjs/nw.js)
 [Tutsplus](http://code.tutsplus.com/tutorials/introduction-to-html5-desktop-apps-with-node-webkit--net-36296) & [Getting started](https://github.com/rogerwang/node-webkit/wiki/Getting-Started-with-node-webkit)
 --
 
 ### Create mobile apps.
 + [Titanium from Appcelerator](http://www.appcelerator.com/titanium/)
 + [Phonegap](http://phonegap.com/)
++ [React Native](http://facebook.github.io/react-native/)
++ [Native Script](http://www.telerik.com/nativescript)
 --
 
 ### Go to [Enterprise](http://readwrite.com/2013/08/09/why-javascript-will-become-the-dominant-programming-language-of-the-enterprise) [or don't =)].
@@ -93,14 +97,6 @@ Now we're talking:
 + [altjs.org](http://altjs.org)
 --
 
-
-### [How cool ES6 is](http://www.sencha.com/blog/toward-modern-web-apps-with-ecmascript-6/)
-+ [List of feautures](https://github.com/lukehoban/es6features)
-+ [Traceur](https://github.com/google/traceur-compiler)
-+ [Browser support](http://kangax.github.io/es5-compat-table/es6)
-+ [Node support](http://h3manth.com/new/blog/2013/es6-on-nodejs/) <- suspect this little bit outdated.
---
-
 # Внезапно!
 --
 
@@ -122,10 +118,12 @@ Now we're talking:
 [High Performance Browser Networking](http://chimera.labs.oreilly.com/books/1230000000545)
 
 --
+
 ### Serverside [descending interest rate (opinionated :)]
-+ [Derby](derbyjs.com/)
 + [Sails](http://sailsjs.org/)
++ [Derby](derbyjs.com/)
 + [Meteor](https://www.meteor.com/)
 
 --
-# This is the end, my only friend, the end.
+
+### The function of education is to teach one to think intensively and to think critically. Intelligence plus character - that is the goal of true education.
