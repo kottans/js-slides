@@ -97,7 +97,7 @@ There're a lot of tools that extend JS possibilities, like libs that modify stan
 --
 
 # Helping w/ type information – type definitions
-+ [DefinitelyType](https://github.com/DefinitelyTyped/DefinitelyTyped)
++ [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)
 + [typings](https://github.com/typings/typings)
 
 --
