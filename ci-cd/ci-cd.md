@@ -8,10 +8,11 @@ theme: sudodoki/reveal-cleaver-theme
 output: index.html
 
 --
-![](images/topic-name.png)
---
 
 ![](images/infinite_battle.gif)
+
+--
+![](images/topic-name.png)
 
 --
 
