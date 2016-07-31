@@ -51,7 +51,7 @@ output: index.html
 # Tools
 1. Atom's [Linter](https://github.com/steelbrain/linter) and [Linter-eslint](https://atom.io/packages/linter-eslint)
 2. Bare [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) or using wrappers, like [pre-commit](https://www.npmjs.com/package/pre-commit)
-3. [Code review tools](https://en.wikipedia.org/wiki/List_of_tools_for_code_review). [LGTM](http://lgtm.in/)
+3. [Code review tools](https://en.wikipedia.org/wiki/List_of_tools_for_code_review). [LGTM](https://lgtm.co/)
 4. [SAAS platform](https://github.com/ligurio/Continuous-Integration-services/blob/master/continuous-integration-services-list.md)
 
 --
