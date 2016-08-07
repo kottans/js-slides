@@ -185,7 +185,7 @@ Overviewish ones (and oldie, oh gosh):
 ### Who made this possible (in Kiev):
 + [Aleksey Shvayka](https://github.com/shvaikalesh)
 + [Nikolay Kozhukharenko](https://github.com/mkozhukharenko)
-+ [Ivan Stestenko](https://github.com/firec0der)
++ [Ivan Stetsenko](https://github.com/firec0der)
 + [Alexander Lapshyn](https://github.com/sudodoki)
 + [Artem Suchov](https://github.com/suchov)
 + [Illia Seheda](https://github.com/ALF-er)
