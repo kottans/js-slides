@@ -83,7 +83,7 @@ Q.fcall(promisedStep1)
 
 --
 ## [Jquery Promises are broken](http://stackoverflow.com/questions/23744612/problems-inherent-to-jquery-deferred)
-+ Not complient to Promises/A+ spec
++ Not compliant to Promises/A+ spec
 + Error handling
 + Execution order
 + Remain broken for backward compatibility
