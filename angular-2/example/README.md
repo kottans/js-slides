@@ -1,1 +1,0 @@
-Sample app using github API, ui-router & $resoure/$http.
