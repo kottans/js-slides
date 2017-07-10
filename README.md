@@ -8,7 +8,7 @@ Possible ways to contribute:
   - Add slides, following steps, described in [dummy presentation](http://kottans.org/js-slides/dummy/).
   - Use [cleaver](https://github.com/jdan/cleaver):
     1. Install cleaver (`npm i -g cleaver`).
-    2. Create folder and .md file in it ([sample](https://raw.githubusercontent.com/Kottans/js-slides/gh-pages/angular/index.md)).
+    2. Create folder and .md file in it ([sample](https://raw.githubusercontent.com/Kottans/js-slides/9ab0fb21964055027697ea3935025b894d576bc7/angular/index.md)).
     3. Run `cleaver watch index.md` and serve/access that file locally.
 
 
